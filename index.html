@@ -3,29 +3,57 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kadie Keslar | CS + HCI Portfolio</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <!--
-    AI USAGE:
-    I used ChatGPT to help brainstorm the visual direction, organize the
-    structure of my portfolio, and create an initial version of the HTML,
-    CSS, and JavaScript. I customized the content, sections, wording,
-    visual style, and project information to represent my own interests,
-    experience, and goals.
+    <title>Kadie Keslar | Portfolio</title>
 
-    DESIGN NOTE:
-    The visual direction is inspired by editorial layouts, scrapbook
-    aesthetics, magazine typography, collage art, and personal creative
-    portfolios. No outside website template was copied.
-    -->
+
+    <!-- ==========================================================
+         AI USAGE DOCUMENTATION
+
+         I used ChatGPT as a brainstorming, coding, and debugging
+         assistant while creating this portfolio.
+
+         AI helped me:
+         - brainstorm the scrapbook/editorial visual direction
+         - create an initial HTML structure
+         - create CSS effects for paper cutouts, fabric-inspired
+           patterns, handwritten elements, and hover animations
+         - create JavaScript for the mobile navigation and
+           scroll-based animations
+
+         I reviewed and customized the content, organization,
+         visual choices, wording, and final implementation.
+
+         No outside website template was copied.
+
+         The fabric/paper patterns in this website are generated
+         entirely using CSS.
+    =========================================================== -->
+
 
     <style>
 
-        /* =====================================================
-           BASIC SETUP
-        ===================================================== */
+        /* ==========================================================
+           1. COLOR PALETTE + BASIC SETUP
+        ========================================================== */
+
+        :root {
+            --berry: #a8476b;
+            --berry-dark: #783048;
+            --berry-light: #d49aae;
+            --pink: #efc7d5;
+            --pale-pink: #f7e2e8;
+            --cream: #f7f0e7;
+            --paper: #fffaf3;
+            --black: #171515;
+            --gray: #696264;
+            --tan: #ead8bd;
+        }
+
 
         * {
             margin: 0;
@@ -33,61 +61,63 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
-        :root {
-            --pink: #a94467;
-            --dark-pink: #7d2948;
-            --light-pink: #ddb1c1;
-            --pale-pink: #f3dce5;
-            --cream: #f7f2eb;
-            --white: #fffdf9;
-            --black: #151515;
-            --gray: #6e6868;
-        }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
             background: var(--cream);
             color: var(--black);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             overflow-x: hidden;
         }
 
-        h1,
-        h2,
-        h3 {
-            line-height: 1;
+
+        img {
+            width: 100%;
+            display: block;
         }
+
 
         a {
             color: inherit;
         }
 
-        img {
-            max-width: 100%;
+
+        section {
+            position: relative;
         }
 
 
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
+
+        /* ==========================================================
+           2. NAVIGATION
+        ========================================================== */
 
         nav {
             position: fixed;
+
             top: 0;
             left: 0;
-            width: 100%;
-            height: 72px;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            width: 100%;
+            min-height: 70px;
 
             padding: 0 6%;
 
-            background: rgba(247, 242, 235, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(247, 240, 231, 0.94);
+
             backdrop-filter: blur(10px);
 
             border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -95,797 +125,1889 @@
             z-index: 1000;
         }
 
+
         .nav-name {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 22px;
-            text-transform: lowercase;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
             text-decoration: none;
+
+            text-transform: lowercase;
         }
+
 
         .nav-links {
             display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+
             list-style: none;
-            gap: 30px;
         }
 
+
         .nav-links a {
-            text-decoration: none;
-            text-transform: lowercase;
-            font-size: 14px;
-            letter-spacing: 1px;
             position: relative;
+
+            text-decoration: none;
+
+            text-transform: lowercase;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
         }
+
 
         .nav-links a::after {
             content: "";
+
             position: absolute;
+
+            bottom: -6px;
             left: 0;
-            bottom: -5px;
+
             width: 0;
-            height: 2px;
-            background: var(--pink);
-            transition: width 0.25s ease;
+            height: 3px;
+
+            background: var(--berry);
+
+            transform: rotate(-2deg);
+
+            transition: width 0.2s ease;
         }
+
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
+
         .menu-button {
             display: none;
-            background: none;
+
+            background: transparent;
+
             border: none;
-            font-size: 24px;
+
+            font-size: 27px;
+
             cursor: pointer;
         }
 
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+
+        /* ==========================================================
+           3. HERO
+        ========================================================== */
 
         #home {
             min-height: 100vh;
-            padding: 120px 8% 60px;
+
+            padding:
+                120px
+                8%
+                80px;
 
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+
+            grid-template-columns:
+                1.1fr
+                0.9fr;
+
+            gap: 50px;
+
             align-items: center;
-            gap: 40px;
 
-            background:
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,.12), transparent 2px),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,.1), transparent 2px),
-                var(--pink);
+            background-color: var(--berry);
 
-            background-size: 25px 25px;
             color: white;
 
-            position: relative;
+            overflow: hidden;
         }
 
-        .hero-left {
-            position: relative;
-            z-index: 2;
+
+
+        /* subtle fabric texture */
+
+        #home::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255,255,255,0.035),
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px,
+                    transparent 5px
+                ),
+
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.025),
+                    rgba(0,0,0,0.025) 1px,
+                    transparent 1px,
+                    transparent 7px
+                );
+
+            pointer-events: none;
         }
+
+
+        .hero-text {
+            position: relative;
+
+            z-index: 3;
+        }
+
 
         .tiny-label {
-            font-size: 13px;
+            margin-bottom: 18px;
+
+            font-size: 11px;
+
             letter-spacing: 4px;
+
             text-transform: uppercase;
-            margin-bottom: 10px;
         }
 
-        .meet {
+
+        .meet-label {
             display: inline-block;
+
+            padding:
+                3px
+                15px;
+
             background: var(--black);
+
             color: white;
 
-            font-size: clamp(35px, 5vw, 78px);
-            font-weight: 800;
+            font-size:
+                clamp(
+                    33px,
+                    5vw,
+                    72px
+                );
 
-            padding: 3px 14px;
-            margin-bottom: 4px;
+            font-weight: 900;
+
+            transform: rotate(-2deg);
+
+            box-shadow:
+                7px
+                7px
+                0
+                rgba(255,255,255,0.8);
         }
 
-        .kadie {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(90px, 13vw, 185px);
+
+        .hero-name {
+            margin:
+                3px
+                0
+                8px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    78px,
+                    13vw,
+                    180px
+                );
+
+            line-height: 0.9;
+
             font-weight: normal;
-            letter-spacing: -8px;
-            margin-left: -4px;
+
+            letter-spacing: -7px;
+
+            text-shadow:
+                4px
+                4px
+                0
+                rgba(0,0,0,0.12);
         }
 
-        .hero-subtitle {
-            margin-top: 18px;
-            max-width: 620px;
 
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(22px, 3vw, 38px);
+        .hero-title {
+            max-width: 650px;
+
+            margin-top: 22px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-weight: normal;
+
+            font-size:
+                clamp(
+                    24px,
+                    3vw,
+                    38px
+                );
+
+            line-height: 1.15;
         }
+
 
         .hero-description {
-            max-width: 600px;
-            margin-top: 20px;
+            max-width: 590px;
+
+            margin-top: 21px;
 
             font-size: 16px;
+
             line-height: 1.7;
         }
 
-        .oval-note {
+
+        .handwritten {
             display: inline-block;
-            border: 2px solid white;
+
+            margin-top: 26px;
+
+            padding:
+                10px
+                25px;
+
+            border:
+                3px
+                solid
+                white;
+
             border-radius: 50%;
 
-            padding: 10px 25px;
-            margin-top: 25px;
+            font-family:
+                "Brush Script MT",
+                "Segoe Print",
+                cursive;
 
-            transform: rotate(-3deg);
+            font-size: 21px;
 
-            font-family: Georgia, "Times New Roman", serif;
-            font-style: italic;
-            font-size: 17px;
+            transform: rotate(-4deg);
         }
+
+
+
+        /* ==========================================================
+           4. BUTTONS THAT POP OUT
+        ========================================================== */
 
         .hero-buttons {
-            margin-top: 32px;
-
             display: flex;
-            gap: 15px;
+
             flex-wrap: wrap;
+
+            gap: 18px;
+
+            margin-top: 34px;
         }
+
 
         .button {
             display: inline-block;
 
-            padding: 13px 24px;
+            padding:
+                14px
+                24px;
 
             background: var(--black);
+
             color: white;
 
+            border:
+                2px
+                solid
+                var(--black);
+
             text-decoration: none;
+
+            font-size: 13px;
+
             font-weight: bold;
 
-            border: 2px solid var(--black);
+            letter-spacing: 1px;
 
-            transition: all 0.2s ease;
+            box-shadow:
+                6px
+                6px
+                0
+                white;
+
+            transition:
+                transform 0.16s ease,
+                box-shadow 0.16s ease,
+                background 0.16s ease;
         }
+
 
         .button:hover {
-            background: white;
-            color: var(--black);
-            transform: translateY(-3px);
+            transform:
+                translate(
+                    -6px,
+                    -6px
+                )
+                rotate(-1deg);
+
+            box-shadow:
+                12px
+                12px
+                0
+                white;
         }
 
-        .button-light {
+
+        .button-outline {
             background: transparent;
+
             border-color: white;
         }
 
-        .button-light:hover {
+
+        .button-outline:hover {
             background: white;
-            color: var(--pink);
+
+            color: var(--berry);
+
+            box-shadow:
+                12px
+                12px
+                0
+                var(--black);
         }
 
 
-        /* HERO PHOTO */
 
-        .hero-right {
+        /* ==========================================================
+           5. HERO PHOTO COLLAGE
+        ========================================================== */
+
+        .hero-collage {
+            min-height: 550px;
+
             position: relative;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
+            z-index: 2;
         }
 
-        .photo-frame {
-            width: min(420px, 90%);
-            aspect-ratio: 4 / 5;
 
-            background: var(--pale-pink);
-            border: 12px solid var(--cream);
+        .hero-photo {
+            position: relative;
+
+            width:
+                min(
+                    390px,
+                    80vw
+                );
+
+            height: 500px;
+
+            background: var(--pink);
+
+            clip-path:
+                polygon(
+                    6% 2%,
+                    95% 0,
+                    100% 94%,
+                    93% 100%,
+                    2% 96%,
+                    0 8%
+                );
 
             transform: rotate(3deg);
 
-            position: relative;
-
-            box-shadow: 12px 15px 0 rgba(0, 0, 0, 0.18);
+            box-shadow:
+                18px
+                18px
+                0
+                rgba(0,0,0,0.22);
         }
 
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-        }
 
         .photo-placeholder {
             width: 100%;
             height: 100%;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
-            text-align: center;
-            padding: 30px;
+            padding: 40px;
 
-            color: var(--dark-pink);
+            text-align: center;
+
+            color: var(--berry-dark);
 
             font-weight: bold;
+
             letter-spacing: 2px;
+
+            line-height: 1.7;
         }
 
-        .star {
+
+        /*
+        WHEN YOU ADD A PHOTO LATER,
+        USE:
+
+        <img
+            src="images/kadie-main.jpg"
+            alt="Kadie Keslar">
+
+        inside .hero-photo
+        */
+
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: grayscale(100%);
+        }
+
+
+
+        /* tape */
+
+        .hero-photo::before {
+            content: "";
+
             position: absolute;
 
-            font-size: 110px;
+            top: -8px;
+            left: 50%;
+
+            width: 130px;
+            height: 38px;
+
+            background:
+                rgba(
+                    235,
+                    219,
+                    181,
+                    0.86
+                );
+
+            transform:
+                translateX(-50%)
+                rotate(-5deg);
+
+            z-index: 5;
+        }
+
+
+
+        /* star sticker */
+
+        .hero-star {
+            position: absolute;
+
+            left: 2%;
+
+            bottom: 20px;
+
+            font-size: 125px;
+
+            line-height: 1;
+
             color: white;
 
-            bottom: -65px;
-            left: -65px;
-
-            transform: rotate(-12deg);
+            transform: rotate(-14deg);
 
             text-shadow:
-                2px 0 var(--black),
-                -2px 0 var(--black),
-                0 2px var(--black),
-                0 -2px var(--black);
+                3px 0 var(--black),
+                -3px 0 var(--black),
+                0 3px var(--black),
+                0 -3px var(--black);
+
+            transition:
+                transform
+                0.22s ease;
         }
 
-        .tape {
+
+        .hero-star:hover {
+            transform:
+                rotate(10deg)
+                scale(1.18);
+        }
+
+
+
+        /* fabric behind photo */
+
+        .fabric-piece {
             position: absolute;
-            width: 130px;
-            height: 35px;
 
-            background: rgba(255, 245, 210, 0.75);
+            width: 280px;
+            height: 390px;
 
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-5deg);
+            right: -30px;
+            bottom: 5px;
+
+            background-color:
+                var(--pale-pink);
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    rgba(168,71,107,.17) 50%,
+                    transparent 50%
+                ),
+
+                linear-gradient(
+                    rgba(168,71,107,.17) 50%,
+                    transparent 50%
+                );
+
+            background-size:
+                35px
+                35px;
+
+            transform: rotate(-6deg);
+
+            border:
+                2px
+                solid
+                var(--black);
+
+            z-index: -1;
         }
 
 
-        /* =====================================================
-           GENERAL SECTION STYLES
-        ===================================================== */
+
+        /* ==========================================================
+           6. GENERAL SECTION STYLE
+        ========================================================== */
 
         section:not(#home) {
-            padding: 110px 8%;
+            padding:
+                110px
+                8%;
         }
+
 
         .section-label {
-            font-size: 12px;
-            text-transform: uppercase;
+            margin-bottom: 13px;
+
+            font-size: 11px;
+
             letter-spacing: 4px;
 
-            margin-bottom: 12px;
+            text-transform: uppercase;
         }
+
 
         .section-heading {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(55px, 8vw, 110px);
+            margin-bottom: 45px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    55px,
+                    8vw,
+                    105px
+                );
+
+            line-height: 0.95;
 
             font-weight: normal;
-
-            margin-bottom: 40px;
         }
 
-        .highlight {
+
+        .black-highlight {
             display: inline;
-            background: var(--black);
+
+            padding:
+                0
+                10px;
+
+            background:
+                var(--black);
+
             color: white;
-            padding: 0 10px;
         }
 
 
-        /* =====================================================
-           ABOUT
-        ===================================================== */
+        .scribble {
+            display: inline-block;
+
+            font-family:
+                "Brush Script MT",
+                "Segoe Print",
+                cursive;
+
+            color: var(--berry);
+
+            font-size: 34px;
+
+            transform: rotate(-4deg);
+        }
+
+
+
+        /* ==========================================================
+           7. ABOUT
+        ========================================================== */
 
         #about {
-            background: var(--cream);
+            background-color:
+                var(--cream);
+
+            background-image:
+                radial-gradient(
+                    rgba(0,0,0,.045)
+                    1px,
+                    transparent
+                    1px
+                );
+
+            background-size:
+                9px
+                9px;
         }
+
 
         .about-grid {
             display: grid;
-            grid-template-columns: 0.85fr 1.15fr;
-            gap: 70px;
+
+            grid-template-columns:
+                0.9fr
+                1.1fr;
+
+            gap: 75px;
+
             align-items: center;
         }
 
+
         .about-collage {
             position: relative;
-            min-height: 520px;
+
+            min-height: 530px;
         }
 
+
         .about-photo {
-            width: 70%;
+            width: 72%;
             height: 430px;
 
-            background: var(--light-pink);
+            background:
+                var(--pink);
 
-            border: 8px solid white;
+            clip-path:
+                polygon(
+                    5% 1%,
+                    96% 4%,
+                    100% 94%,
+                    91% 100%,
+                    1% 96%,
+                    0 7%
+                );
 
-            box-shadow: 9px 9px 0 var(--black);
+            transform:
+                rotate(-4deg);
 
-            transform: rotate(-4deg);
+            box-shadow:
+                13px
+                14px
+                0
+                var(--black);
 
             overflow: hidden;
         }
 
+
         .about-photo img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
             filter: grayscale(100%);
         }
+
 
         .about-note {
             position: absolute;
 
-            bottom: 20px;
             right: 0;
+            bottom: 20px;
 
-            width: 55%;
+            width: 58%;
 
-            background: var(--pink);
+            padding: 27px;
+
+            background:
+                var(--berry);
+
             color: white;
 
-            padding: 25px;
+            font-family:
+                "Brush Script MT",
+                "Segoe Print",
+                cursive;
 
-            transform: rotate(4deg);
+            font-size: 27px;
 
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 24px;
+            line-height: 1.25;
+
+            transform:
+                rotate(4deg);
+
+            clip-path:
+                polygon(
+                    2% 4%,
+                    98% 0,
+                    100% 93%,
+                    94% 100%,
+                    0 97%
+                );
+
+            box-shadow:
+                8px
+                8px
+                0
+                var(--black);
         }
+
+
+
+        /* tape on about photo */
+
+        .about-photo::after {
+            content: "";
+
+            position: absolute;
+
+            width: 110px;
+            height: 32px;
+
+            top: 3px;
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                rotate(7deg);
+
+            background:
+                rgba(
+                    238,
+                    218,
+                    183,
+                    0.82
+                );
+        }
+
 
         .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 34px;
         }
+
 
         .about-text p {
-            font-size: 17px;
-            line-height: 1.8;
             margin-bottom: 18px;
-        }
 
-        .scribble {
-            font-family: Georgia, "Times New Roman", serif;
-            color: var(--pink);
-            font-style: italic;
-            font-size: 28px;
-            margin: 28px 0 14px;
+            font-size: 17px;
+
+            line-height: 1.8;
         }
 
 
-        /* =====================================================
-           INTERESTS + SKILLS
-        ===================================================== */
 
-        .interest-skill-grid {
+        /* ==========================================================
+           8. SKILLS + INTERESTS
+        ========================================================== */
+
+        .interest-grid {
+            margin-top: 80px;
+
             display: grid;
-            grid-template-columns: 1fr 1fr;
 
-            gap: 50px;
+            grid-template-columns:
+                1fr
+                1fr;
 
-            margin-top: 65px;
+            gap: 45px;
         }
 
-        .list-box {
-            border: 2px solid var(--black);
-            padding: 35px;
 
+        .scrap-box {
             position: relative;
+
+            padding: 38px;
+
+            background: var(--paper);
+
+            clip-path:
+                polygon(
+                    2% 2%,
+                    97% 0,
+                    100% 95%,
+                    95% 100%,
+                    1% 98%,
+                    0 6%
+                );
+
+            box-shadow:
+                9px
+                10px
+                0
+                var(--black);
         }
 
-        .list-box:nth-child(2) {
-            background: var(--pale-pink);
+
+        .scrap-box:nth-child(2) {
+            background:
+                var(--pale-pink);
+
+            transform:
+                rotate(1deg);
         }
 
-        .list-box h3 {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 38px;
 
+        .scrap-box h3 {
             margin-bottom: 25px;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 36px;
         }
 
-        .tag-container {
+
+        .tags {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 10px;
+
+            gap: 12px;
         }
+
 
         .tag {
-            display: inline-block;
+            padding:
+                8px
+                12px;
 
-            background: var(--black);
+            background:
+                var(--black);
+
             color: white;
 
-            padding: 8px 12px;
+            border:
+                2px
+                solid
+                var(--black);
 
-            font-size: 13px;
+            box-shadow:
+                3px
+                3px
+                0
+                var(--berry);
 
-            transform: rotate(-1deg);
+            font-size: 12px;
+
+            transform:
+                rotate(-2deg);
+
+            transition:
+                transform
+                0.17s ease,
+                box-shadow
+                0.17s ease;
         }
+
 
         .tag:nth-child(even) {
-            background: var(--pink);
-            transform: rotate(1deg);
+            background:
+                var(--berry);
+
+            transform:
+                rotate(2deg);
+
+            box-shadow:
+                3px
+                3px
+                0
+                var(--black);
         }
 
 
-        /* =====================================================
-           PROJECTS
-        ===================================================== */
+        .tag:hover {
+            transform:
+                translateY(-5px)
+                rotate(0deg)
+                scale(1.06);
+
+            box-shadow:
+                6px
+                7px
+                0
+                var(--black);
+        }
+
+
+
+        /* ==========================================================
+           9. PROJECTS
+        ========================================================== */
 
         #projects {
-            background: var(--pink);
             color: white;
+
+            background-color:
+                var(--berry);
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.07)
+                    50%,
+                    transparent
+                    50%
+                ),
+
+                linear-gradient(
+                    rgba(255,255,255,.07)
+                    50%,
+                    transparent
+                    50%
+                );
+
+            background-size:
+                36px
+                36px;
         }
 
-        .projects-intro {
+
+        .project-intro {
             max-width: 700px;
-            line-height: 1.7;
-            margin-bottom: 50px;
+
+            margin-bottom: 55px;
+
+            line-height: 1.8;
         }
+
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
 
-            gap: 35px;
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap: 40px;
         }
+
 
         .project-card {
-            background: var(--cream);
-            color: var(--black);
+            position: relative;
 
-            border: 3px solid var(--black);
+            background:
+                var(--paper);
 
-            transition: transform 0.25s ease;
+            color:
+                var(--black);
+
+            clip-path:
+                polygon(
+                    2% 2%,
+                    98% 0,
+                    100% 96%,
+                    95% 100%,
+                    1% 98%,
+                    0 5%
+                );
+
+            box-shadow:
+                14px
+                15px
+                0
+                rgba(0,0,0,.3);
+
+            transition:
+                transform
+                0.2s ease,
+                box-shadow
+                0.2s ease;
         }
 
-        .project-card:nth-child(2) {
-            transform: rotate(1deg);
+
+        .project-card:nth-child(even) {
+            transform:
+                rotate(1deg);
         }
 
-        .project-card:nth-child(3) {
-            transform: rotate(-1deg);
+
+        .project-card:nth-child(odd) {
+            transform:
+                rotate(-1deg);
         }
+
 
         .project-card:hover {
-            transform: translateY(-7px) rotate(0);
+            transform:
+                translate(
+                    -5px,
+                    -8px
+                )
+                rotate(0deg);
+
+            box-shadow:
+                20px
+                22px
+                0
+                rgba(0,0,0,.4);
         }
+
+
+
+        /* fake masking tape */
+
+        .project-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 32px;
+
+            top: -4px;
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                rotate(-4deg);
+
+            background:
+                rgba(
+                    239,
+                    219,
+                    178,
+                    0.88
+                );
+
+            z-index: 5;
+        }
+
 
         .project-image {
             height: 250px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--light-pink),
-                    var(--dark-pink)
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px;
+
+            background-color:
+                var(--pink);
+
+            background-image:
+                radial-gradient(
+                    var(--berry)
+                    2px,
+                    transparent
+                    2px
                 );
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-size:
+                19px
+                19px;
+
+            border-bottom:
+                3px
+                solid
+                var(--black);
 
             text-align: center;
 
-            padding: 20px;
+            font-family:
+                Georgia,
+                serif;
 
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 32px;
-            color: white;
-
-            border-bottom: 3px solid var(--black);
+            font-size: 34px;
         }
+
+
+        .project-card:nth-child(2) .project-image {
+            background-color:
+                var(--black);
+
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent
+                    12px,
+                    rgba(255,255,255,.08)
+                    12px,
+                    rgba(255,255,255,.08)
+                    22px
+                );
+
+            color: white;
+        }
+
+
+        .project-card:nth-child(3) .project-image {
+            background-color:
+                var(--pale-pink);
+
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(168,71,107,.14),
+                    rgba(168,71,107,.14)
+                    2px,
+                    transparent
+                    2px,
+                    transparent
+                    10px
+                );
+        }
+
+
+        .project-card:nth-child(4) .project-image {
+            background:
+                var(--tan);
+
+            color:
+                var(--berry-dark);
+        }
+
 
         .project-content {
             padding: 30px;
         }
 
+
         .project-number {
-            font-size: 12px;
+            font-size: 11px;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
         }
 
-        .project-content h3 {
-            margin: 13px 0;
 
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 35px;
+        .project-content h3 {
+            margin:
+                13px
+                0;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 34px;
         }
+
 
         .project-content p {
-            line-height: 1.7;
             margin-bottom: 20px;
+
+            line-height: 1.7;
         }
+
 
         .project-link {
             display: inline-block;
 
+            margin-top: 18px;
+
+            padding:
+                10px
+                14px;
+
+            background:
+                var(--black);
+
+            color: white;
+
             text-decoration: none;
+
             font-weight: bold;
 
-            border-bottom: 2px solid var(--black);
+            font-size: 12px;
 
-            margin-right: 18px;
+            box-shadow:
+                4px
+                4px
+                0
+                var(--berry);
+
+            transition:
+                transform
+                0.16s ease,
+                box-shadow
+                0.16s ease;
         }
 
 
-        /* =====================================================
-           EXPERIENCE / INVOLVEMENT
-        ===================================================== */
+        .project-link:hover {
+            transform:
+                translate(
+                    -4px,
+                    -4px
+                );
+
+            box-shadow:
+                8px
+                8px
+                0
+                var(--berry);
+        }
+
+
+
+        /* ==========================================================
+           10. EXPERIENCE
+        ========================================================== */
 
         #experience {
-            background: var(--black);
-            color: white;
+            background:
+                var(--black);
+
+            color:
+                white;
         }
+
 
         .experience-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
 
-            gap: 2px;
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
 
-            background: white;
-
-            border: 2px solid white;
+            gap: 20px;
         }
+
 
         .experience-card {
-            background: var(--black);
+            min-height: 275px;
+
             padding: 35px;
+
+            background:
+                var(--paper);
+
+            color:
+                var(--black);
+
+            box-shadow:
+                8px
+                9px
+                0
+                var(--berry);
+
+            clip-path:
+                polygon(
+                    2% 1%,
+                    98% 0,
+                    100% 95%,
+                    95% 100%,
+                    1% 98%,
+                    0 5%
+                );
         }
+
+
+        .experience-card:nth-child(2) {
+            background:
+                var(--pink);
+
+            transform:
+                rotate(-1deg);
+        }
+
+
+        .experience-card:nth-child(3) {
+            transform:
+                rotate(1deg);
+        }
+
 
         .experience-card h3 {
-            font-family: Georgia, "Times New Roman", serif;
+            margin-bottom: 17px;
 
-            color: var(--light-pink);
+            font-family:
+                Georgia,
+                serif;
 
-            font-size: 29px;
-            margin-bottom: 15px;
+            color:
+                var(--berry-dark);
+
+            font-size: 28px;
         }
+
 
         .experience-card p {
             line-height: 1.7;
-            font-size: 15px;
         }
 
 
-        /* =====================================================
-           OUTSIDE THE CLASSROOM
-        ===================================================== */
+
+        /* ==========================================================
+           11. OUTSIDE THE CLASSROOM
+        ========================================================== */
 
         #life {
-            background: var(--cream);
-        }
+            background-color:
+                var(--cream);
 
-        .life-intro {
-            max-width: 750px;
+            background-image:
+                radial-gradient(
+                    rgba(0,0,0,.04)
+                    1px,
+                    transparent
+                    1px
+                );
 
-            line-height: 1.8;
-
-            font-size: 18px;
-
-            margin-bottom: 50px;
-        }
-
-        .life-collage {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 80px;
-
-            gap: 15px;
-        }
-
-        .collage-card {
-            border: 6px solid white;
-
-            box-shadow: 5px 5px 0 rgba(0,0,0,.2);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 20px;
-
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 24px;
-
-            background: var(--light-pink);
+            background-size:
+                8px
+                8px;
 
             overflow: hidden;
         }
 
-        .collage-card img {
+
+        .life-intro {
+            max-width: 760px;
+
+            margin-bottom: 55px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+
+
+        /* decorative fabric swatch */
+
+        .life-fabric {
+            position: absolute;
+
+            top: 100px;
+            right: -40px;
+
+            width: 220px;
+            height: 300px;
+
+            background-color:
+                var(--pink);
+
+            background-image:
+
+                radial-gradient(
+                    white
+                    3px,
+                    transparent
+                    3px
+                ),
+
+                radial-gradient(
+                    var(--berry)
+                    3px,
+                    transparent
+                    3px
+                );
+
+            background-position:
+                0 0,
+                15px 15px;
+
+            background-size:
+                30px
+                30px;
+
+            transform:
+                rotate(8deg);
+
+            border:
+                3px
+                solid
+                var(--black);
+        }
+
+
+        .life-collage {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    12,
+                    1fr
+                );
+
+            grid-auto-rows:
+                80px;
+
+            gap: 16px;
+        }
+
+
+        .life-card {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 24px;
+
+            background:
+                var(--pink);
+
+            border:
+                5px
+                solid
+                var(--paper);
+
+            box-shadow:
+                8px
+                9px
+                0
+                rgba(0,0,0,.24);
+
+            text-align: center;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 23px;
+
+            overflow: hidden;
+
+            transition:
+                transform
+                0.2s ease,
+                box-shadow
+                0.2s ease;
+        }
+
+
+        .life-card:hover {
+            transform:
+                translateY(-8px)
+                rotate(0deg)
+                scale(1.02);
+
+            box-shadow:
+                14px
+                15px
+                0
+                rgba(0,0,0,.29);
+        }
+
+
+        .life-card img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
         }
 
-        .collage-one {
-            grid-column: 1 / 7;
-            grid-row: span 4;
-            transform: rotate(-1deg);
-        }
 
-        .collage-two {
-            grid-column: 7 / 13;
-            grid-row: span 3;
+        .life-one {
+            grid-column:
+                1 / 7;
 
-            background: var(--pink);
-            color: white;
+            grid-row:
+                span 4;
 
-            transform: rotate(1deg);
-        }
-
-        .collage-three {
-            grid-column: 7 / 10;
-            grid-row: span 3;
-            transform: rotate(-2deg);
-        }
-
-        .collage-four {
-            grid-column: 10 / 13;
-            grid-row: span 3;
-
-            background: var(--black);
-            color: white;
-
-            transform: rotate(2deg);
-        }
-
-        .collage-five {
-            grid-column: 1 / 7;
-            grid-row: span 2;
-
-            background: white;
-
-            font-size: 30px;
+            transform:
+                rotate(-1deg);
         }
 
 
-        /* =====================================================
-           CURRENTLY
-        ===================================================== */
+        .life-two {
+            grid-column:
+                7 / 13;
+
+            grid-row:
+                span 3;
+
+            background-color:
+                var(--berry);
+
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent
+                    11px,
+                    rgba(255,255,255,.09)
+                    11px,
+                    rgba(255,255,255,.09)
+                    22px
+                );
+
+            color:
+                white;
+
+            transform:
+                rotate(1deg);
+        }
+
+
+        .life-three {
+            grid-column:
+                7 / 10;
+
+            grid-row:
+                span 3;
+
+            background-color:
+                var(--pale-pink);
+
+            background-image:
+                radial-gradient(
+                    var(--berry)
+                    2px,
+                    transparent
+                    2px
+                );
+
+            background-size:
+                18px
+                18px;
+
+            transform:
+                rotate(-2deg);
+        }
+
+
+        .life-four {
+            grid-column:
+                10 / 13;
+
+            grid-row:
+                span 3;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+
+            transform:
+                rotate(2deg);
+        }
+
+
+        .life-five {
+            grid-column:
+                1 / 7;
+
+            grid-row:
+                span 2;
+
+            background:
+                var(--paper);
+
+            font-family:
+                "Brush Script MT",
+                "Segoe Print",
+                cursive;
+
+            font-size: 31px;
+        }
+
+
+
+        /* ==========================================================
+           12. CURRENTLY SECTION
+        ========================================================== */
 
         .currently {
             margin-top: 90px;
 
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
 
-            border-top: 2px solid var(--black);
-            border-bottom: 2px solid var(--black);
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+            gap: 17px;
         }
+
 
         .currently-item {
-            padding: 30px;
+            padding: 27px;
 
-            border-right: 2px solid var(--black);
+            background:
+                var(--paper);
+
+            border:
+                2px
+                solid
+                var(--black);
+
+            box-shadow:
+                5px
+                6px
+                0
+                var(--black);
+
+            transform:
+                rotate(-1deg);
         }
 
-        .currently-item:last-child {
-            border-right: 0;
+
+        .currently-item:nth-child(even) {
+            background:
+                var(--pale-pink);
+
+            transform:
+                rotate(1deg);
         }
+
 
         .currently-item span {
             display: block;
 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 11px;
-
             margin-bottom: 10px;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
+
 
         .currently-item strong {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 21px;
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 20px;
         }
 
 
-        /* =====================================================
-           CONTACT
-        ===================================================== */
+
+        /* ==========================================================
+           13. CONTACT
+        ========================================================== */
 
         #contact {
-            background: var(--pale-pink);
             text-align: center;
+
+            background-color:
+                var(--pale-pink);
+
+            background-image:
+
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent
+                    18px,
+                    rgba(168,71,107,.08)
+                    18px,
+                    rgba(168,71,107,.08)
+                    20px
+                );
         }
 
+
         #contact .section-heading {
-            max-width: 850px;
+            max-width: 900px;
+
             margin-left: auto;
             margin-right: auto;
         }
 
-        .contact-text {
-            max-width: 580px;
 
-            margin: 0 auto 40px;
+        .contact-text {
+            max-width: 600px;
+
+            margin:
+                0
+                auto
+                40px;
 
             line-height: 1.8;
         }
 
+
         .contact-links {
             display: flex;
+
             justify-content: center;
+
             flex-wrap: wrap;
 
-            gap: 15px;
+            gap: 18px;
         }
 
-        .contact-links a {
-            padding: 14px 24px;
 
-            background: var(--black);
-            color: white;
+        .contact-links a {
+            padding:
+                14px
+                25px;
+
+            background:
+                var(--black);
+
+            color:
+                white;
 
             text-decoration: none;
 
-            transition: all 0.2s ease;
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            box-shadow:
+                6px
+                6px
+                0
+                var(--berry);
+
+            transition:
+                transform
+                0.16s ease,
+                box-shadow
+                0.16s ease;
         }
+
 
         .contact-links a:hover {
-            background: var(--pink);
-            transform: translateY(-3px);
+            transform:
+                translate(
+                    -6px,
+                    -6px
+                )
+                rotate(-1deg);
+
+            box-shadow:
+                12px
+                12px
+                0
+                var(--berry);
         }
 
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
+
+        /* ==========================================================
+           14. FOOTER / CREDITS
+        ========================================================== */
 
         footer {
-            background: var(--black);
-            color: white;
+            padding:
+                38px
+                8%;
 
-            padding: 35px 8%;
+            background:
+                var(--black);
+
+            color:
+                white;
 
             display: flex;
+
             justify-content: space-between;
-            gap: 30px;
+
+            gap: 45px;
 
             font-size: 12px;
-            line-height: 1.6;
+
+            line-height: 1.7;
         }
+
 
         footer p {
-            max-width: 600px;
+            max-width: 590px;
         }
 
 
-        /* =====================================================
-           REVEAL ANIMATION
-        ===================================================== */
+
+        /* ==========================================================
+           15. SCROLL ANIMATIONS
+        ========================================================== */
 
         .reveal {
             opacity: 0;
-            transform: translateY(25px);
+
+            transform:
+                translateY(28px);
 
             transition:
-                opacity 0.7s ease,
-                transform 0.7s ease;
+                opacity
+                0.7s ease,
+                transform
+                0.7s ease;
         }
+
 
         .reveal.visible {
             opacity: 1;
-            transform: translateY(0);
+
+            transform:
+                translateY(0);
         }
 
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+
+        /* ==========================================================
+           16. MOBILE
+        ========================================================== */
 
         @media (max-width: 900px) {
 
@@ -893,149 +2015,191 @@
                 display: block;
             }
 
+
             .nav-links {
                 display: none;
 
                 position: absolute;
-                top: 72px;
+
+                top: 70px;
                 left: 0;
 
                 width: 100%;
 
-                background: var(--cream);
-
                 padding: 25px;
 
                 flex-direction: column;
-                align-items: center;
 
-                border-bottom: 2px solid var(--black);
+                background:
+                    var(--cream);
+
+                border-bottom:
+                    2px
+                    solid
+                    var(--black);
             }
+
 
             .nav-links.open {
                 display: flex;
             }
 
+
             #home {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
-                padding-top: 120px;
+                padding-top:
+                    120px;
             }
 
-            .hero-right {
-                margin-top: 25px;
+
+            .hero-collage {
+                margin-top:
+                    30px;
             }
 
-            .kadie {
-                letter-spacing: -4px;
-            }
 
             .about-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
 
-            .about-collage {
-                min-height: 450px;
+
+            .interest-grid {
+                grid-template-columns:
+                    1fr;
             }
 
-            .interest-skill-grid {
-                grid-template-columns: 1fr;
-            }
 
             .project-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
+
 
             .experience-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
 
-            .currently {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .currently-item:nth-child(2) {
-                border-right: 0;
-            }
-
-            .currently-item {
-                border-bottom: 2px solid var(--black);
-            }
 
             .life-collage {
                 display: flex;
-                flex-direction: column;
+
+                flex-direction:
+                    column;
             }
 
-            .collage-card {
-                min-height: 250px;
+
+            .life-card {
+                min-height:
+                    260px;
+            }
+
+
+            .currently {
+                grid-template-columns:
+                    1fr
+                    1fr;
+            }
+
+
+            .life-fabric {
+                opacity:
+                    0.3;
             }
 
         }
+
 
 
         @media (max-width: 600px) {
 
             nav {
-                padding: 0 5%;
+                padding:
+                    0
+                    5%;
             }
+
 
             section:not(#home) {
-                padding: 85px 6%;
+                padding:
+                    85px
+                    6%;
             }
+
 
             #home {
-                padding-left: 6%;
-                padding-right: 6%;
+                padding-left:
+                    6%;
+
+                padding-right:
+                    6%;
             }
+
+
+            .hero-name {
+                font-size:
+                    80px;
+
+                letter-spacing:
+                    -4px;
+            }
+
+
+            .meet-label {
+                font-size:
+                    37px;
+            }
+
 
             .section-heading {
-                font-size: 52px;
+                font-size:
+                    53px;
             }
 
-            .kadie {
-                font-size: 82px;
-                letter-spacing: -4px;
-            }
-
-            .meet {
-                font-size: 38px;
-            }
-
-            .hero-subtitle {
-                font-size: 25px;
-            }
 
             .currently {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
+
 
             .currently-item {
-                border-right: 0;
+                transform:
+                    none !important;
             }
 
+
             footer {
-                flex-direction: column;
+                flex-direction:
+                    column;
             }
 
         }
 
     </style>
+
 </head>
+
 
 
 <body>
 
 
-    <!-- =====================================================
+    <!-- ==========================================================
          NAVIGATION
-    ====================================================== -->
+    ========================================================== -->
 
     <nav>
 
-        <a href="#home" class="nav-name">
+        <a
+            href="#home"
+            class="nav-name">
             kadie keslar
         </a>
+
 
         <button
             class="menu-button"
@@ -1044,26 +2208,39 @@
             ☰
         </button>
 
-        <ul class="nav-links" id="navLinks">
+
+        <ul
+            class="nav-links"
+            id="navLinks">
 
             <li>
-                <a href="#about">about</a>
+                <a href="#about">
+                    about
+                </a>
             </li>
 
             <li>
-                <a href="#projects">projects</a>
+                <a href="#projects">
+                    projects
+                </a>
             </li>
 
             <li>
-                <a href="#experience">experience</a>
+                <a href="#experience">
+                    experience
+                </a>
             </li>
 
             <li>
-                <a href="#life">outside class</a>
+                <a href="#life">
+                    outside class
+                </a>
             </li>
 
             <li>
-                <a href="#contact">contact</a>
+                <a href="#contact">
+                    contact
+                </a>
             </li>
 
         </ul>
@@ -1072,175 +2249,254 @@
 
 
 
-    <!-- =====================================================
-         HOME / HERO
-    ====================================================== -->
+    <!-- ==========================================================
+         HOME
+    ========================================================== -->
 
     <section id="home">
 
-        <div class="hero-left">
+
+        <div class="hero-text">
+
 
             <p class="tiny-label">
-                computer science • hci • carnegie mellon
+                COMPUTER SCIENCE • HCI • CARNEGIE MELLON
             </p>
 
-            <div class="meet">
+
+            <div class="meet-label">
                 MEET
             </div>
 
-            <h1 class="kadie">
+
+            <h1 class="hero-name">
                 KADIE
             </h1>
 
-            <h2 class="hero-subtitle">
+
+            <h2 class="hero-title">
                 computer scientist.
                 designer.
                 researcher.
             </h2>
 
+
             <p class="hero-description">
-                I'm a Computer Science and Human-Computer Interaction
-                student at Carnegie Mellon University interested in
-                building technology that is thoughtful, useful, and
-                designed around real people.
+
+                I'm a Computer Science and Human-Computer
+                Interaction student at Carnegie Mellon University
+                interested in the space where technology,
+                people, and design meet.
+
             </p>
 
-            <div class="oval-note">
-                building technology with people in mind
+
+            <div class="handwritten">
+                ✧ building technology with people in mind ✧
             </div>
+
 
             <div class="hero-buttons">
 
-                <a href="#projects" class="button">
+
+                <a
+                    href="#projects"
+                    class="button">
+
                     VIEW MY WORK
+
                 </a>
 
-                <a href="#about" class="button button-light">
-                    GET TO KNOW ME
+
+                <a
+                    href="#life"
+                    class="button button-outline">
+
+                    ME OUTSIDE CLASS
+
                 </a>
+
 
             </div>
+
 
         </div>
 
 
-        <div class="hero-right">
 
-            <div class="photo-frame">
+        <div class="hero-collage">
 
-                <div class="tape"></div>
 
-                <!--
-                TO ADD YOUR PHOTO:
-                1. Upload a picture to your GitHub repository.
-                2. Put it inside an "images" folder.
-                3. Name it kadie-main.jpg
-                4. Delete the photo-placeholder div below.
-                5. Uncomment the img line.
-                -->
+            <div class="fabric-piece">
+            </div>
+
+
+            <div class="hero-photo">
+
 
                 <!--
+                WHEN YOU UPLOAD YOUR PHOTO:
+
+                delete the photo-placeholder below
+
+                and replace it with:
+
                 <img
                     src="images/kadie-main.jpg"
                     alt="Portrait of Kadie Keslar">
                 -->
 
+
                 <div class="photo-placeholder">
-                    ADD YOUR FAVORITE PHOTO HERE
+
+                    ADD YOUR
+                    <br>
+                    FAVORITE PHOTO
+                    <br>
+                    HERE
+
                 </div>
+
 
             </div>
 
-            <div class="star">
+
+            <div class="hero-star">
                 ★
             </div>
 
+
         </div>
+
 
     </section>
 
 
 
-    <!-- =====================================================
+    <!-- ==========================================================
          ABOUT
-    ====================================================== -->
+    ========================================================== -->
 
     <section id="about">
 
+
         <p class="section-label">
-            01 / getting to know me
+            01 / GETTING TO KNOW ME
         </p>
 
+
         <h2 class="section-heading reveal">
-            about <span class="highlight">me.</span>
+
+            about
+            <span class="black-highlight">
+                me.
+            </span>
+
         </h2>
+
 
 
         <div class="about-grid">
 
+
             <div class="about-collage reveal">
+
 
                 <div class="about-photo">
 
+
                     <!--
-                    Replace with another photo later:
+                    Replace later with:
 
                     <img
                         src="images/kadie-about.jpg"
                         alt="Kadie Keslar">
                     -->
 
+
                     <div class="photo-placeholder">
-                        ANOTHER PHOTO OF YOU
+
+                        ANOTHER
+                        <br>
+                        PHOTO
+                        <br>
+                        OF YOU
+
                     </div>
 
+
                 </div>
 
+
+
                 <div class="about-note">
-                    curious about the space where people,
-                    technology + design meet.
+
+                    curious about the space where
+                    people, technology + design meet.
+
                 </div>
+
 
             </div>
 
 
+
             <div class="about-text reveal">
+
 
                 <h3>
                     hello!
                 </h3>
 
+
                 <p>
+
                     I'm Kadie, a Computer Science and
                     Human-Computer Interaction student at
                     Carnegie Mellon University.
+
                 </p>
 
-                <p>
-                    I love exploring the space where technology,
-                    people, and design overlap. I'm interested in
-                    both building technology and understanding how
-                    people actually experience and interact with it.
-                </p>
 
                 <p>
-                    Through my coursework and projects, I've explored
-                    programming, computer systems, artificial
-                    intelligence, human-centered research, product
+
+                    I'm interested in both building technology
+                    and understanding how people actually
+                    experience it. That has led me toward work
+                    involving programming, human-centered
+                    research, artificial intelligence, product
                     design, and user experience.
+
                 </p>
 
+
                 <p>
-                    I enjoy taking complicated problems and turning
-                    them into experiences that feel thoughtful,
-                    approachable, and useful.
+
+                    I enjoy taking complicated problems and
+                    turning them into something thoughtful,
+                    useful, and approachable.
+
                 </p>
+
+
+                <p>
+
+                    I also really value collaboration and
+                    leadership. Some of my favorite experiences
+                    have come from working with people who think
+                    differently than I do and combining ideas to
+                    create something better.
+
+                </p>
+
 
                 <div class="scribble">
-                    code + people + creativity
+                    code + people + creativity ♡
                 </div>
 
+
             </div>
+
 
         </div>
 
@@ -1248,15 +2504,19 @@
 
         <!-- INTERESTS AND SKILLS -->
 
-        <div class="interest-skill-grid">
 
-            <div class="list-box reveal">
+        <div class="interest-grid">
+
+
+            <div class="scrap-box reveal">
+
 
                 <h3>
                     things i'm into
                 </h3>
 
-                <div class="tag-container">
+
+                <div class="tags">
 
                     <span class="tag">
                         Human-Computer Interaction
@@ -1288,16 +2548,20 @@
 
                 </div>
 
+
             </div>
 
 
-            <div class="list-box reveal">
+
+            <div class="scrap-box reveal">
+
 
                 <h3>
                     things i work with
                 </h3>
 
-                <div class="tag-container">
+
+                <div class="tags">
 
                     <span class="tag">
                         Python
@@ -1337,36 +2601,47 @@
 
                 </div>
 
+
             </div>
 
+
         </div>
+
 
     </section>
 
 
 
-    <!-- =====================================================
+    <!-- ==========================================================
          PROJECTS
-    ====================================================== -->
+    ========================================================== -->
 
     <section id="projects">
 
+
         <p class="section-label">
-            02 / selected work
+            02 / SELECTED WORK
         </p>
 
+
         <h2 class="section-heading reveal">
+
             things i've
             <br>
             been creating.
+
         </h2>
 
-        <p class="projects-intro reveal">
-            This portfolio will continue growing throughout the
-            semester as I add new technical, research, and design
-            projects. Here are a few pieces of work that represent
-            the directions I'm interested in exploring.
+
+        <p class="project-intro reveal">
+
+            My portfolio will continue growing throughout
+            the semester as I add new technical, design,
+            and research work. These projects represent
+            some of the areas I'm most interested in.
+
         </p>
+
 
 
         <div class="project-grid">
@@ -1374,32 +2649,53 @@
 
             <!-- PROJECT 1 -->
 
+
             <article class="project-card reveal">
 
+
                 <div class="project-image">
-                    MY PORTFOLIO
+
+                    MY
+                    <br>
+                    PORTFOLIO
+
                 </div>
 
+
                 <div class="project-content">
+
 
                     <span class="project-number">
                         PROJECT 01
                     </span>
 
+
                     <h3>
                         Personal Portfolio
                     </h3>
 
+
                     <p>
+
                         The website you're currently exploring.
                         I designed and developed this portfolio
-                        using HTML, CSS, JavaScript, GitHub, and
-                        GitHub Pages. The design combines an
-                        editorial-inspired visual style with a
-                        responsive and accessible web layout.
+                        using HTML, CSS, JavaScript, GitHub,
+                        and GitHub Pages.
+
                     </p>
 
-                    <div class="tag-container">
+
+                    <p>
+
+                        I wanted the design to combine a creative
+                        scrapbook/editorial aesthetic with the
+                        organization and usability expected from
+                        a professional portfolio.
+
+                    </p>
+
+
+                    <div class="tags">
 
                         <span class="tag">
                             HTML
@@ -1415,20 +2711,19 @@
 
                     </div>
 
-                    <br>
-
-                    <!--
-                    Replace # with the actual link to your GitHub repository.
-                    -->
 
                     <a
-                        href="#"
-                        class="project-link"
-                        target="_blank">
+                        href="https://github.com/kadiekeslar/portfolio"
+                        target="_blank"
+                        class="project-link">
+
                         VIEW CODE →
+
                     </a>
 
+
                 </div>
+
 
             </article>
 
@@ -1436,30 +2731,44 @@
 
             <!-- PROJECT 2 -->
 
+
             <article class="project-card reveal">
 
+
                 <div class="project-image">
-                    MIXED REALITY
+
+                    MIXED
+                    <br>
+                    REALITY
+
                 </div>
 
+
                 <div class="project-content">
+
 
                     <span class="project-number">
                         PROJECT 02
                     </span>
 
+
                     <h3>
                         Education + Mixed Reality
                     </h3>
 
+
                     <p>
+
                         Research exploring how mixed-reality
-                        technology can support teachers by presenting
-                        useful classroom information while helping
-                        them remain engaged with their students.
+                        technology can support teachers by
+                        presenting useful information while
+                        allowing them to remain engaged with
+                        their classroom.
+
                     </p>
 
-                    <div class="tag-container">
+
+                    <div class="tags">
 
                         <span class="tag">
                             Research
@@ -1473,9 +2782,15 @@
                             Mixed Reality
                         </span>
 
+                        <span class="tag">
+                            Education
+                        </span>
+
                     </div>
 
+
                 </div>
+
 
             </article>
 
@@ -1483,46 +2798,67 @@
 
             <!-- PROJECT 3 -->
 
+
             <article class="project-card reveal">
 
+
                 <div class="project-image">
-                    AI + PEOPLE
+
+                    AI
+                    <br>
+                    +
+                    <br>
+                    PEOPLE
+
                 </div>
 
+
                 <div class="project-content">
+
 
                     <span class="project-number">
                         PROJECT 03
                     </span>
 
+
                     <h3>
                         AI Bias Research
                     </h3>
 
+
                     <p>
-                        A user-centered research project exploring
-                        how people with different levels of AI
-                        literacy recognize and describe bias in
-                        AI-generated imagery.
+
+                        A user-centered research project studying
+                        how people with different levels of
+                        AI literacy recognize and describe bias
+                        in AI-generated images.
+
                     </p>
 
-                    <div class="tag-container">
 
-                        <span class="tag">
-                            HCI
-                        </span>
+                    <div class="tags">
 
                         <span class="tag">
                             UX Research
                         </span>
 
                         <span class="tag">
+                            HCI
+                        </span>
+
+                        <span class="tag">
                             Artificial Intelligence
+                        </span>
+
+                        <span class="tag">
+                            User Interviews
                         </span>
 
                     </div>
 
+
                 </div>
+
 
             </article>
 
@@ -1530,29 +2866,44 @@
 
             <!-- PROJECT 4 -->
 
+
             <article class="project-card reveal">
 
+
                 <div class="project-image">
-                    COMING SOON...
+
+                    SOMETHING
+                    <br>
+                    NEW
+                    <br>
+                    IS COMING...
+
                 </div>
 
+
                 <div class="project-content">
+
 
                     <span class="project-number">
                         PROJECT 04
                     </span>
 
+
                     <h3>
                         Future Project
                     </h3>
 
+
                     <p>
-                        Something new is in the works. I'll continue
-                        adding projects from my courses, research,
-                        and personal work throughout the semester.
+
+                        I'm continuing to add projects from my
+                        courses, research, and personal work
+                        throughout the semester.
+
                     </p>
 
-                    <div class="tag-container">
+
+                    <div class="tags">
 
                         <span class="tag">
                             Coming Soon
@@ -1560,146 +2911,201 @@
 
                     </div>
 
+
                 </div>
+
 
             </article>
 
+
         </div>
+
 
     </section>
 
 
 
-    <!-- =====================================================
+    <!-- ==========================================================
          EXPERIENCE / LEADERSHIP
-    ====================================================== -->
+    ========================================================== -->
 
     <section id="experience">
 
+
         <p class="section-label">
-            03 / beyond the code
+            03 / MORE THAN MY CODE
         </p>
 
+
         <h2 class="section-heading reveal">
-            more than
+
+            experiences
             <br>
-            my code.
+            shaping me.
+
         </h2>
+
+
 
         <div class="experience-grid">
 
 
             <div class="experience-card reveal">
 
+
                 <h3>
-                    Computer Science + HCI
+                    CS + HCI
                 </h3>
 
+
                 <p>
-                    At Carnegie Mellon, my coursework spans
-                    computer science, computer systems,
-                    functional and imperative programming,
-                    human-centered research, AI product design,
-                    mathematics, and emerging technology.
+
+                    At Carnegie Mellon, my studies combine
+                    computer science and Human-Computer
+                    Interaction. My coursework has included
+                    programming, computer systems,
+                    AI product design, human-centered research,
+                    mathematics, and emerging technologies.
+
                 </p>
+
 
             </div>
 
 
+
             <div class="experience-card reveal">
+
 
                 <h3>
                     Leadership
                 </h3>
 
+
                 <p>
-                    I value communication, teamwork, community,
-                    and leadership. My campus involvement has
-                    given me opportunities to work with others,
-                    organize initiatives, and take on
-                    responsibility outside the classroom.
+
+                    Leadership has been an important part of
+                    my experience both before and during college.
+                    I enjoy organizing, communicating, mentoring,
+                    and working with teams toward a shared goal.
+
                 </p>
+
 
             </div>
 
 
+
             <div class="experience-card reveal">
+
 
                 <h3>
                     Community
                 </h3>
 
+
                 <p>
+
                     I enjoy being involved in communities that
-                    connect technology, service, leadership, and
-                    people, including organizations related to
-                    women in STEM, UX, and campus life.
+                    connect technology, leadership, service,
+                    design, and people. At Carnegie Mellon,
+                    my involvement includes organizations
+                    connected to UX, women in STEM, and
+                    campus life.
+
                 </p>
+
 
             </div>
 
+
         </div>
+
 
     </section>
 
 
 
-    <!-- =====================================================
-         LIFE OUTSIDE CLASS
-    ====================================================== -->
+    <!-- ==========================================================
+         OUTSIDE THE CLASSROOM
+    ========================================================== -->
 
     <section id="life">
 
+
+        <div class="life-fabric">
+        </div>
+
+
         <p class="section-label">
-            04 / when the laptop closes
+            04 / WHEN THE LAPTOP CLOSES
         </p>
 
+
         <h2 class="section-heading reveal">
+
             me, outside
             <br>
             the classroom.
+
         </h2>
 
+
         <p class="life-intro reveal">
-            Technology is a huge part of my life, but it definitely
-            isn't all of it. I love the people, places, experiences,
-            and little things that make life feel exciting. This is
-            the less formal side of my portfolio — a collection of
-            things that make me, me.
+
+            Technology is a huge part of my life,
+            but it definitely isn't all of it.
+            I care a lot about the people around me,
+            the places I get to experience, creativity,
+            memories, and all of the little things
+            that make life exciting.
+
         </p>
+
 
 
         <div class="life-collage">
 
 
-            <div class="collage-card collage-one reveal">
+            <div class="life-card life-one reveal">
 
                 <!--
-                Later replace with:
-                <img src="images/life1.jpg" alt="Favorite memory">
+
+                Later you can replace this text with:
+
+                <img
+                    src="images/friends-family.jpg"
+                    alt="Kadie with friends and family">
+
                 -->
 
-                FRIENDS + FAMILY
+                FRIENDS
                 <br>
-                <small>
-                    add one of your favorite photos here
-                </small>
+                +
+                <br>
+                FAMILY
 
             </div>
 
 
-            <div class="collage-card collage-two reveal">
+
+            <div class="life-card life-two reveal">
 
                 places.
+                <br>
                 sunsets.
+                <br>
                 coffee.
+                <br>
                 music.
+                <br>
                 memories.
 
             </div>
 
 
-            <div class="collage-card collage-three reveal">
+
+            <div class="life-card life-three reveal">
 
                 TRAVEL
                 <br>
@@ -1710,7 +3116,8 @@
             </div>
 
 
-            <div class="collage-card collage-four reveal">
+
+            <div class="life-card life-four reveal">
 
                 ★
                 <br>
@@ -1721,17 +3128,21 @@
             </div>
 
 
-            <div class="collage-card collage-five reveal">
 
-                life is better with good people around you.
+            <div class="life-card life-five reveal">
+
+                home is more about
+                the people than the place ♡
 
             </div>
+
 
         </div>
 
 
 
         <!-- CURRENTLY -->
+
 
         <div class="currently reveal">
 
@@ -1787,173 +3198,244 @@
 
             </div>
 
+
         </div>
+
 
     </section>
 
 
 
-    <!-- =====================================================
+    <!-- ==========================================================
          CONTACT
-    ====================================================== -->
+    ========================================================== -->
 
     <section id="contact">
 
+
         <p class="section-label">
-            05 / say hello
+            05 / SAY HELLO
         </p>
 
+
         <h2 class="section-heading reveal">
+
             let's make
             <br>
             something cool.
+
         </h2>
 
+
         <p class="contact-text reveal">
+
             I'm always interested in meeting new people,
-            learning about opportunities, collaborating on
-            interesting projects, and exploring new ideas.
-            Feel free to reach out!
+            hearing about new opportunities, collaborating
+            on interesting projects, and learning about
+            new ideas.
+
         </p>
+
 
 
         <div class="contact-links reveal">
 
-            <!-- Your email -->
 
-            <a href="mailto:kadie.keslar@gmail.com">
+            <a
+                href="mailto:kadie.keslar@gmail.com">
+
                 EMAIL
+
             </a>
 
 
-            <!--
-            REPLACE # WITH YOUR GITHUB PROFILE LINK
-            -->
-
             <a
-                href="#"
+                href="https://github.com/kadiekeslar"
                 target="_blank">
+
                 GITHUB
+
             </a>
 
 
             <!--
-            REPLACE # WITH YOUR LINKEDIN PROFILE LINK
+            Replace the # below with your actual LinkedIn URL.
             -->
+
 
             <a
                 href="#"
                 target="_blank">
+
                 LINKEDIN
+
             </a>
+
+
+            <!--
+            Later we can upload your resume and make
+            this button open the PDF.
+            -->
+
+
+            <a href="#">
+                RESUME
+            </a>
+
 
         </div>
+
 
     </section>
 
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- ==========================================================
+         CREDITS
+    ========================================================== -->
 
     <footer>
 
-        <p>
-            © 2026 Kadie Keslar.
-            Designed + developed by Kadie.
-        </p>
 
         <p>
-            AI Usage: ChatGPT was used as a brainstorming,
-            coding, and debugging assistant. The website's
-            content, organization, design decisions, and final
-            implementation were reviewed and customized by me.
-            No external website template was used.
+
+            © 2026 Kadie Keslar
+            <br>
+            Designed + developed by Kadie Keslar.
+
         </p>
+
+
+        <p>
+
+            AI Usage: ChatGPT was used for brainstorming,
+            initial code generation, debugging, and assistance
+            creating CSS interactions. All content, organization,
+            design choices, and final implementation were
+            reviewed and customized by me.
+
+            <br><br>
+
+            Visual direction inspired by editorial design,
+            scrapbook layouts, mixed-media collage,
+            handwritten annotations, and textile patterns.
+            All current fabric and paper patterns are generated
+            with CSS rather than external image assets.
+
+        </p>
+
 
     </footer>
 
 
 
-    <!-- =====================================================
+    <!-- ==========================================================
          JAVASCRIPT
 
          AI USAGE:
-         ChatGPT helped create the initial JavaScript for the
-         mobile navigation menu and scroll-based reveal animation.
-         I adapted these features for my portfolio.
-    ====================================================== -->
+         ChatGPT assisted with the initial JavaScript for the
+         mobile navigation menu and scroll reveal animation.
+    ========================================================== -->
 
     <script>
 
-        /* MOBILE NAVIGATION */
+
+        /* MOBILE MENU */
+
 
         const menuButton =
             document.getElementById("menuButton");
+
 
         const navLinks =
             document.getElementById("navLinks");
 
 
-        menuButton.addEventListener("click", function () {
+        menuButton.addEventListener(
+            "click",
+            function () {
 
-            navLinks.classList.toggle("open");
+                navLinks.classList.toggle("open");
 
-        });
+            }
+        );
 
 
-        /* Close mobile menu after a link is clicked */
+
+        /* close menu after clicking navigation link */
+
 
         const links =
             navLinks.querySelectorAll("a");
 
 
-        links.forEach(function (link) {
+        links.forEach(
+            function (link) {
 
-            link.addEventListener("click", function () {
+                link.addEventListener(
+                    "click",
+                    function () {
 
-                navLinks.classList.remove("open");
+                        navLinks.classList.remove("open");
 
-            });
+                    }
+                );
 
-        });
+            }
+        );
 
 
 
         /* SCROLL REVEAL ANIMATION */
+
 
         const revealElements =
             document.querySelectorAll(".reveal");
 
 
         const observer =
-            new IntersectionObserver(function (entries) {
+            new IntersectionObserver(
 
-                entries.forEach(function (entry) {
+                function (entries) {
 
-                    if (entry.isIntersecting) {
+                    entries.forEach(
 
-                        entry.target.classList.add("visible");
+                        function (entry) {
 
-                    }
+                            if (entry.isIntersecting) {
 
-                });
+                                entry.target.classList.add(
+                                    "visible"
+                                );
 
-            }, {
+                            }
 
-                threshold: 0.12
+                        }
 
-            });
+                    );
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
 
 
-        revealElements.forEach(function (element) {
+        revealElements.forEach(
 
-            observer.observe(element);
+            function (element) {
 
-        });
+                observer.observe(element);
+
+            }
+
+        );
+
 
     </script>
+
 
 </body>
 
