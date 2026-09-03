@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,65 +12,101 @@
     <title>Kadie Keslar | Portfolio</title>
 
 
-    <!-- ==========================================================
+    <!-- =========================================================
          AI USAGE DOCUMENTATION
 
          I used ChatGPT as a brainstorming, coding, and debugging
-         assistant while creating this portfolio.
+         assistant while creating this portfolio website.
 
          AI helped me:
          - brainstorm the scrapbook/editorial visual direction
          - create an initial HTML structure
-         - create CSS effects for paper cutouts, fabric-inspired
-           patterns, handwritten elements, and hover animations
-         - create JavaScript for the mobile navigation and
-           scroll-based animations
+         - create CSS for responsive layouts
+         - create CSS-based paper, fabric, gingham, stripe,
+           and polka-dot patterns
+         - create hover interactions
+         - create JavaScript for the mobile navigation,
+           scroll animations, and interactive scrapbook popups
 
-         I reviewed and customized the content, organization,
-         visual choices, wording, and final implementation.
+         I reviewed and customized the content, wording,
+         visual style, organization, colors, interactions,
+         and final implementation.
 
-         No outside website template was copied.
+         No external website template was copied.
 
-         The fabric/paper patterns in this website are generated
-         entirely using CSS.
-    =========================================================== -->
+         The current patterns and textures are generated
+         entirely with CSS rather than downloaded images.
+    ========================================================== -->
 
 
     <style>
 
-        /* ==========================================================
-           1. COLOR PALETTE + BASIC SETUP
+
+        /* =========================================================
+           COLORS
         ========================================================== */
 
         :root {
-            --berry: #a8476b;
-            --berry-dark: #783048;
-            --berry-light: #d49aae;
-            --pink: #efc7d5;
-            --pale-pink: #f7e2e8;
-            --cream: #f7f0e7;
-            --paper: #fffaf3;
-            --black: #171515;
-            --gray: #696264;
-            --tan: #ead8bd;
+
+            --berry: #a64b70;
+
+            --berry-dark: #743d57;
+
+            --berry-deep: #5a3042;
+
+            --rose: #cf819f;
+
+            --pink: #e7b6c8;
+
+            --pale-pink: #f5dce5;
+
+            --blush: #fae9ee;
+
+            --cream: #f8f2e9;
+
+            --paper: #fffaf4;
+
+            --tan: #eadac3;
+
+            --soft-tan: #f1e5d4;
+
+            --text: #45313a;
+
+            --muted: #74646b;
+
+            --white: #fffdf9;
+
         }
 
 
+
+        /* =========================================================
+           BASIC SETUP
+        ========================================================== */
+
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
 
 
         html {
+
             scroll-behavior: smooth;
+
         }
 
 
         body {
+
             background: var(--cream);
-            color: var(--black);
+
+            color: var(--text);
 
             font-family:
                 Arial,
@@ -77,56 +114,91 @@
                 sans-serif;
 
             overflow-x: hidden;
+
         }
 
 
         img {
-            width: 100%;
+
             display: block;
+
+            width: 100%;
+
         }
 
 
         a {
+
             color: inherit;
+
+        }
+
+
+        button {
+
+            font: inherit;
+
         }
 
 
         section {
+
             position: relative;
+
         }
 
 
 
-        /* ==========================================================
-           2. NAVIGATION
+        /* =========================================================
+           NAVIGATION
         ========================================================== */
 
         nav {
+
             position: fixed;
 
             top: 0;
+
             left: 0;
 
             width: 100%;
+
             min-height: 70px;
 
             padding: 0 6%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
-            background: rgba(247, 240, 231, 0.94);
+            background:
+                rgba(
+                    248,
+                    242,
+                    233,
+                    0.94
+                );
 
             backdrop-filter: blur(10px);
 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+            border-bottom:
+                1px solid
+                rgba(
+                    116,
+                    61,
+                    87,
+                    0.18
+                );
 
             z-index: 1000;
+
         }
 
 
         .nav-name {
+
             font-family:
                 Georgia,
                 "Times New Roman",
@@ -134,25 +206,33 @@
 
             font-size: 21px;
 
+            color: var(--berry-dark);
+
             text-decoration: none;
 
             text-transform: lowercase;
+
         }
 
 
         .nav-links {
+
             display: flex;
 
             align-items: center;
 
-            gap: 28px;
+            gap: 27px;
 
             list-style: none;
+
         }
 
 
         .nav-links a {
+
             position: relative;
+
+            color: var(--text);
 
             text-decoration: none;
 
@@ -161,52 +241,160 @@
             font-size: 13px;
 
             letter-spacing: 1px;
+
         }
 
 
         .nav-links a::after {
+
             content: "";
 
             position: absolute;
 
-            bottom: -6px;
             left: 0;
 
+            bottom: -6px;
+
             width: 0;
+
             height: 3px;
 
             background: var(--berry);
 
+            border-radius: 50%;
+
             transform: rotate(-2deg);
 
-            transition: width 0.2s ease;
+            transition: width .2s ease;
+
         }
 
 
         .nav-links a:hover::after {
+
             width: 100%;
+
         }
 
 
         .menu-button {
+
             display: none;
 
-            background: transparent;
+            background: none;
 
-            border: none;
+            border: 0;
 
-            font-size: 27px;
+            color: var(--berry-dark);
+
+            font-size: 28px;
 
             cursor: pointer;
+
         }
 
 
 
-        /* ==========================================================
-           3. HERO
+        /* =========================================================
+           GENERAL SECTION STYLING
+        ========================================================== */
+
+        section:not(#home) {
+
+            padding:
+                110px
+                8%;
+
+        }
+
+
+        .section-label {
+
+            margin-bottom: 13px;
+
+            color: var(--berry);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .section-heading {
+
+            margin-bottom: 45px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    52px,
+                    8vw,
+                    105px
+                );
+
+            font-weight: normal;
+
+            line-height: .95;
+
+            color: var(--berry-dark);
+
+        }
+
+
+        .highlight {
+
+            display: inline;
+
+            padding:
+                0
+                10px;
+
+            background: var(--berry-dark);
+
+            color: var(--white);
+
+        }
+
+
+        .marker-text {
+
+            display: inline-block;
+
+            color: var(--berry);
+
+            font-family:
+                "Segoe Print",
+                "Bradley Hand",
+                Arial,
+                sans-serif;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            letter-spacing: .5px;
+
+            transform: rotate(-3deg);
+
+        }
+
+
+
+        /* =========================================================
+           HERO
         ========================================================== */
 
         #home {
+
             min-height: 100vh;
 
             padding:
@@ -217,25 +405,27 @@
             display: grid;
 
             grid-template-columns:
-                1.1fr
-                0.9fr;
+                1.08fr
+                .92fr;
 
-            gap: 50px;
+            gap: 55px;
 
             align-items: center;
 
+            overflow: hidden;
+
             background-color: var(--berry);
 
-            color: white;
+            color: var(--white);
 
-            overflow: hidden;
         }
 
 
 
-        /* subtle fabric texture */
+        /* fabric texture */
 
         #home::before {
+
             content: "";
 
             position: absolute;
@@ -245,59 +435,105 @@
             background-image:
 
                 repeating-linear-gradient(
+
                     0deg,
-                    rgba(255,255,255,0.035),
-                    rgba(255,255,255,0.035) 1px,
-                    transparent 1px,
-                    transparent 5px
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .04
+                    ),
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .04
+                    )
+                    1px,
+
+                    transparent
+                    1px,
+
+                    transparent
+                    6px
+
                 ),
 
                 repeating-linear-gradient(
+
                     90deg,
-                    rgba(0,0,0,0.025),
-                    rgba(0,0,0,0.025) 1px,
-                    transparent 1px,
-                    transparent 7px
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .025
+                    ),
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .025
+                    )
+                    1px,
+
+                    transparent
+                    1px,
+
+                    transparent
+                    8px
+
                 );
 
             pointer-events: none;
+
         }
 
 
         .hero-text {
+
             position: relative;
 
             z-index: 3;
+
         }
 
 
-        .tiny-label {
-            margin-bottom: 18px;
+        .hero-small {
+
+            margin-bottom: 17px;
 
             font-size: 11px;
+
+            font-weight: 700;
 
             letter-spacing: 4px;
 
             text-transform: uppercase;
+
         }
 
 
-        .meet-label {
+        .meet {
+
             display: inline-block;
 
             padding:
-                3px
+                4px
                 15px;
 
-            background: var(--black);
+            background: var(--berry-deep);
 
             color: white;
 
             font-size:
                 clamp(
-                    33px,
+                    34px,
                     5vw,
-                    72px
+                    70px
                 );
 
             font-weight: 900;
@@ -308,15 +544,14 @@
                 7px
                 7px
                 0
-                rgba(255,255,255,0.8);
+                var(--pale-pink);
+
         }
 
 
         .hero-name {
-            margin:
-                3px
-                0
-                8px;
+
+            margin-top: 5px;
 
             font-family:
                 Georgia,
@@ -325,36 +560,30 @@
 
             font-size:
                 clamp(
-                    78px,
+                    80px,
                     13vw,
                     180px
                 );
 
-            line-height: 0.9;
-
             font-weight: normal;
+
+            line-height: .88;
 
             letter-spacing: -7px;
 
-            text-shadow:
-                4px
-                4px
-                0
-                rgba(0,0,0,0.12);
         }
 
 
         .hero-title {
+
             max-width: 650px;
 
-            margin-top: 22px;
+            margin-top: 25px;
 
             font-family:
                 Georgia,
                 "Times New Roman",
                 serif;
-
-            font-weight: normal;
 
             font-size:
                 clamp(
@@ -363,85 +592,99 @@
                     38px
                 );
 
+            font-weight: normal;
+
             line-height: 1.15;
+
         }
 
 
         .hero-description {
+
             max-width: 590px;
 
-            margin-top: 21px;
+            margin-top: 20px;
 
             font-size: 16px;
 
-            line-height: 1.7;
+            line-height: 1.75;
+
         }
 
 
-        .handwritten {
+        .hero-note {
+
             display: inline-block;
 
-            margin-top: 26px;
+            margin-top: 25px;
 
             padding:
                 10px
-                25px;
+                22px;
 
             border:
-                3px
-                solid
-                white;
+                2px solid
+                var(--white);
 
             border-radius: 50%;
 
             font-family:
-                "Brush Script MT",
                 "Segoe Print",
-                cursive;
+                "Bradley Hand",
+                Arial,
+                sans-serif;
 
-            font-size: 21px;
+            font-size: 16px;
 
-            transform: rotate(-4deg);
+            font-weight: 700;
+
+            letter-spacing: .5px;
+
+            transform: rotate(-3deg);
+
         }
 
 
 
-        /* ==========================================================
-           4. BUTTONS THAT POP OUT
+        /* =========================================================
+           POP OUT BUTTONS
         ========================================================== */
 
         .hero-buttons {
+
             display: flex;
 
             flex-wrap: wrap;
 
-            gap: 18px;
+            gap: 17px;
 
             margin-top: 34px;
+
         }
 
 
         .button {
+
             display: inline-block;
 
             padding:
                 14px
                 24px;
 
-            background: var(--black);
+            border:
+                2px solid
+                var(--berry-deep);
+
+            background:
+                var(--berry-deep);
 
             color: white;
 
-            border:
-                2px
-                solid
-                var(--black);
-
             text-decoration: none;
 
-            font-size: 13px;
+            font-size: 12px;
 
-            font-weight: bold;
+            font-weight: 800;
 
             letter-spacing: 1px;
 
@@ -449,16 +692,17 @@
                 6px
                 6px
                 0
-                white;
+                var(--pale-pink);
 
             transition:
-                transform 0.16s ease,
-                box-shadow 0.16s ease,
-                background 0.16s ease;
+                transform .16s ease,
+                box-shadow .16s ease;
+
         }
 
 
         .button:hover {
+
             transform:
                 translate(
                     -6px,
@@ -470,39 +714,49 @@
                 12px
                 12px
                 0
-                white;
+                var(--pale-pink);
+
         }
 
 
-        .button-outline {
-            background: transparent;
+        .button-light {
 
-            border-color: white;
+            background: var(--pale-pink);
+
+            border-color: var(--pale-pink);
+
+            color: var(--berry-dark);
+
+            box-shadow:
+                6px
+                6px
+                0
+                var(--berry-deep);
+
         }
 
 
-        .button-outline:hover {
-            background: white;
-
-            color: var(--berry);
+        .button-light:hover {
 
             box-shadow:
                 12px
                 12px
                 0
-                var(--black);
+                var(--berry-deep);
+
         }
 
 
 
-        /* ==========================================================
-           5. HERO PHOTO COLLAGE
+        /* =========================================================
+           HERO COLLAGE
         ========================================================== */
 
         .hero-collage {
-            min-height: 550px;
 
             position: relative;
+
+            min-height: 560px;
 
             display: flex;
 
@@ -511,165 +765,20 @@
             align-items: center;
 
             z-index: 2;
+
         }
 
 
-        .hero-photo {
-            position: relative;
-
-            width:
-                min(
-                    390px,
-                    80vw
-                );
-
-            height: 500px;
-
-            background: var(--pink);
-
-            clip-path:
-                polygon(
-                    6% 2%,
-                    95% 0,
-                    100% 94%,
-                    93% 100%,
-                    2% 96%,
-                    0 8%
-                );
-
-            transform: rotate(3deg);
-
-            box-shadow:
-                18px
-                18px
-                0
-                rgba(0,0,0,0.22);
-        }
-
-
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 40px;
-
-            text-align: center;
-
-            color: var(--berry-dark);
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            line-height: 1.7;
-        }
-
-
-        /*
-        WHEN YOU ADD A PHOTO LATER,
-        USE:
-
-        <img
-            src="images/kadie-main.jpg"
-            alt="Kadie Keslar">
-
-        inside .hero-photo
-        */
-
-
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            filter: grayscale(100%);
-        }
-
-
-
-        /* tape */
-
-        .hero-photo::before {
-            content: "";
+        .fabric-hero {
 
             position: absolute;
 
-            top: -8px;
-            left: 50%;
+            width: 290px;
 
-            width: 130px;
-            height: 38px;
+            height: 410px;
 
-            background:
-                rgba(
-                    235,
-                    219,
-                    181,
-                    0.86
-                );
+            right: -25px;
 
-            transform:
-                translateX(-50%)
-                rotate(-5deg);
-
-            z-index: 5;
-        }
-
-
-
-        /* star sticker */
-
-        .hero-star {
-            position: absolute;
-
-            left: 2%;
-
-            bottom: 20px;
-
-            font-size: 125px;
-
-            line-height: 1;
-
-            color: white;
-
-            transform: rotate(-14deg);
-
-            text-shadow:
-                3px 0 var(--black),
-                -3px 0 var(--black),
-                0 3px var(--black),
-                0 -3px var(--black);
-
-            transition:
-                transform
-                0.22s ease;
-        }
-
-
-        .hero-star:hover {
-            transform:
-                rotate(10deg)
-                scale(1.18);
-        }
-
-
-
-        /* fabric behind photo */
-
-        .fabric-piece {
-            position: absolute;
-
-            width: 280px;
-            height: 390px;
-
-            right: -30px;
             bottom: 5px;
 
             background-color:
@@ -678,286 +787,394 @@
             background-image:
 
                 linear-gradient(
+
                     90deg,
-                    rgba(168,71,107,.17) 50%,
-                    transparent 50%
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .17
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
                 ),
 
                 linear-gradient(
-                    rgba(168,71,107,.17) 50%,
-                    transparent 50%
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .17
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
                 );
 
             background-size:
-                35px
-                35px;
+                34px
+                34px;
+
+            border:
+                2px solid
+                var(--berry-dark);
 
             transform: rotate(-6deg);
 
-            border:
-                2px
-                solid
-                var(--black);
-
-            z-index: -1;
         }
 
 
+        .hero-photo {
 
-        /* ==========================================================
-           6. GENERAL SECTION STYLE
-        ========================================================== */
+            position: relative;
 
-        section:not(#home) {
-            padding:
-                110px
-                8%;
-        }
-
-
-        .section-label {
-            margin-bottom: 13px;
-
-            font-size: 11px;
-
-            letter-spacing: 4px;
-
-            text-transform: uppercase;
-        }
-
-
-        .section-heading {
-            margin-bottom: 45px;
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size:
-                clamp(
-                    55px,
-                    8vw,
-                    105px
+            width:
+                min(
+                    390px,
+                    82vw
                 );
 
-            line-height: 0.95;
+            height: 500px;
 
-            font-weight: normal;
+            background: var(--pink);
+
+            clip-path:
+                polygon(
+                    5% 1%,
+                    96% 3%,
+                    100% 94%,
+                    92% 100%,
+                    1% 96%,
+                    0 8%
+                );
+
+            transform: rotate(3deg);
+
+            box-shadow:
+                17px
+                18px
+                0
+                rgba(
+                    90,
+                    48,
+                    66,
+                    .4
+                );
+
         }
 
 
-        .black-highlight {
-            display: inline;
+        .hero-photo::before {
 
-            padding:
-                0
-                10px;
+            content: "";
+
+            position: absolute;
+
+            top: -6px;
+
+            left: 50%;
+
+            width: 130px;
+
+            height: 36px;
 
             background:
-                var(--black);
+                rgba(
+                    237,
+                    219,
+                    188,
+                    .86
+                );
 
-            color: white;
+            transform:
+                translateX(-50%)
+                rotate(-5deg);
+
+            z-index: 5;
+
         }
 
 
-        .scribble {
-            display: inline-block;
+        .hero-photo img {
 
-            font-family:
-                "Brush Script MT",
-                "Segoe Print",
-                cursive;
+            width: 100%;
 
-            color: var(--berry);
+            height: 100%;
 
-            font-size: 34px;
+            object-fit: cover;
 
-            transform: rotate(-4deg);
+            filter: grayscale(100%);
+
+        }
+
+
+        .photo-placeholder {
+
+            width: 100%;
+
+            height: 100%;
+
+            padding: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: var(--berry-dark);
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .hero-star {
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: 25px;
+
+            color: var(--paper);
+
+            font-size: 120px;
+
+            text-shadow:
+
+                2px
+                0
+                var(--berry-deep),
+
+                -2px
+                0
+                var(--berry-deep),
+
+                0
+                2px
+                var(--berry-deep),
+
+                0
+                -2px
+                var(--berry-deep);
+
+            transform: rotate(-12deg);
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .hero-star:hover {
+
+            transform:
+                rotate(10deg)
+                scale(1.15);
+
         }
 
 
 
-        /* ==========================================================
-           7. ABOUT
+        /* =========================================================
+           ABOUT
         ========================================================== */
 
         #about {
+
             background-color:
                 var(--cream);
 
             background-image:
+
                 radial-gradient(
-                    rgba(0,0,0,.045)
+
+                    rgba(
+                        116,
+                        61,
+                        87,
+                        .05
+                    )
                     1px,
+
                     transparent
                     1px
+
                 );
 
             background-size:
                 9px
                 9px;
+
         }
 
 
         .about-grid {
+
             display: grid;
 
             grid-template-columns:
-                0.9fr
+                .9fr
                 1.1fr;
 
             gap: 75px;
 
             align-items: center;
+
         }
 
 
         .about-collage {
+
             position: relative;
 
-            min-height: 530px;
+            min-height: 520px;
+
         }
 
 
         .about-photo {
+
+            position: relative;
+
             width: 72%;
+
             height: 430px;
 
-            background:
-                var(--pink);
+            background: var(--pink);
 
             clip-path:
                 polygon(
                     5% 1%,
-                    96% 4%,
+                    96% 3%,
                     100% 94%,
                     91% 100%,
                     1% 96%,
                     0 7%
                 );
 
-            transform:
-                rotate(-4deg);
+            transform: rotate(-4deg);
 
             box-shadow:
+                12px
                 13px
-                14px
                 0
-                var(--black);
+                var(--berry-dark);
 
             overflow: hidden;
+
         }
 
 
         .about-photo img {
+
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
 
             filter: grayscale(100%);
+
         }
 
 
         .about-note {
+
             position: absolute;
 
             right: 0;
+
             bottom: 20px;
 
             width: 58%;
 
-            padding: 27px;
+            padding: 25px;
 
-            background:
-                var(--berry);
+            background: var(--berry);
 
             color: white;
 
-            font-family:
-                "Brush Script MT",
-                "Segoe Print",
-                cursive;
-
-            font-size: 27px;
-
-            line-height: 1.25;
-
-            transform:
-                rotate(4deg);
+            box-shadow:
+                7px
+                8px
+                0
+                var(--berry-dark);
 
             clip-path:
                 polygon(
                     2% 4%,
                     98% 0,
-                    100% 93%,
+                    100% 94%,
                     94% 100%,
                     0 97%
                 );
 
-            box-shadow:
-                8px
-                8px
-                0
-                var(--black);
-        }
+            transform: rotate(4deg);
 
+            font-family:
+                "Segoe Print",
+                "Bradley Hand",
+                Arial,
+                sans-serif;
 
+            font-size: 19px;
 
-        /* tape on about photo */
+            font-weight: 700;
 
-        .about-photo::after {
-            content: "";
+            line-height: 1.5;
 
-            position: absolute;
-
-            width: 110px;
-            height: 32px;
-
-            top: 3px;
-            left: 50%;
-
-            transform:
-                translateX(-50%)
-                rotate(7deg);
-
-            background:
-                rgba(
-                    238,
-                    218,
-                    183,
-                    0.82
-                );
         }
 
 
         .about-text h3 {
+
             margin-bottom: 18px;
+
+            color: var(--berry-dark);
 
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
             font-size: 34px;
+
         }
 
 
         .about-text p {
+
             margin-bottom: 18px;
 
             font-size: 17px;
 
             line-height: 1.8;
+
         }
 
 
 
-        /* ==========================================================
-           8. SKILLS + INTERESTS
+        /* =========================================================
+           SKILLS AND INTERESTS
         ========================================================== */
 
         .interest-grid {
+
             margin-top: 80px;
 
             display: grid;
@@ -967,11 +1184,11 @@
                 1fr;
 
             gap: 45px;
+
         }
 
 
         .scrap-box {
-            position: relative;
 
             padding: 38px;
 
@@ -988,111 +1205,124 @@
                 );
 
             box-shadow:
+                8px
                 9px
-                10px
                 0
-                var(--black);
+                var(--pink);
+
         }
 
 
         .scrap-box:nth-child(2) {
+
             background:
                 var(--pale-pink);
 
             transform:
                 rotate(1deg);
+
         }
 
 
         .scrap-box h3 {
+
             margin-bottom: 25px;
+
+            color: var(--berry-dark);
 
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
             font-size: 36px;
+
         }
 
 
         .tags {
+
             display: flex;
 
             flex-wrap: wrap;
 
-            gap: 12px;
+            gap: 11px;
+
         }
 
 
         .tag {
+
+            display: inline-block;
+
             padding:
                 8px
                 12px;
 
             background:
-                var(--black);
+                var(--berry-dark);
 
             color: white;
 
             border:
-                2px
-                solid
-                var(--black);
+                2px solid
+                var(--berry-dark);
 
             box-shadow:
                 3px
                 3px
                 0
-                var(--berry);
+                var(--pink);
 
             font-size: 12px;
 
-            transform:
-                rotate(-2deg);
+            transform: rotate(-2deg);
 
             transition:
-                transform
-                0.17s ease,
-                box-shadow
-                0.17s ease;
+                transform .16s ease,
+                box-shadow .16s ease;
+
         }
 
 
         .tag:nth-child(even) {
+
             background:
-                var(--berry);
+                var(--rose);
 
-            transform:
-                rotate(2deg);
+            border-color:
+                var(--rose);
 
-            box-shadow:
-                3px
-                3px
-                0
-                var(--black);
+            color: var(--berry-deep);
+
+            transform: rotate(2deg);
+
         }
 
 
         .tag:hover {
+
             transform:
                 translateY(-5px)
                 rotate(0deg)
-                scale(1.06);
+                scale(1.05);
 
             box-shadow:
                 6px
                 7px
                 0
-                var(--black);
+                var(--pink);
+
         }
 
 
 
-        /* ==========================================================
-           9. PROJECTS
+        /* =========================================================
+           PROJECTS
         ========================================================== */
 
         #projects {
+
             color: white;
 
             background-color:
@@ -1101,36 +1331,65 @@
             background-image:
 
                 linear-gradient(
+
                     90deg,
-                    rgba(255,255,255,.07)
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .065
+                    )
                     50%,
+
                     transparent
                     50%
+
                 ),
 
                 linear-gradient(
-                    rgba(255,255,255,.07)
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .065
+                    )
                     50%,
+
                     transparent
                     50%
+
                 );
 
             background-size:
                 36px
                 36px;
+
+        }
+
+
+        #projects .section-label,
+        #projects .section-heading {
+
+            color: white;
+
         }
 
 
         .project-intro {
+
             max-width: 700px;
 
             margin-bottom: 55px;
 
             line-height: 1.8;
+
         }
 
 
         .project-grid {
+
             display: grid;
 
             grid-template-columns:
@@ -1140,17 +1399,17 @@
                 );
 
             gap: 40px;
+
         }
 
 
         .project-card {
+
             position: relative;
 
-            background:
-                var(--paper);
+            background: var(--paper);
 
-            color:
-                var(--black);
+            color: var(--text);
 
             clip-path:
                 polygon(
@@ -1163,32 +1422,39 @@
                 );
 
             box-shadow:
+                13px
                 14px
-                15px
                 0
-                rgba(0,0,0,.3);
+                rgba(
+                    90,
+                    48,
+                    66,
+                    .38
+                );
 
             transition:
-                transform
-                0.2s ease,
-                box-shadow
-                0.2s ease;
-        }
+                transform .18s ease,
+                box-shadow .18s ease;
 
-
-        .project-card:nth-child(even) {
-            transform:
-                rotate(1deg);
         }
 
 
         .project-card:nth-child(odd) {
-            transform:
-                rotate(-1deg);
+
+            transform: rotate(-1deg);
+
+        }
+
+
+        .project-card:nth-child(even) {
+
+            transform: rotate(1deg);
+
         }
 
 
         .project-card:hover {
+
             transform:
                 translate(
                     -5px,
@@ -1197,200 +1463,259 @@
                 rotate(0deg);
 
             box-shadow:
-                20px
-                22px
+                19px
+                21px
                 0
-                rgba(0,0,0,.4);
+                rgba(
+                    90,
+                    48,
+                    66,
+                    .5
+                );
+
         }
 
 
-
-        /* fake masking tape */
-
         .project-card::before {
+
             content: "";
 
             position: absolute;
 
             width: 120px;
-            height: 32px;
 
-            top: -4px;
+            height: 31px;
+
             left: 50%;
+
+            top: -3px;
+
+            background:
+                rgba(
+                    239,
+                    220,
+                    187,
+                    .9
+                );
 
             transform:
                 translateX(-50%)
                 rotate(-4deg);
 
-            background:
-                rgba(
-                    239,
-                    219,
-                    178,
-                    0.88
-                );
-
             z-index: 5;
+
         }
 
 
         .project-image {
+
             height: 250px;
+
+            padding: 20px;
 
             display: flex;
 
-            justify-content: center;
-
             align-items: center;
 
-            padding: 25px;
+            justify-content: center;
 
             background-color:
                 var(--pink);
 
             background-image:
+
                 radial-gradient(
+
                     var(--berry)
                     2px,
+
                     transparent
                     2px
+
                 );
 
             background-size:
                 19px
                 19px;
 
-            border-bottom:
-                3px
-                solid
-                var(--black);
+            color: var(--berry-dark);
 
             text-align: center;
 
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
             font-size: 34px;
+
         }
 
 
         .project-card:nth-child(2) .project-image {
-            background-color:
-                var(--black);
 
-            background-image:
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent
-                    12px,
-                    rgba(255,255,255,.08)
-                    12px,
-                    rgba(255,255,255,.08)
-                    22px
-                );
-
-            color: white;
-        }
-
-
-        .project-card:nth-child(3) .project-image {
             background-color:
                 var(--pale-pink);
 
             background-image:
+
                 repeating-linear-gradient(
-                    0deg,
-                    rgba(168,71,107,.14),
-                    rgba(168,71,107,.14)
-                    2px,
+
+                    45deg,
+
+                    transparent,
+
                     transparent
-                    2px,
-                    transparent
-                    10px
+                    13px,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .13
+                    )
+                    13px,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .13
+                    )
+                    23px
+
                 );
+
+        }
+
+
+        .project-card:nth-child(3) .project-image {
+
+            background:
+                var(--soft-tan);
+
+            background-image:
+
+                repeating-linear-gradient(
+
+                    0deg,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .12
+                    ),
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .12
+                    )
+                    2px,
+
+                    transparent
+                    2px,
+
+                    transparent
+                    11px
+
+                );
+
         }
 
 
         .project-card:nth-child(4) .project-image {
-            background:
-                var(--tan);
 
-            color:
-                var(--berry-dark);
+            background:
+                var(--blush);
+
         }
 
 
         .project-content {
+
             padding: 30px;
+
         }
 
 
         .project-number {
+
+            color: var(--berry);
+
             font-size: 11px;
+
+            font-weight: 700;
 
             letter-spacing: 3px;
 
-            text-transform: uppercase;
         }
 
 
         .project-content h3 {
+
             margin:
                 13px
                 0;
 
+            color: var(--berry-dark);
+
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
             font-size: 34px;
+
         }
 
 
         .project-content p {
+
             margin-bottom: 20px;
 
             line-height: 1.7;
+
         }
 
 
         .project-link {
+
             display: inline-block;
 
-            margin-top: 18px;
+            margin-top: 20px;
 
             padding:
                 10px
                 14px;
 
-            background:
-                var(--black);
+            background: var(--berry-dark);
 
             color: white;
 
             text-decoration: none;
 
-            font-weight: bold;
-
             font-size: 12px;
+
+            font-weight: 800;
 
             box-shadow:
                 4px
                 4px
                 0
-                var(--berry);
+                var(--pink);
 
             transition:
-                transform
-                0.16s ease,
-                box-shadow
-                0.16s ease;
+                transform .16s ease,
+                box-shadow .16s ease;
+
         }
 
 
         .project-link:hover {
+
             transform:
                 translate(
                     -4px,
@@ -1401,25 +1726,26 @@
                 8px
                 8px
                 0
-                var(--berry);
+                var(--pink);
+
         }
 
 
 
-        /* ==========================================================
-           10. EXPERIENCE
+        /* =========================================================
+           EXPERIENCE
         ========================================================== */
 
         #experience {
-            background:
-                var(--black);
 
-            color:
-                white;
+            background:
+                var(--pale-pink);
+
         }
 
 
         .experience-grid {
+
             display: grid;
 
             grid-template-columns:
@@ -1428,26 +1754,24 @@
                     1fr
                 );
 
-            gap: 20px;
+            gap: 22px;
+
         }
 
 
         .experience-card {
-            min-height: 275px;
+
+            min-height: 280px;
 
             padding: 35px;
 
-            background:
-                var(--paper);
-
-            color:
-                var(--black);
+            background: var(--paper);
 
             box-shadow:
                 8px
                 9px
                 0
-                var(--berry);
+                var(--rose);
 
             clip-path:
                 polygon(
@@ -1458,89 +1782,113 @@
                     1% 98%,
                     0 5%
                 );
+
         }
 
 
         .experience-card:nth-child(2) {
-            background:
-                var(--pink);
 
-            transform:
-                rotate(-1deg);
+            background:
+                var(--blush);
+
+            transform: rotate(-1deg);
+
         }
 
 
         .experience-card:nth-child(3) {
-            transform:
-                rotate(1deg);
+
+            background:
+                var(--soft-tan);
+
+            transform: rotate(1deg);
+
         }
 
 
         .experience-card h3 {
+
             margin-bottom: 17px;
+
+            color: var(--berry-dark);
 
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
-            color:
-                var(--berry-dark);
-
             font-size: 28px;
+
         }
 
 
         .experience-card p {
+
             line-height: 1.7;
+
         }
 
 
 
-        /* ==========================================================
-           11. OUTSIDE THE CLASSROOM
+        /* =========================================================
+           OUTSIDE THE CLASSROOM
         ========================================================== */
 
         #life {
+
+            overflow: hidden;
+
             background-color:
                 var(--cream);
 
             background-image:
+
                 radial-gradient(
-                    rgba(0,0,0,.04)
+
+                    rgba(
+                        116,
+                        61,
+                        87,
+                        .05
+                    )
                     1px,
+
                     transparent
                     1px
+
                 );
 
             background-size:
-                8px
-                8px;
+                9px
+                9px;
 
-            overflow: hidden;
         }
 
 
         .life-intro {
-            max-width: 760px;
 
-            margin-bottom: 55px;
+            max-width: 760px;
 
             font-size: 18px;
 
             line-height: 1.8;
+
         }
 
 
 
-        /* decorative fabric swatch */
+        /* decorative fabric */
 
         .life-fabric {
+
             position: absolute;
 
-            top: 100px;
-            right: -40px;
+            top: 90px;
+
+            right: -45px;
 
             width: 220px;
+
             height: 300px;
 
             background-color:
@@ -1549,17 +1897,23 @@
             background-image:
 
                 radial-gradient(
+
                     white
                     3px,
+
                     transparent
                     3px
+
                 ),
 
                 radial-gradient(
+
                     var(--berry)
                     3px,
+
                     transparent
                     3px
+
                 );
 
             background-position:
@@ -1570,282 +1924,1036 @@
                 30px
                 30px;
 
+            border:
+                2px solid
+                var(--berry-dark);
+
             transform:
                 rotate(8deg);
 
-            border:
-                3px
-                solid
-                var(--black);
+            opacity: .75;
+
         }
 
 
-        .life-collage {
+
+        /* =========================================================
+           HANGING PHOTO STRIP
+        ========================================================== */
+
+        .photo-line {
+
             position: relative;
 
-            display: grid;
+            max-width: 1220px;
 
-            grid-template-columns:
-                repeat(
-                    12,
-                    1fr
-                );
+            min-height: 480px;
 
-            grid-auto-rows:
-                80px;
+            margin:
+                65px
+                auto
+                0;
 
-            gap: 16px;
+            padding-top: 70px;
+
         }
 
 
-        .life-card {
-            display: flex;
+        .clothesline {
 
-            justify-content: center;
+            position: absolute;
+
+            top: 69px;
+
+            left: -4%;
+
+            width: 108%;
+
+            height: 7px;
+
+            background:
+                var(--berry);
+
+            border-radius: 50%;
+
+            transform: rotate(-1deg);
+
+        }
+
+
+        .hanging-photo {
+
+            position: absolute;
+
+            width: 180px;
+
+            padding: 0;
+
+            border: 0;
+
+            background: none;
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .hanging-photo:hover {
+
+            z-index: 30;
+
+            transform:
+                translateY(-15px)
+                rotate(0deg)
+                scale(1.08)
+                !important;
+
+        }
+
+
+        .hanging-image {
+
+            width: 100%;
+
+            height: 225px;
+
+            padding: 17px;
+
+            display: flex;
 
             align-items: center;
 
-            padding: 24px;
-
-            background:
-                var(--pink);
+            justify-content: center;
 
             border:
-                5px
-                solid
+                7px solid
                 var(--paper);
 
             box-shadow:
-                8px
-                9px
+                5px
+                6px
                 0
-                rgba(0,0,0,.24);
+                rgba(
+                    116,
+                    61,
+                    87,
+                    .3
+                );
+
+            color: var(--berry-dark);
 
             text-align: center;
 
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
             font-size: 23px;
 
-            overflow: hidden;
+            font-weight: bold;
 
-            transition:
-                transform
-                0.2s ease,
-                box-shadow
-                0.2s ease;
+            line-height: 1.15;
+
         }
 
 
-        .life-card:hover {
-            transform:
-                translateY(-8px)
-                rotate(0deg)
-                scale(1.02);
+        .hanging-photo p {
 
-            box-shadow:
-                14px
-                15px
-                0
-                rgba(0,0,0,.29);
-        }
+            display: inline-block;
 
+            margin-top: 8px;
 
-        .life-card img {
-            width: 100%;
-            height: 100%;
+            padding:
+                5px
+                8px;
 
-            object-fit: cover;
-        }
-
-
-        .life-one {
-            grid-column:
-                1 / 7;
-
-            grid-row:
-                span 4;
-
-            transform:
-                rotate(-1deg);
-        }
-
-
-        .life-two {
-            grid-column:
-                7 / 13;
-
-            grid-row:
-                span 3;
-
-            background-color:
-                var(--berry);
-
-            background-image:
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent
-                    11px,
-                    rgba(255,255,255,.09)
-                    11px,
-                    rgba(255,255,255,.09)
-                    22px
-                );
+            background:
+                var(--paper);
 
             color:
-                white;
+                var(--berry-dark);
 
-            transform:
-                rotate(1deg);
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
         }
 
 
-        .life-three {
-            grid-column:
-                7 / 10;
 
-            grid-row:
-                span 3;
+        /* staggered photos */
+
+        .photo-one {
+
+            left: 1%;
+
+            top: 90px;
+
+            transform:
+                rotate(-6deg);
+
+        }
+
+
+        .photo-two {
+
+            left: 21%;
+
+            top: 112px;
+
+            transform:
+                rotate(4deg);
+
+        }
+
+
+        .photo-three {
+
+            left: 41%;
+
+            top: 79px;
+
+            transform:
+                rotate(-2deg);
+
+        }
+
+
+        .photo-four {
+
+            left: 61%;
+
+            top: 111px;
+
+            transform:
+                rotate(5deg);
+
+        }
+
+
+        .photo-five {
+
+            left: 81%;
+
+            top: 84px;
+
+            transform:
+                rotate(-5deg);
+
+        }
+
+
+
+        /* =========================================================
+           BINDER CLIPS
+        ========================================================== */
+
+        .clip {
+
+            position: absolute;
+
+            top: -21px;
+
+            left: 50%;
+
+            width: 33px;
+
+            height: 31px;
+
+            border:
+                3px solid
+                var(--berry-dark);
+
+            border-radius:
+                4px
+                4px
+                8px
+                8px;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 5;
+
+        }
+
+
+        .clip::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 22px;
+
+            height: 15px;
+
+            top: -14px;
+
+            left: 2px;
+
+            border:
+                3px solid
+                var(--berry-dark);
+
+            border-bottom: 0;
+
+            border-radius:
+                10px
+                10px
+                0
+                0;
+
+        }
+
+
+        .clip-pink {
+
+            background:
+                var(--rose);
+
+        }
+
+
+        .clip-cream {
+
+            background:
+                var(--tan);
+
+        }
+
+
+        .clip-light {
+
+            background:
+                var(--pale-pink);
+
+        }
+
+
+
+        /* =========================================================
+           PHOTO PATTERNS
+        ========================================================== */
+
+        .mission-pattern {
 
             background-color:
                 var(--pale-pink);
 
             background-image:
+
                 radial-gradient(
+
                     var(--berry)
                     2px,
+
                     transparent
                     2px
+
                 );
 
             background-size:
                 18px
                 18px;
 
-            transform:
-                rotate(-2deg);
         }
 
 
-        .life-four {
-            grid-column:
-                10 / 13;
-
-            grid-row:
-                span 3;
+        .travel-pattern {
 
             background:
-                var(--black);
+                linear-gradient(
 
-            color:
-                white;
+                    150deg,
 
-            transform:
-                rotate(2deg);
+                    #e9b9c9,
+
+                    #f8e4d8
+
+                );
+
         }
 
 
-        .life-five {
-            grid-column:
-                1 / 7;
+        .people-pattern {
 
-            grid-row:
-                span 2;
+            background-color:
+                #f9eee5;
+
+            background-image:
+
+                repeating-linear-gradient(
+
+                    0deg,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .12
+                    ),
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .12
+                    )
+                    2px,
+
+                    transparent
+                    2px,
+
+                    transparent
+                    13px
+
+                );
+
+        }
+
+
+        .campus-pattern {
+
+            background-color:
+                var(--pink);
+
+            background-image:
+
+                linear-gradient(
+
+                    90deg,
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .2
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                ),
+
+                linear-gradient(
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .2
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                );
+
+            background-size:
+                27px
+                27px;
+
+        }
+
+
+        .favorites-pattern {
+
+            background-color:
+                var(--soft-tan);
+
+            background-image:
+
+                radial-gradient(
+
+                    white
+                    3px,
+
+                    transparent
+                    3px
+
+                );
+
+            background-size:
+                23px
+                23px;
+
+        }
+
+
+        .click-note {
+
+            margin-top: 5px;
+
+            color: var(--berry);
+
+            text-align: center;
+
+            font-family:
+                "Segoe Print",
+                "Bradley Hand",
+                Arial,
+                sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            transform: rotate(-1deg);
+
+        }
+
+
+
+        /* =========================================================
+           SCRAPBOOK POPUPS
+        ========================================================== */
+
+        .scrapbook-modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            padding: 40px;
+
+            background:
+                rgba(
+                    79,
+                    48,
+                    61,
+                    .62
+                );
+
+            backdrop-filter:
+                blur(7px);
+
+            overflow-y: auto;
+
+            z-index: 3000;
+
+        }
+
+
+        .scrapbook-modal.open {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .scrapbook-page {
+
+            position: relative;
+
+            width:
+                min(
+                    950px,
+                    95vw
+                );
+
+            max-height: 90vh;
+
+            padding: 60px;
+
+            overflow-y: auto;
+
+            background-color:
+                var(--cream);
+
+            background-image:
+
+                radial-gradient(
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .08
+                    )
+                    1px,
+
+                    transparent
+                    1px
+
+                );
+
+            background-size:
+                10px
+                10px;
+
+            box-shadow:
+                13px
+                15px
+                0
+                var(--berry-dark);
+
+            transform:
+                rotate(-.4deg);
+
+        }
+
+
+        .close-scrapbook {
+
+            position: absolute;
+
+            top: 18px;
+
+            right: 25px;
+
+            width: 45px;
+
+            height: 45px;
+
+            border:
+                2px solid
+                var(--berry-dark);
 
             background:
                 var(--paper);
 
-            font-family:
-                "Brush Script MT",
-                "Segoe Print",
-                cursive;
+            color:
+                var(--berry-dark);
 
-            font-size: 31px;
+            font-size: 29px;
+
+            cursor: pointer;
+
+            box-shadow:
+                4px
+                4px
+                0
+                var(--pink);
+
+            transition:
+                transform .15s ease,
+                box-shadow .15s ease;
+
         }
 
 
+        .close-scrapbook:hover {
 
-        /* ==========================================================
-           12. CURRENTLY SECTION
-        ========================================================== */
+            transform:
+                translate(
+                    -4px,
+                    -4px
+                );
 
-        .currently {
-            margin-top: 90px;
+            box-shadow:
+                8px
+                8px
+                0
+                var(--pink);
+
+        }
+
+
+        .scrap-label {
+
+            margin-bottom: 10px;
+
+            color: var(--berry);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .scrapbook-page > h2 {
+
+            margin-bottom: 45px;
+
+            color:
+                var(--berry-dark);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    48px,
+                    8vw,
+                    88px
+                );
+
+            font-weight: normal;
+
+        }
+
+
+        .modal-grid {
 
             display: grid;
 
             grid-template-columns:
-                repeat(
-                    4,
-                    1fr
-                );
+                .85fr
+                1.15fr;
 
-            gap: 17px;
+            gap: 55px;
+
+            align-items: center;
+
         }
 
 
-        .currently-item {
-            padding: 27px;
+        .modal-photo {
+
+            min-height: 390px;
+
+            padding: 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                7px solid
+                white;
+
+            box-shadow:
+                8px
+                9px
+                0
+                rgba(
+                    116,
+                    61,
+                    87,
+                    .28
+                );
+
+            color: var(--berry-dark);
+
+            text-align: center;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            line-height: 1.5;
+
+            transform: rotate(-3deg);
+
+        }
+
+
+        .modal-photo img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .modal-writing h3 {
+
+            margin-bottom: 20px;
+
+            color: var(--berry-dark);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 32px;
+
+        }
+
+
+        .modal-writing p {
+
+            margin-bottom: 18px;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .marker-note {
+
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding:
+                8px
+                12px;
+
+            background:
+                var(--pink);
+
+            color:
+                var(--berry-dark);
+
+            font-family:
+                "Segoe Print",
+                "Bradley Hand",
+                Arial,
+                sans-serif;
+
+            font-size: 14px !important;
+
+            font-weight: 700;
+
+            transform: rotate(-2deg);
+
+        }
+
+
+
+        /* scrapbook fabrics */
+
+        .floral-paper {
+
+            background-color:
+                #efcbd6;
+
+            background-image:
+
+                radial-gradient(
+
+                    circle at 25% 25%,
+
+                    #a64b70
+                    0
+                    4px,
+
+                    transparent
+                    5px
+
+                ),
+
+                radial-gradient(
+
+                    circle at 75% 65%,
+
+                    white
+                    0
+                    4px,
+
+                    transparent
+                    5px
+
+                );
+
+            background-size:
+                45px
+                45px;
+
+        }
+
+
+        .gingham-paper {
+
+            background-color:
+                #efd5de;
+
+            background-image:
+
+                linear-gradient(
+
+                    90deg,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .16
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                ),
+
+                linear-gradient(
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .16
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                );
+
+            background-size:
+                35px
+                35px;
+
+        }
+
+
+        .stripe-paper {
+
+            background-color:
+                #faeee5;
+
+            background-image:
+
+                repeating-linear-gradient(
+
+                    135deg,
+
+                    transparent,
+
+                    transparent
+                    15px,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .13
+                    )
+                    15px,
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .13
+                    )
+                    18px
+
+                );
+
+        }
+
+
+        .dot-paper {
+
+            background-color:
+                var(--pink);
+
+            background-image:
+
+                radial-gradient(
+
+                    white
+                    3px,
+
+                    transparent
+                    3px
+
+                );
+
+            background-size:
+                25px
+                25px;
+
+        }
+
+
+
+        /* =========================================================
+           FAVORITES POPUP
+        ========================================================== */
+
+        .favorites-board {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 18px;
+
+            padding:
+                20px
+                0;
+
+        }
+
+
+        .favorites-board span {
+
+            padding:
+                15px
+                22px;
 
             background:
                 var(--paper);
 
             border:
-                2px
-                solid
-                var(--black);
+                2px solid
+                var(--berry-dark);
+
+            color:
+                var(--berry-dark);
 
             box-shadow:
                 5px
                 6px
                 0
-                var(--black);
+                var(--pink);
 
-            transform:
-                rotate(-1deg);
-        }
-
-
-        .currently-item:nth-child(even) {
-            background:
-                var(--pale-pink);
-
-            transform:
-                rotate(1deg);
-        }
-
-
-        .currently-item span {
-            display: block;
-
-            margin-bottom: 10px;
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-        }
-
-
-        .currently-item strong {
             font-family:
                 Georgia,
+                "Times New Roman",
                 serif;
 
             font-size: 20px;
+
+            transform: rotate(-2deg);
+
+        }
+
+
+        .favorites-board span:nth-child(even) {
+
+            background:
+                var(--pale-pink);
+
+            transform: rotate(2deg);
+
         }
 
 
 
-        /* ==========================================================
-           13. CONTACT
+        /* =========================================================
+           CONTACT
         ========================================================== */
 
         #contact {
+
             text-align: center;
 
             background-color:
@@ -1854,27 +2962,48 @@
             background-image:
 
                 repeating-linear-gradient(
+
                     0deg,
+
                     transparent,
+
                     transparent
                     18px,
-                    rgba(168,71,107,.08)
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .07
+                    )
                     18px,
-                    rgba(168,71,107,.08)
+
+                    rgba(
+                        166,
+                        75,
+                        112,
+                        .07
+                    )
                     20px
+
                 );
+
         }
 
 
         #contact .section-heading {
+
             max-width: 900px;
 
             margin-left: auto;
+
             margin-right: auto;
+
         }
 
 
         .contact-text {
+
             max-width: 600px;
 
             margin:
@@ -1883,34 +3012,39 @@
                 40px;
 
             line-height: 1.8;
+
         }
 
 
         .contact-links {
-            display: flex;
 
-            justify-content: center;
+            display: flex;
 
             flex-wrap: wrap;
 
+            justify-content: center;
+
             gap: 18px;
+
         }
 
 
         .contact-links a {
+
             padding:
                 14px
                 25px;
 
             background:
-                var(--black);
+                var(--berry-dark);
 
-            color:
-                white;
+            color: white;
 
             text-decoration: none;
 
-            font-weight: bold;
+            font-size: 12px;
+
+            font-weight: 800;
 
             letter-spacing: 1px;
 
@@ -1918,17 +3052,17 @@
                 6px
                 6px
                 0
-                var(--berry);
+                var(--rose);
 
             transition:
-                transform
-                0.16s ease,
-                box-shadow
-                0.16s ease;
+                transform .16s ease,
+                box-shadow .16s ease;
+
         }
 
 
         .contact-links a:hover {
+
             transform:
                 translate(
                     -6px,
@@ -1940,25 +3074,21 @@
                 12px
                 12px
                 0
-                var(--berry);
+                var(--rose);
+
         }
 
 
 
-        /* ==========================================================
-           14. FOOTER / CREDITS
+        /* =========================================================
+           FOOTER
         ========================================================== */
 
         footer {
+
             padding:
                 38px
                 8%;
-
-            background:
-                var(--black);
-
-            color:
-                white;
 
             display: flex;
 
@@ -1966,62 +3096,130 @@
 
             gap: 45px;
 
+            background:
+                var(--berry-deep);
+
+            color: white;
+
             font-size: 12px;
 
             line-height: 1.7;
+
         }
 
 
         footer p {
+
             max-width: 590px;
+
         }
 
 
 
-        /* ==========================================================
-           15. SCROLL ANIMATIONS
+        /* =========================================================
+           REVEAL ANIMATION
         ========================================================== */
 
         .reveal {
+
             opacity: 0;
 
             transform:
-                translateY(28px);
+                translateY(25px);
 
             transition:
-                opacity
-                0.7s ease,
-                transform
-                0.7s ease;
+                opacity .7s ease,
+                transform .7s ease;
+
         }
 
 
         .reveal.visible {
+
             opacity: 1;
 
             transform:
                 translateY(0);
+
         }
 
 
 
-        /* ==========================================================
-           16. MOBILE
+        /* =========================================================
+           TABLET
+        ========================================================== */
+
+        @media (max-width: 1000px) {
+
+            .photo-line {
+
+                min-height: auto;
+
+                padding-top: 60px;
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+                gap:
+                    60px
+                    30px;
+
+            }
+
+
+            .clothesline {
+
+                display: none;
+
+            }
+
+
+            .hanging-photo {
+
+                position: relative;
+
+                top: auto !important;
+
+                left: auto !important;
+
+                width: 100%;
+
+                max-width: 210px;
+
+                margin: auto;
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           MOBILE NAV + LAYOUT
         ========================================================== */
 
         @media (max-width: 900px) {
 
             .menu-button {
+
                 display: block;
+
             }
 
 
             .nav-links {
+
                 display: none;
 
                 position: absolute;
 
                 top: 70px;
+
                 left: 0;
 
                 width: 100%;
@@ -2034,80 +3232,81 @@
                     var(--cream);
 
                 border-bottom:
-                    2px
-                    solid
-                    var(--black);
+                    2px solid
+                    var(--pink);
+
             }
 
 
             .nav-links.open {
+
                 display: flex;
+
             }
 
 
             #home {
+
                 grid-template-columns:
                     1fr;
 
                 padding-top:
                     120px;
+
             }
 
 
             .hero-collage {
-                margin-top:
-                    30px;
+
+                margin-top: 25px;
+
             }
 
 
             .about-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
 
 
             .interest-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
 
 
             .project-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
 
 
             .experience-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
 
 
-            .life-collage {
-                display: flex;
+            .modal-grid {
 
-                flex-direction:
-                    column;
-            }
-
-
-            .life-card {
-                min-height:
-                    260px;
-            }
-
-
-            .currently {
                 grid-template-columns:
-                    1fr
                     1fr;
+
             }
 
 
             .life-fabric {
-                opacity:
-                    0.3;
+
+                opacity: .3;
+
             }
 
         }
@@ -2117,67 +3316,90 @@
         @media (max-width: 600px) {
 
             nav {
+
                 padding:
                     0
                     5%;
+
             }
 
 
             section:not(#home) {
+
                 padding:
                     85px
                     6%;
+
             }
 
 
             #home {
+
                 padding-left:
                     6%;
 
                 padding-right:
                     6%;
+
             }
 
 
             .hero-name {
-                font-size:
-                    80px;
 
-                letter-spacing:
-                    -4px;
+                font-size: 80px;
+
+                letter-spacing: -4px;
+
             }
 
 
-            .meet-label {
-                font-size:
-                    37px;
+            .meet {
+
+                font-size: 38px;
+
             }
 
 
             .section-heading {
-                font-size:
-                    53px;
+
+                font-size: 52px;
+
             }
 
 
-            .currently {
+            .photo-line {
+
                 grid-template-columns:
                     1fr;
+
             }
 
 
-            .currently-item {
-                transform:
-                    none !important;
+            .scrapbook-modal {
+
+                padding: 20px;
+
+            }
+
+
+            .scrapbook-page {
+
+                padding:
+                    60px
+                    25px
+                    35px;
+
             }
 
 
             footer {
-                flex-direction:
-                    column;
+
+                flex-direction: column;
+
             }
 
         }
+
 
     </style>
 
@@ -2188,16 +3410,20 @@
 <body>
 
 
-    <!-- ==========================================================
+
+    <!-- =========================================================
          NAVIGATION
     ========================================================== -->
 
     <nav>
 
+
         <a
             href="#home"
             class="nav-name">
+
             kadie keslar
+
         </a>
 
 
@@ -2205,7 +3431,9 @@
             class="menu-button"
             id="menuButton"
             aria-label="Open navigation menu">
+
             ☰
+
         </button>
 
 
@@ -2213,43 +3441,70 @@
             class="nav-links"
             id="navLinks">
 
+
             <li>
+
                 <a href="#about">
+
                     about
+
                 </a>
+
             </li>
 
+
             <li>
+
                 <a href="#projects">
+
                     projects
+
                 </a>
+
             </li>
 
+
             <li>
+
                 <a href="#experience">
+
                     experience
+
                 </a>
+
             </li>
 
+
             <li>
+
                 <a href="#life">
+
                     outside class
+
                 </a>
+
             </li>
 
+
             <li>
+
                 <a href="#contact">
+
                     contact
+
                 </a>
+
             </li>
+
 
         </ul>
+
 
     </nav>
 
 
 
-    <!-- ==========================================================
+    <!-- =========================================================
          HOME
     ========================================================== -->
 
@@ -2259,25 +3514,33 @@
         <div class="hero-text">
 
 
-            <p class="tiny-label">
+            <p class="hero-small">
+
                 COMPUTER SCIENCE • HCI • CARNEGIE MELLON
+
             </p>
 
 
-            <div class="meet-label">
+            <div class="meet">
+
                 MEET
+
             </div>
 
 
             <h1 class="hero-name">
+
                 KADIE
+
             </h1>
 
 
             <h2 class="hero-title">
+
                 computer scientist.
                 designer.
                 researcher.
+
             </h2>
 
 
@@ -2291,8 +3554,10 @@
             </p>
 
 
-            <div class="handwritten">
-                ✧ building technology with people in mind ✧
+            <div class="hero-note">
+
+                ✦ building technology with people in mind ✦
+
             </div>
 
 
@@ -2310,7 +3575,7 @@
 
                 <a
                     href="#life"
-                    class="button button-outline">
+                    class="button button-light">
 
                     ME OUTSIDE CLASS
 
@@ -2327,7 +3592,7 @@
         <div class="hero-collage">
 
 
-            <div class="fabric-piece">
+            <div class="fabric-hero">
             </div>
 
 
@@ -2335,15 +3600,17 @@
 
 
                 <!--
-                WHEN YOU UPLOAD YOUR PHOTO:
 
-                delete the photo-placeholder below
+                WHEN YOU ADD YOUR PHOTO:
+
+                delete the placeholder below
 
                 and replace it with:
 
                 <img
                     src="images/kadie-main.jpg"
                     alt="Portrait of Kadie Keslar">
+
                 -->
 
 
@@ -2362,7 +3629,9 @@
 
 
             <div class="hero-star">
+
                 ★
+
             </div>
 
 
@@ -2373,7 +3642,7 @@
 
 
 
-    <!-- ==========================================================
+    <!-- =========================================================
          ABOUT
     ========================================================== -->
 
@@ -2381,15 +3650,20 @@
 
 
         <p class="section-label">
+
             01 / GETTING TO KNOW ME
+
         </p>
 
 
         <h2 class="section-heading reveal">
 
             about
-            <span class="black-highlight">
+
+            <span class="highlight">
+
                 me.
+
             </span>
 
         </h2>
@@ -2406,11 +3680,13 @@
 
 
                     <!--
-                    Replace later with:
+
+                    Later replace this placeholder with:
 
                     <img
                         src="images/kadie-about.jpg"
                         alt="Kadie Keslar">
+
                     -->
 
 
@@ -2445,7 +3721,9 @@
 
 
                 <h3>
+
                     hello!
+
                 </h3>
 
 
@@ -2464,8 +3742,8 @@
                     and understanding how people actually
                     experience it. That has led me toward work
                     involving programming, human-centered
-                    research, artificial intelligence, product
-                    design, and user experience.
+                    research, artificial intelligence,
+                    product design, and user experience.
 
                 </p>
 
@@ -2481,18 +3759,21 @@
 
                 <p>
 
-                    I also really value collaboration and
-                    leadership. Some of my favorite experiences
-                    have come from working with people who think
-                    differently than I do and combining ideas to
-                    create something better.
+                    I also value collaboration, communication,
+                    and leadership. Some of my favorite
+                    experiences have come from working with
+                    people who approach problems differently
+                    and combining those ideas to build
+                    something better.
 
                 </p>
 
 
-                <div class="scribble">
-                    code + people + creativity ♡
-                </div>
+                <p class="marker-text">
+
+                    ✦ code + people + creativity ✦
+
+                </p>
 
 
             </div>
@@ -2502,7 +3783,7 @@
 
 
 
-        <!-- INTERESTS AND SKILLS -->
+        <!-- INTERESTS + SKILLS -->
 
 
         <div class="interest-grid">
@@ -2512,13 +3793,1774 @@
 
 
                 <h3>
+
                     things i'm into
+
                 </h3>
 
 
                 <div class="tags">
 
+
                     <span class="tag">
+                        Human-Computer Interaction
+                    </span>
+
+
+                    <span class="tag">
+                        Artificial Intelligence
+                    </span>
+
+
+                    <span class="tag">
+                        UX Research
+                    </span>
+
+
+                    <span class="tag">
+                        Product Design
+                    </span>
+
+
+                    <span class="tag">
+                        Software Development
+                    </span>
+
+
+                    <span class="tag">
+                        Emerging Technology
+                    </span>
+
+
+                    <span class="tag">
+                        Human-Centered Computing
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="scrap-box reveal">
+
+
+                <h3>
+
+                    things i work with
+
+                </h3>
+
+
+                <div class="tags">
+
+
+                    <span class="tag">
+                        Python
+                    </span>
+
+
+                    <span class="tag">
+                        Java
+                    </span>
+
+
+                    <span class="tag">
+                        C
+                    </span>
+
+
+                    <span class="tag">
+                        HTML
+                    </span>
+
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+
+                    <span class="tag">
+                        User Research
+                    </span>
+
+
+                    <span class="tag">
+                        AI Product Design
+                    </span>
+
+
+                    <span class="tag">
+                        Team Collaboration
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PROJECTS
+    ========================================================== -->
+
+    <section id="projects">
+
+
+        <p class="section-label">
+
+            02 / SELECTED WORK
+
+        </p>
+
+
+        <h2 class="section-heading reveal">
+
+            things i've
+            <br>
+            been creating.
+
+        </h2>
+
+
+        <p class="project-intro reveal">
+
+            My portfolio will continue growing throughout
+            the semester as I add new technical, design,
+            and research projects. These projects represent
+            some of the areas I'm most interested in exploring.
+
+        </p>
+
+
+
+        <div class="project-grid">
+
+
+            <!-- PORTFOLIO -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-image">
+
+                    MY
+                    <br>
+                    PORTFOLIO
+
+                </div>
+
+
+                <div class="project-content">
+
+
+                    <span class="project-number">
+
+                        PROJECT 01
+
+                    </span>
+
+
+                    <h3>
+
+                        Personal Portfolio
+
+                    </h3>
+
+
+                    <p>
+
+                        The website you're currently exploring.
+                        I designed and developed this portfolio
+                        using HTML, CSS, JavaScript, GitHub,
+                        and GitHub Pages.
+
+                    </p>
+
+
+                    <p>
+
+                        I wanted the design to combine a
+                        scrapbook/editorial aesthetic with the
+                        organization and usability expected from
+                        a professional portfolio.
+
+                    </p>
+
+
+                    <div class="tags">
+
+
+                        <span class="tag">
+                            HTML
+                        </span>
+
+
+                        <span class="tag">
+                            CSS
+                        </span>
+
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/kadiekeslar/portfolio"
+                        target="_blank">
+
+                        VIEW CODE →
+
+                    </a>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- MIXED REALITY -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-image">
+
+                    MIXED
+                    <br>
+                    REALITY
+
+                </div>
+
+
+                <div class="project-content">
+
+
+                    <span class="project-number">
+
+                        PROJECT 02
+
+                    </span>
+
+
+                    <h3>
+
+                        Education + Mixed Reality
+
+                    </h3>
+
+
+                    <p>
+
+                        Research exploring how mixed-reality
+                        technology can support teachers by
+                        presenting useful information while
+                        allowing them to remain engaged with
+                        their classroom.
+
+                    </p>
+
+
+                    <div class="tags">
+
+
+                        <span class="tag">
+                            Research
+                        </span>
+
+
+                        <span class="tag">
+                            Data Analysis
+                        </span>
+
+
+                        <span class="tag">
+                            Mixed Reality
+                        </span>
+
+
+                        <span class="tag">
+                            Education
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- AI BIAS -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-image">
+
+                    AI
+                    <br>
+                    +
+                    <br>
+                    PEOPLE
+
+                </div>
+
+
+                <div class="project-content">
+
+
+                    <span class="project-number">
+
+                        PROJECT 03
+
+                    </span>
+
+
+                    <h3>
+
+                        AI Bias Research
+
+                    </h3>
+
+
+                    <p>
+
+                        A user-centered research project studying
+                        how people with different levels of
+                        AI literacy recognize and describe bias
+                        in AI-generated imagery.
+
+                    </p>
+
+
+                    <div class="tags">
+
+
+                        <span class="tag">
+                            HCI
+                        </span>
+
+
+                        <span class="tag">
+                            UX Research
+                        </span>
+
+
+                        <span class="tag">
+                            Artificial Intelligence
+                        </span>
+
+
+                        <span class="tag">
+                            User Interviews
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- FUTURE PROJECT -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-image">
+
+                    SOMETHING
+                    <br>
+                    NEW
+                    <br>
+                    IS COMING...
+
+                </div>
+
+
+                <div class="project-content">
+
+
+                    <span class="project-number">
+
+                        PROJECT 04
+
+                    </span>
+
+
+                    <h3>
+
+                        Future Project
+
+                    </h3>
+
+
+                    <p>
+
+                        I'm continuing to add projects from my
+                        courses, research, and personal work
+                        throughout the semester.
+
+                    </p>
+
+
+                    <div class="tags">
+
+
+                        <span class="tag">
+
+                            Coming Soon
+
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         EXPERIENCE
+    ========================================================== -->
+
+    <section id="experience">
+
+
+        <p class="section-label">
+
+            03 / EXPERIENCES SHAPING ME
+
+        </p>
+
+
+        <h2 class="section-heading reveal">
+
+            more than
+            <br>
+            my code.
+
+        </h2>
+
+
+
+        <div class="experience-grid">
+
+
+            <div class="experience-card reveal">
+
+
+                <h3>
+
+                    CS + HCI
+
+                </h3>
+
+
+                <p>
+
+                    At Carnegie Mellon, my studies combine
+                    computer science and Human-Computer
+                    Interaction. My coursework has included
+                    programming, computer systems,
+                    AI product design, human-centered research,
+                    mathematics, and emerging technologies.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="experience-card reveal">
+
+
+                <h3>
+
+                    Leadership
+
+                </h3>
+
+
+                <p>
+
+                    Leadership has been an important part of
+                    my experience both before and during college.
+                    I enjoy organizing, communicating, mentoring,
+                    and working with teams toward a shared goal.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="experience-card reveal">
+
+
+                <h3>
+
+                    Community
+
+                </h3>
+
+
+                <p>
+
+                    I enjoy communities that connect technology,
+                    leadership, service, design, and people.
+                    My campus involvement includes organizations
+                    connected to UX, women in STEM, and
+                    campus life.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         OUTSIDE THE CLASSROOM
+    ========================================================== -->
+
+    <section id="life">
+
+
+        <div class="life-fabric">
+        </div>
+
+
+        <p class="section-label">
+
+            04 / MORE THAN SCHOOL
+
+        </p>
+
+
+        <h2 class="section-heading reveal">
+
+            me, outside
+            <br>
+            the classroom.
+
+        </h2>
+
+
+        <p class="life-intro reveal">
+
+            There is a lot more to me than what I study.
+            These are some of the people, places,
+            experiences, and communities that have shaped
+            who I am. Click through the photos to get to
+            know a different side of me.
+
+        </p>
+
+
+
+        <!-- PHOTO CLOTHESLINE -->
+
+
+        <div class="photo-line reveal">
+
+
+            <div class="clothesline">
+            </div>
+
+
+
+            <!-- MISSION TRIPS -->
+
+
+            <button
+                class="hanging-photo photo-one"
+                onclick="openScrapbook('missionModal')">
+
+
+                <span class="clip clip-pink">
+                </span>
+
+
+                <div class="hanging-image mission-pattern">
+
+                    <span>
+
+                        MISSION
+                        <br>
+                        TRIPS
+
+                    </span>
+
+                </div>
+
+
+                <p>
+
+                    service + community
+
+                </p>
+
+
+            </button>
+
+
+
+            <!-- TRAVEL -->
+
+
+            <button
+                class="hanging-photo photo-two"
+                onclick="openScrapbook('travelModal')">
+
+
+                <span class="clip clip-cream">
+                </span>
+
+
+                <div class="hanging-image travel-pattern">
+
+                    <span>
+
+                        PLACES
+                        <br>
+                        I'VE BEEN
+
+                    </span>
+
+                </div>
+
+
+                <p>
+
+                    adventures
+
+                </p>
+
+
+            </button>
+
+
+
+            <!-- FRIENDS + FAMILY -->
+
+
+            <button
+                class="hanging-photo photo-three"
+                onclick="openScrapbook('peopleModal')">
+
+
+                <span class="clip clip-light">
+                </span>
+
+
+                <div class="hanging-image people-pattern">
+
+                    <span>
+
+                        MY
+                        <br>
+                        PEOPLE
+
+                    </span>
+
+                </div>
+
+
+                <p>
+
+                    friends + family
+
+                </p>
+
+
+            </button>
+
+
+
+            <!-- CAMPUS -->
+
+
+            <button
+                class="hanging-photo photo-four"
+                onclick="openScrapbook('campusModal')">
+
+
+                <span class="clip clip-pink">
+                </span>
+
+
+                <div class="hanging-image campus-pattern">
+
+                    <span>
+
+                        CAMPUS
+                        <br>
+                        LIFE
+
+                    </span>
+
+                </div>
+
+
+                <p>
+
+                    community
+
+                </p>
+
+
+            </button>
+
+
+
+            <!-- FAVORITES -->
+
+
+            <button
+                class="hanging-photo photo-five"
+                onclick="openScrapbook('favoritesModal')">
+
+
+                <span class="clip clip-cream">
+                </span>
+
+
+                <div class="hanging-image favorites-pattern">
+
+                    <span>
+
+                        LITTLE
+                        <br>
+                        THINGS
+
+                    </span>
+
+                </div>
+
+
+                <p>
+
+                    things i love
+
+                </p>
+
+
+            </button>
+
+
+        </div>
+
+
+
+        <p class="click-note reveal">
+
+            ↑ click a photo to look inside
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         MISSION TRIP POPUP
+    ========================================================== -->
+
+    <div
+        class="scrapbook-modal"
+        id="missionModal">
+
+
+        <div class="scrapbook-page">
+
+
+            <button
+                class="close-scrapbook"
+                aria-label="Close mission trips"
+                onclick="closeScrapbook('missionModal')">
+
+                ×
+
+            </button>
+
+
+            <p class="scrap-label">
+
+                ONE THING THAT MATTERS TO ME
+
+            </p>
+
+
+            <h2>
+
+                mission trips.
+
+            </h2>
+
+
+
+            <div class="modal-grid">
+
+
+                <div class="modal-photo floral-paper">
+
+
+                    <!--
+
+                    Later replace with:
+
+                    <img
+                        src="images/jamaica.jpg"
+                        alt="Kadie on a mission trip in Jamaica">
+
+                    -->
+
+
+                    ADD A
+                    <br>
+                    MISSION TRIP
+                    <br>
+                    PHOTO
+
+                </div>
+
+
+
+                <div class="modal-writing">
+
+
+                    <h3>
+
+                        service has shaped me.
+
+                    </h3>
+
+
+                    <p>
+
+                        One experience that means a lot to me
+                        is serving through mission work.
+
+                    </p>
+
+
+                    <p>
+
+                        I've had the opportunity to volunteer
+                        with Mission Four18 in Rocky Point,
+                        Jamaica. Experiences like these have
+                        shaped the way I think about community,
+                        relationships, service, and the kind
+                        of impact I want to have on other people.
+
+                    </p>
+
+
+                    <p>
+
+                        I love being able to step outside my
+                        normal routine, learn from other people,
+                        build relationships, and contribute
+                        wherever I can.
+
+                    </p>
+
+
+                    <p class="marker-note">
+
+                        people first. always.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         TRAVEL POPUP
+    ========================================================== -->
+
+    <div
+        class="scrapbook-modal"
+        id="travelModal">
+
+
+        <div class="scrapbook-page">
+
+
+            <button
+                class="close-scrapbook"
+                aria-label="Close travel"
+                onclick="closeScrapbook('travelModal')">
+
+                ×
+
+            </button>
+
+
+            <p class="scrap-label">
+
+                COLLECTING PLACES + MEMORIES
+
+            </p>
+
+
+            <h2>
+
+                adventures.
+
+            </h2>
+
+
+
+            <div class="modal-grid">
+
+
+                <div class="modal-photo gingham-paper">
+
+
+                    ADD A
+                    <br>
+                    TRAVEL
+                    <br>
+                    PHOTO
+
+                </div>
+
+
+
+                <div class="modal-writing">
+
+
+                    <h3>
+
+                        places worth remembering.
+
+                    </h3>
+
+
+                    <p>
+
+                        I love getting to experience new places
+                        and collecting all of the little memories
+                        that come with them.
+
+                    </p>
+
+
+                    <p>
+
+                        This space will eventually become a
+                        small visual travel journal filled with
+                        favorite places, trips, sunsets,
+                        pictures, and stories.
+
+                    </p>
+
+
+                    <p class="marker-note">
+
+                        take the picture.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         PEOPLE POPUP
+    ========================================================== -->
+
+    <div
+        class="scrapbook-modal"
+        id="peopleModal">
+
+
+        <div class="scrapbook-page">
+
+
+            <button
+                class="close-scrapbook"
+                aria-label="Close friends and family"
+                onclick="closeScrapbook('peopleModal')">
+
+                ×
+
+            </button>
+
+
+            <p class="scrap-label">
+
+                MY FAVORITE PEOPLE
+
+            </p>
+
+
+            <h2>
+
+                friends + family.
+
+            </h2>
+
+
+
+            <div class="modal-grid">
+
+
+                <div class="modal-photo stripe-paper">
+
+
+                    ADD A
+                    <br>
+                    FAVORITE
+                    <br>
+                    PHOTO
+
+                </div>
+
+
+
+                <div class="modal-writing">
+
+
+                    <h3>
+
+                        the people make the place.
+
+                    </h3>
+
+
+                    <p>
+
+                        I'm a huge people person, and my
+                        relationships are one of the most
+                        important parts of my life.
+
+                    </p>
+
+
+                    <p>
+
+                        My family and friends keep me grounded,
+                        make life fun, and have shaped so much
+                        of the person I am.
+
+                    </p>
+
+
+                    <p class="marker-note">
+
+                        home is the people ♡
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         CAMPUS POPUP
+    ========================================================== -->
+
+    <div
+        class="scrapbook-modal"
+        id="campusModal">
+
+
+        <div class="scrapbook-page">
+
+
+            <button
+                class="close-scrapbook"
+                aria-label="Close campus life"
+                onclick="closeScrapbook('campusModal')">
+
+                ×
+
+            </button>
+
+
+            <p class="scrap-label">
+
+                OUTSIDE THE LECTURE HALL
+
+            </p>
+
+
+            <h2>
+
+                campus life.
+
+            </h2>
+
+
+
+            <div class="modal-grid">
+
+
+                <div class="modal-photo dot-paper">
+
+
+                    ADD A
+                    <br>
+                    CAMPUS
+                    <br>
+                    PHOTO
+
+                </div>
+
+
+
+                <div class="modal-writing">
+
+
+                    <h3>
+
+                        community matters to me.
+
+                    </h3>
+
+
+                    <p>
+
+                        Some of my favorite parts of college
+                        happen outside of class.
+
+                    </p>
+
+
+                    <p>
+
+                        I enjoy being involved in organizations
+                        where I can meet people, lead,
+                        collaborate, and contribute to
+                        something larger than myself.
+
+                    </p>
+
+
+                    <p class="marker-note">
+
+                        show up + get involved.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         FAVORITES POPUP
+    ========================================================== -->
+
+    <div
+        class="scrapbook-modal"
+        id="favoritesModal">
+
+
+        <div class="scrapbook-page">
+
+
+            <button
+                class="close-scrapbook"
+                aria-label="Close things I love"
+                onclick="closeScrapbook('favoritesModal')">
+
+                ×
+
+            </button>
+
+
+            <p class="scrap-label">
+
+                THE LITTLE THINGS
+
+            </p>
+
+
+            <h2>
+
+                things i love.
+
+            </h2>
+
+
+
+            <div class="favorites-board">
+
+
+                <span>
+
+                    coffee
+
+                </span>
+
+
+                <span>
+
+                    good playlists
+
+                </span>
+
+
+                <span>
+
+                    sunsets
+
+                </span>
+
+
+                <span>
+
+                    decorating
+
+                </span>
+
+
+                <span>
+
+                    photos
+
+                </span>
+
+
+                <span>
+
+                    traveling
+
+                </span>
+
+
+                <span>
+
+                    long conversations
+
+                </span>
+
+
+                <span>
+
+                    time with my people
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+
+    <section id="contact">
+
+
+        <p class="section-label">
+
+            05 / SAY HELLO
+
+        </p>
+
+
+        <h2 class="section-heading reveal">
+
+            let's make
+            <br>
+            something cool.
+
+        </h2>
+
+
+        <p class="contact-text reveal">
+
+            I'm always interested in meeting new people,
+            hearing about new opportunities, collaborating
+            on interesting projects, and learning about
+            new ideas.
+
+        </p>
+
+
+
+        <div class="contact-links reveal">
+
+
+            <a
+                href="mailto:kadie.keslar@gmail.com">
+
+                EMAIL
+
+            </a>
+
+
+            <a
+                href="https://github.com/kadiekeslar"
+                target="_blank">
+
+                GITHUB
+
+            </a>
+
+
+            <!-- Replace # with your LinkedIn URL -->
+
+
+            <a
+                href="#"
+                target="_blank">
+
+                LINKEDIN
+
+            </a>
+
+
+            <!-- Later we can link your updated PDF resume -->
+
+
+            <a href="#">
+
+                RESUME
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+
+        <p>
+
+            © 2026 Kadie Keslar
+            <br>
+            Designed + developed by Kadie Keslar.
+
+        </p>
+
+
+        <p>
+
+            AI Usage: ChatGPT was used for brainstorming,
+            initial code generation, debugging, responsive
+            styling, and assistance creating interactive
+            features. All content, organization, visual
+            decisions, and final implementation were reviewed
+            and customized by me.
+
+            <br><br>
+
+            Visual direction inspired by editorial design,
+            mixed-media collage, scrapbook layouts,
+            photo displays, paper cutouts, and textile
+            patterns. Current paper and fabric patterns
+            are generated using CSS rather than downloaded
+            image assets.
+
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+
+         AI USAGE:
+         ChatGPT assisted with the initial JavaScript for
+         navigation, scroll animations, and the clickable
+         scrapbook popups.
+    ========================================================== -->
+
+    <script>
+
+
+        /* =========================================================
+           MOBILE NAVIGATION
+        ========================================================== */
+
+
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
+
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        menuButton.addEventListener(
+
+            "click",
+
+            function () {
+
+                navLinks.classList.toggle(
+                    "open"
+                );
+
+            }
+
+        );
+
+
+
+        const navigationLinks =
+            navLinks.querySelectorAll(
+                "a"
+            );
+
+
+        navigationLinks.forEach(
+
+            function (link) {
+
+                link.addEventListener(
+
+                    "click",
+
+                    function () {
+
+                        navLinks.classList.remove(
+                            "open"
+                        );
+
+                    }
+
+                );
+
+            }
+
+        );
+
+
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================== */
+
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(
+
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add(
+                                        "visible"
+                                    );
+
+                            }
+
+                        }
+
+                    );
+
+                },
+
+                {
+
+                    threshold: .12
+
+                }
+
+            );
+
+
+        revealElements.forEach(
+
+            function (element) {
+
+                observer.observe(
+                    element
+                );
+
+            }
+
+        );
+
+
+
+        /* =========================================================
+           SCRAPBOOK POPUPS
+        ========================================================== */
+
+
+        function openScrapbook(id) {
+
+
+            const modal =
+                document.getElementById(
+                    id
+                );
+
+
+            modal.classList.add(
+                "open"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+        }
+
+
+
+        function closeScrapbook(id) {
+
+
+            const modal =
+                document.getElementById(
+                    id
+                );
+
+
+            modal.classList.remove(
+                "open"
+            );
+
+
+            document.body.style.overflow =
+                "auto";
+
+
+        }
+
+
+
+        /* click outside popup to close */
+
+
+        document
+            .querySelectorAll(
+                ".scrapbook-modal"
+            )
+            .forEach(
+
+                function (modal) {
+
+
+                    modal.addEventListener(
+
+                        "click",
+
+                        function (event) {
+
+
+                            if (
+                                event.target
+                                ===
+                                modal
+                            ) {
+
+
+                                modal.classList.remove(
+                                    "open"
+                                );
+
+
+                                document.body.style.overflow =
+                                    "auto";
+
+
+                            }
+
+
+                        }
+
+                    );
+
+
+                }
+
+            );
+
+
+
+        /* ESC key closes any open scrapbook */
+
+
+        document.addEventListener(
+
+            "keydown",
+
+            function (event) {
+
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+
+                    document
+                        .querySelectorAll(
+                            ".scrapbook-modal.open"
+                        )
+                        .forEach(
+
+                            function (modal) {
+
+                                modal
+                                    .classList
+                                    .remove(
+                                        "open"
+                                    );
+
+                            }
+
+                        );
+
+
+                    document.body.style.overflow =
+                        "auto";
+
+
+                }
+
+
+            }
+
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>                    <span class="tag">
                         Human-Computer Interaction
                     </span>
 
