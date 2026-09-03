@@ -4,20 +4,1956 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadie Keslar | Portfolio</title>
+
+    <title>Kadie Keslar | CS + HCI Portfolio</title>
+
+    <!--
+    AI USAGE:
+    I used ChatGPT to help brainstorm the visual direction, organize the
+    structure of my portfolio, and create an initial version of the HTML,
+    CSS, and JavaScript. I customized the content, sections, wording,
+    visual style, and project information to represent my own interests,
+    experience, and goals.
+
+    DESIGN NOTE:
+    The visual direction is inspired by editorial layouts, scrapbook
+    aesthetics, magazine typography, collage art, and personal creative
+    portfolios. No outside website template was copied.
+    -->
+
+    <style>
+
+        /* =====================================================
+           BASIC SETUP
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --pink: #a94467;
+            --dark-pink: #7d2948;
+            --light-pink: #ddb1c1;
+            --pale-pink: #f3dce5;
+            --cream: #f7f2eb;
+            --white: #fffdf9;
+            --black: #151515;
+            --gray: #6e6868;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 6%;
+
+            background: rgba(247, 242, 235, 0.95);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+            z-index: 1000;
+        }
+
+        .nav-name {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            text-transform: lowercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            text-transform: lowercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--pink);
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        #home {
+            min-height: 100vh;
+            padding: 120px 8% 60px;
+
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 40px;
+
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,.12), transparent 2px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,.1), transparent 2px),
+                var(--pink);
+
+            background-size: 25px 25px;
+            color: white;
+
+            position: relative;
+        }
+
+        .hero-left {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tiny-label {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .meet {
+            display: inline-block;
+            background: var(--black);
+            color: white;
+
+            font-size: clamp(35px, 5vw, 78px);
+            font-weight: 800;
+
+            padding: 3px 14px;
+            margin-bottom: 4px;
+        }
+
+        .kadie {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(90px, 13vw, 185px);
+            font-weight: normal;
+            letter-spacing: -8px;
+            margin-left: -4px;
+        }
+
+        .hero-subtitle {
+            margin-top: 18px;
+            max-width: 620px;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(22px, 3vw, 38px);
+        }
+
+        .hero-description {
+            max-width: 600px;
+            margin-top: 20px;
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .oval-note {
+            display: inline-block;
+            border: 2px solid white;
+            border-radius: 50%;
+
+            padding: 10px 25px;
+            margin-top: 25px;
+
+            transform: rotate(-3deg);
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-style: italic;
+            font-size: 17px;
+        }
+
+        .hero-buttons {
+            margin-top: 32px;
+
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 24px;
+
+            background: var(--black);
+            color: white;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border: 2px solid var(--black);
+
+            transition: all 0.2s ease;
+        }
+
+        .button:hover {
+            background: white;
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .button-light {
+            background: transparent;
+            border-color: white;
+        }
+
+        .button-light:hover {
+            background: white;
+            color: var(--pink);
+        }
+
+
+        /* HERO PHOTO */
+
+        .hero-right {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-frame {
+            width: min(420px, 90%);
+            aspect-ratio: 4 / 5;
+
+            background: var(--pale-pink);
+            border: 12px solid var(--cream);
+
+            transform: rotate(3deg);
+
+            position: relative;
+
+            box-shadow: 12px 15px 0 rgba(0, 0, 0, 0.18);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 30px;
+
+            color: var(--dark-pink);
+
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .star {
+            position: absolute;
+
+            font-size: 110px;
+            color: white;
+
+            bottom: -65px;
+            left: -65px;
+
+            transform: rotate(-12deg);
+
+            text-shadow:
+                2px 0 var(--black),
+                -2px 0 var(--black),
+                0 2px var(--black),
+                0 -2px var(--black);
+        }
+
+        .tape {
+            position: absolute;
+            width: 130px;
+            height: 35px;
+
+            background: rgba(255, 245, 210, 0.75);
+
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+        }
+
+
+        /* =====================================================
+           GENERAL SECTION STYLES
+        ===================================================== */
+
+        section:not(#home) {
+            padding: 110px 8%;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(55px, 8vw, 110px);
+
+            font-weight: normal;
+
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            display: inline;
+            background: var(--black);
+            color: white;
+            padding: 0 10px;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        #about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-collage {
+            position: relative;
+            min-height: 520px;
+        }
+
+        .about-photo {
+            width: 70%;
+            height: 430px;
+
+            background: var(--light-pink);
+
+            border: 8px solid white;
+
+            box-shadow: 9px 9px 0 var(--black);
+
+            transform: rotate(-4deg);
+
+            overflow: hidden;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .about-note {
+            position: absolute;
+
+            bottom: 20px;
+            right: 0;
+
+            width: 55%;
+
+            background: var(--pink);
+            color: white;
+
+            padding: 25px;
+
+            transform: rotate(4deg);
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 24px;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .scribble {
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--pink);
+            font-style: italic;
+            font-size: 28px;
+            margin: 28px 0 14px;
+        }
+
+
+        /* =====================================================
+           INTERESTS + SKILLS
+        ===================================================== */
+
+        .interest-skill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            margin-top: 65px;
+        }
+
+        .list-box {
+            border: 2px solid var(--black);
+            padding: 35px;
+
+            position: relative;
+        }
+
+        .list-box:nth-child(2) {
+            background: var(--pale-pink);
+        }
+
+        .list-box h3 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 38px;
+
+            margin-bottom: 25px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            background: var(--black);
+            color: white;
+
+            padding: 8px 12px;
+
+            font-size: 13px;
+
+            transform: rotate(-1deg);
+        }
+
+        .tag:nth-child(even) {
+            background: var(--pink);
+            transform: rotate(1deg);
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        #projects {
+            background: var(--pink);
+            color: white;
+        }
+
+        .projects-intro {
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 50px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 35px;
+        }
+
+        .project-card {
+            background: var(--cream);
+            color: var(--black);
+
+            border: 3px solid var(--black);
+
+            transition: transform 0.25s ease;
+        }
+
+        .project-card:nth-child(2) {
+            transform: rotate(1deg);
+        }
+
+        .project-card:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px) rotate(0);
+        }
+
+        .project-image {
+            height: 250px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--light-pink),
+                    var(--dark-pink)
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 32px;
+            color: white;
+
+            border-bottom: 3px solid var(--black);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-number {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .project-content h3 {
+            margin: 13px 0;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 35px;
+        }
+
+        .project-content p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            display: inline-block;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border-bottom: 2px solid var(--black);
+
+            margin-right: 18px;
+        }
+
+
+        /* =====================================================
+           EXPERIENCE / INVOLVEMENT
+        ===================================================== */
+
+        #experience {
+            background: var(--black);
+            color: white;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 2px;
+
+            background: white;
+
+            border: 2px solid white;
+        }
+
+        .experience-card {
+            background: var(--black);
+            padding: 35px;
+        }
+
+        .experience-card h3 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            color: var(--light-pink);
+
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .experience-card p {
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           OUTSIDE THE CLASSROOM
+        ===================================================== */
+
+        #life {
+            background: var(--cream);
+        }
+
+        .life-intro {
+            max-width: 750px;
+
+            line-height: 1.8;
+
+            font-size: 18px;
+
+            margin-bottom: 50px;
+        }
+
+        .life-collage {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 80px;
+
+            gap: 15px;
+        }
+
+        .collage-card {
+            border: 6px solid white;
+
+            box-shadow: 5px 5px 0 rgba(0,0,0,.2);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 24px;
+
+            background: var(--light-pink);
+
+            overflow: hidden;
+        }
+
+        .collage-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .collage-one {
+            grid-column: 1 / 7;
+            grid-row: span 4;
+            transform: rotate(-1deg);
+        }
+
+        .collage-two {
+            grid-column: 7 / 13;
+            grid-row: span 3;
+
+            background: var(--pink);
+            color: white;
+
+            transform: rotate(1deg);
+        }
+
+        .collage-three {
+            grid-column: 7 / 10;
+            grid-row: span 3;
+            transform: rotate(-2deg);
+        }
+
+        .collage-four {
+            grid-column: 10 / 13;
+            grid-row: span 3;
+
+            background: var(--black);
+            color: white;
+
+            transform: rotate(2deg);
+        }
+
+        .collage-five {
+            grid-column: 1 / 7;
+            grid-row: span 2;
+
+            background: white;
+
+            font-size: 30px;
+        }
+
+
+        /* =====================================================
+           CURRENTLY
+        ===================================================== */
+
+        .currently {
+            margin-top: 90px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            border-top: 2px solid var(--black);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .currently-item {
+            padding: 30px;
+
+            border-right: 2px solid var(--black);
+        }
+
+        .currently-item:last-child {
+            border-right: 0;
+        }
+
+        .currently-item span {
+            display: block;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+
+            margin-bottom: 10px;
+        }
+
+        .currently-item strong {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 21px;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        #contact {
+            background: var(--pale-pink);
+            text-align: center;
+        }
+
+        #contact .section-heading {
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-text {
+            max-width: 580px;
+
+            margin: 0 auto 40px;
+
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .contact-links a {
+            padding: 14px 24px;
+
+            background: var(--black);
+            color: white;
+
+            text-decoration: none;
+
+            transition: all 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            background: var(--pink);
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: var(--black);
+            color: white;
+
+            padding: 35px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        footer p {
+            max-width: 600px;
+        }
+
+
+        /* =====================================================
+           REVEAL ANIMATION
+        ===================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+                top: 72px;
+                left: 0;
+
+                width: 100%;
+
+                background: var(--cream);
+
+                padding: 25px;
+
+                flex-direction: column;
+                align-items: center;
+
+                border-bottom: 2px solid var(--black);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            #home {
+                grid-template-columns: 1fr;
+
+                padding-top: 120px;
+            }
+
+            .hero-right {
+                margin-top: 25px;
+            }
+
+            .kadie {
+                letter-spacing: -4px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-collage {
+                min-height: 450px;
+            }
+
+            .interest-skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .currently {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .currently-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .currently-item {
+                border-bottom: 2px solid var(--black);
+            }
+
+            .life-collage {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .collage-card {
+                min-height: 250px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            section:not(#home) {
+                padding: 85px 6%;
+            }
+
+            #home {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .section-heading {
+                font-size: 52px;
+            }
+
+            .kadie {
+                font-size: 82px;
+                letter-spacing: -4px;
+            }
+
+            .meet {
+                font-size: 38px;
+            }
+
+            .hero-subtitle {
+                font-size: 25px;
+            }
+
+            .currently {
+                grid-template-columns: 1fr;
+            }
+
+            .currently-item {
+                border-right: 0;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <!--
-    AI Usage:
-    I used ChatGPT to help me understand the basic structure
-    of an HTML webpage and begin building my portfolio.
-    -->
 
-    <h1>Kadie Keslar</h1>
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
 
-    <p>Welcome to my portfolio!</p>
+    <nav>
+
+        <a href="#home" class="nav-name">
+            kadie keslar
+        </a>
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="#about">about</a>
+            </li>
+
+            <li>
+                <a href="#projects">projects</a>
+            </li>
+
+            <li>
+                <a href="#experience">experience</a>
+            </li>
+
+            <li>
+                <a href="#life">outside class</a>
+            </li>
+
+            <li>
+                <a href="#contact">contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HOME / HERO
+    ====================================================== -->
+
+    <section id="home">
+
+        <div class="hero-left">
+
+            <p class="tiny-label">
+                computer science • hci • carnegie mellon
+            </p>
+
+            <div class="meet">
+                MEET
+            </div>
+
+            <h1 class="kadie">
+                KADIE
+            </h1>
+
+            <h2 class="hero-subtitle">
+                computer scientist.
+                designer.
+                researcher.
+            </h2>
+
+            <p class="hero-description">
+                I'm a Computer Science and Human-Computer Interaction
+                student at Carnegie Mellon University interested in
+                building technology that is thoughtful, useful, and
+                designed around real people.
+            </p>
+
+            <div class="oval-note">
+                building technology with people in mind
+            </div>
+
+            <div class="hero-buttons">
+
+                <a href="#projects" class="button">
+                    VIEW MY WORK
+                </a>
+
+                <a href="#about" class="button button-light">
+                    GET TO KNOW ME
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-right">
+
+            <div class="photo-frame">
+
+                <div class="tape"></div>
+
+                <!--
+                TO ADD YOUR PHOTO:
+                1. Upload a picture to your GitHub repository.
+                2. Put it inside an "images" folder.
+                3. Name it kadie-main.jpg
+                4. Delete the photo-placeholder div below.
+                5. Uncomment the img line.
+                -->
+
+                <!--
+                <img
+                    src="images/kadie-main.jpg"
+                    alt="Portrait of Kadie Keslar">
+                -->
+
+                <div class="photo-placeholder">
+                    ADD YOUR FAVORITE PHOTO HERE
+                </div>
+
+            </div>
+
+            <div class="star">
+                ★
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section id="about">
+
+        <p class="section-label">
+            01 / getting to know me
+        </p>
+
+        <h2 class="section-heading reveal">
+            about <span class="highlight">me.</span>
+        </h2>
+
+
+        <div class="about-grid">
+
+            <div class="about-collage reveal">
+
+                <div class="about-photo">
+
+                    <!--
+                    Replace with another photo later:
+
+                    <img
+                        src="images/kadie-about.jpg"
+                        alt="Kadie Keslar">
+                    -->
+
+                    <div class="photo-placeholder">
+                        ANOTHER PHOTO OF YOU
+                    </div>
+
+                </div>
+
+                <div class="about-note">
+                    curious about the space where people,
+                    technology + design meet.
+                </div>
+
+            </div>
+
+
+            <div class="about-text reveal">
+
+                <h3>
+                    hello!
+                </h3>
+
+                <p>
+                    I'm Kadie, a Computer Science and
+                    Human-Computer Interaction student at
+                    Carnegie Mellon University.
+                </p>
+
+                <p>
+                    I love exploring the space where technology,
+                    people, and design overlap. I'm interested in
+                    both building technology and understanding how
+                    people actually experience and interact with it.
+                </p>
+
+                <p>
+                    Through my coursework and projects, I've explored
+                    programming, computer systems, artificial
+                    intelligence, human-centered research, product
+                    design, and user experience.
+                </p>
+
+                <p>
+                    I enjoy taking complicated problems and turning
+                    them into experiences that feel thoughtful,
+                    approachable, and useful.
+                </p>
+
+                <div class="scribble">
+                    code + people + creativity
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INTERESTS AND SKILLS -->
+
+        <div class="interest-skill-grid">
+
+            <div class="list-box reveal">
+
+                <h3>
+                    things i'm into
+                </h3>
+
+                <div class="tag-container">
+
+                    <span class="tag">
+                        Human-Computer Interaction
+                    </span>
+
+                    <span class="tag">
+                        Artificial Intelligence
+                    </span>
+
+                    <span class="tag">
+                        UX Research
+                    </span>
+
+                    <span class="tag">
+                        Product Design
+                    </span>
+
+                    <span class="tag">
+                        Software Development
+                    </span>
+
+                    <span class="tag">
+                        Emerging Technology
+                    </span>
+
+                    <span class="tag">
+                        Human-Centered Computing
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="list-box reveal">
+
+                <h3>
+                    things i work with
+                </h3>
+
+                <div class="tag-container">
+
+                    <span class="tag">
+                        Python
+                    </span>
+
+                    <span class="tag">
+                        Java
+                    </span>
+
+                    <span class="tag">
+                        C
+                    </span>
+
+                    <span class="tag">
+                        HTML
+                    </span>
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                    <span class="tag">
+                        User Research
+                    </span>
+
+                    <span class="tag">
+                        AI Product Design
+                    </span>
+
+                    <span class="tag">
+                        Team Collaboration
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+
+    <section id="projects">
+
+        <p class="section-label">
+            02 / selected work
+        </p>
+
+        <h2 class="section-heading reveal">
+            things i've
+            <br>
+            been creating.
+        </h2>
+
+        <p class="projects-intro reveal">
+            This portfolio will continue growing throughout the
+            semester as I add new technical, research, and design
+            projects. Here are a few pieces of work that represent
+            the directions I'm interested in exploring.
+        </p>
+
+
+        <div class="project-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-image">
+                    MY PORTFOLIO
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-number">
+                        PROJECT 01
+                    </span>
+
+                    <h3>
+                        Personal Portfolio
+                    </h3>
+
+                    <p>
+                        The website you're currently exploring.
+                        I designed and developed this portfolio
+                        using HTML, CSS, JavaScript, GitHub, and
+                        GitHub Pages. The design combines an
+                        editorial-inspired visual style with a
+                        responsive and accessible web layout.
+                    </p>
+
+                    <div class="tag-container">
+
+                        <span class="tag">
+                            HTML
+                        </span>
+
+                        <span class="tag">
+                            CSS
+                        </span>
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                    <br>
+
+                    <!--
+                    Replace # with the actual link to your GitHub repository.
+                    -->
+
+                    <a
+                        href="#"
+                        class="project-link"
+                        target="_blank">
+                        VIEW CODE →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-image">
+                    MIXED REALITY
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-number">
+                        PROJECT 02
+                    </span>
+
+                    <h3>
+                        Education + Mixed Reality
+                    </h3>
+
+                    <p>
+                        Research exploring how mixed-reality
+                        technology can support teachers by presenting
+                        useful classroom information while helping
+                        them remain engaged with their students.
+                    </p>
+
+                    <div class="tag-container">
+
+                        <span class="tag">
+                            Research
+                        </span>
+
+                        <span class="tag">
+                            Data Analysis
+                        </span>
+
+                        <span class="tag">
+                            Mixed Reality
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-image">
+                    AI + PEOPLE
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-number">
+                        PROJECT 03
+                    </span>
+
+                    <h3>
+                        AI Bias Research
+                    </h3>
+
+                    <p>
+                        A user-centered research project exploring
+                        how people with different levels of AI
+                        literacy recognize and describe bias in
+                        AI-generated imagery.
+                    </p>
+
+                    <div class="tag-container">
+
+                        <span class="tag">
+                            HCI
+                        </span>
+
+                        <span class="tag">
+                            UX Research
+                        </span>
+
+                        <span class="tag">
+                            Artificial Intelligence
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-image">
+                    COMING SOON...
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-number">
+                        PROJECT 04
+                    </span>
+
+                    <h3>
+                        Future Project
+                    </h3>
+
+                    <p>
+                        Something new is in the works. I'll continue
+                        adding projects from my courses, research,
+                        and personal work throughout the semester.
+                    </p>
+
+                    <div class="tag-container">
+
+                        <span class="tag">
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EXPERIENCE / LEADERSHIP
+    ====================================================== -->
+
+    <section id="experience">
+
+        <p class="section-label">
+            03 / beyond the code
+        </p>
+
+        <h2 class="section-heading reveal">
+            more than
+            <br>
+            my code.
+        </h2>
+
+        <div class="experience-grid">
+
+
+            <div class="experience-card reveal">
+
+                <h3>
+                    Computer Science + HCI
+                </h3>
+
+                <p>
+                    At Carnegie Mellon, my coursework spans
+                    computer science, computer systems,
+                    functional and imperative programming,
+                    human-centered research, AI product design,
+                    mathematics, and emerging technology.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card reveal">
+
+                <h3>
+                    Leadership
+                </h3>
+
+                <p>
+                    I value communication, teamwork, community,
+                    and leadership. My campus involvement has
+                    given me opportunities to work with others,
+                    organize initiatives, and take on
+                    responsibility outside the classroom.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card reveal">
+
+                <h3>
+                    Community
+                </h3>
+
+                <p>
+                    I enjoy being involved in communities that
+                    connect technology, service, leadership, and
+                    people, including organizations related to
+                    women in STEM, UX, and campus life.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LIFE OUTSIDE CLASS
+    ====================================================== -->
+
+    <section id="life">
+
+        <p class="section-label">
+            04 / when the laptop closes
+        </p>
+
+        <h2 class="section-heading reveal">
+            me, outside
+            <br>
+            the classroom.
+        </h2>
+
+        <p class="life-intro reveal">
+            Technology is a huge part of my life, but it definitely
+            isn't all of it. I love the people, places, experiences,
+            and little things that make life feel exciting. This is
+            the less formal side of my portfolio — a collection of
+            things that make me, me.
+        </p>
+
+
+        <div class="life-collage">
+
+
+            <div class="collage-card collage-one reveal">
+
+                <!--
+                Later replace with:
+                <img src="images/life1.jpg" alt="Favorite memory">
+                -->
+
+                FRIENDS + FAMILY
+                <br>
+                <small>
+                    add one of your favorite photos here
+                </small>
+
+            </div>
+
+
+            <div class="collage-card collage-two reveal">
+
+                places.
+                sunsets.
+                coffee.
+                music.
+                memories.
+
+            </div>
+
+
+            <div class="collage-card collage-three reveal">
+
+                TRAVEL
+                <br>
+                +
+                <br>
+                ADVENTURES
+
+            </div>
+
+
+            <div class="collage-card collage-four reveal">
+
+                ★
+                <br>
+                little things
+                <br>
+                i love
+
+            </div>
+
+
+            <div class="collage-card collage-five reveal">
+
+                life is better with good people around you.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CURRENTLY -->
+
+        <div class="currently reveal">
+
+
+            <div class="currently-item">
+
+                <span>
+                    currently learning
+                </span>
+
+                <strong>
+                    more about HCI + AI
+                </strong>
+
+            </div>
+
+
+            <div class="currently-item">
+
+                <span>
+                    currently loving
+                </span>
+
+                <strong>
+                    coffee + good playlists
+                </strong>
+
+            </div>
+
+
+            <div class="currently-item">
+
+                <span>
+                    always making time for
+                </span>
+
+                <strong>
+                    friends + family
+                </strong>
+
+            </div>
+
+
+            <div class="currently-item">
+
+                <span>
+                    next goal
+                </span>
+
+                <strong>
+                    build something meaningful
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section id="contact">
+
+        <p class="section-label">
+            05 / say hello
+        </p>
+
+        <h2 class="section-heading reveal">
+            let's make
+            <br>
+            something cool.
+        </h2>
+
+        <p class="contact-text reveal">
+            I'm always interested in meeting new people,
+            learning about opportunities, collaborating on
+            interesting projects, and exploring new ideas.
+            Feel free to reach out!
+        </p>
+
+
+        <div class="contact-links reveal">
+
+            <!-- Your email -->
+
+            <a href="mailto:kadie.keslar@gmail.com">
+                EMAIL
+            </a>
+
+
+            <!--
+            REPLACE # WITH YOUR GITHUB PROFILE LINK
+            -->
+
+            <a
+                href="#"
+                target="_blank">
+                GITHUB
+            </a>
+
+
+            <!--
+            REPLACE # WITH YOUR LINKEDIN PROFILE LINK
+            -->
+
+            <a
+                href="#"
+                target="_blank">
+                LINKEDIN
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Kadie Keslar.
+            Designed + developed by Kadie.
+        </p>
+
+        <p>
+            AI Usage: ChatGPT was used as a brainstorming,
+            coding, and debugging assistant. The website's
+            content, organization, design decisions, and final
+            implementation were reviewed and customized by me.
+            No external website template was used.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+
+         AI USAGE:
+         ChatGPT helped create the initial JavaScript for the
+         mobile navigation menu and scroll-based reveal animation.
+         I adapted these features for my portfolio.
+    ====================================================== -->
+
+    <script>
+
+        /* MOBILE NAVIGATION */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuButton.addEventListener("click", function () {
+
+            navLinks.classList.toggle("open");
+
+        });
+
+
+        /* Close mobile menu after a link is clicked */
+
+        const links =
+            navLinks.querySelectorAll("a");
+
+
+        links.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("open");
+
+            });
+
+        });
+
+
+
+        /* SCROLL REVEAL ANIMATION */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const observer =
+            new IntersectionObserver(function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                    }
+
+                });
+
+            }, {
+
+                threshold: 0.12
+
+            });
+
+
+        revealElements.forEach(function (element) {
+
+            observer.observe(element);
+
+        });
+
+    </script>
 
 </body>
 
