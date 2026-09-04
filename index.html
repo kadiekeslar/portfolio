@@ -169,9 +169,8 @@
       margin:0 -.03em;
       display:inline-block;
       position:relative;
-      top:42px;
+      top:0;
       z-index:7;
-      transform:rotate(-4deg);
     }
 
     .hero-stage{
@@ -197,15 +196,6 @@
       object-fit:cover;
       object-position:center top;
       filter:saturate(.92) contrast(1.02);
-    }
-
-    .hero-photo::after{
-      content:"";
-      position:absolute;
-      inset:auto 0 0;
-      height:34%;
-      background:linear-gradient(180deg,transparent,rgba(150,62,97,.1));
-      pointer-events:none;
     }
 
     .photo-fallback{
