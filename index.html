@@ -9,7 +9,7 @@
   <!--
     AI USAGE DOCUMENTATION
     I used ChatGPT to help brainstorm layout structure, draft starter HTML/CSS,
-    improve responsiveness, and add a small JavaScript interaction.
+    improve responsiveness, and add small JavaScript interactions.
     I edited the wording, content, visual direction, and design choices to fit
     my own portfolio and the reference style I wanted.
   -->
@@ -47,6 +47,7 @@
 
     a{color:inherit}
     img{display:block;max-width:100%}
+    button{font:inherit}
 
     .site{
       width:min(1100px,calc(100% - 28px));
@@ -129,25 +130,6 @@
       overflow:hidden;
     }
 
-    .round-mark{
-      position:absolute;
-      left:-54px;
-      top:86px;
-      width:116px;
-      height:116px;
-      border-radius:50%;
-      background:var(--pink-dark);
-      border:4px solid var(--cream);
-      display:grid;
-      place-items:center;
-      color:white;
-      font-family:var(--serif);
-      font-size:2rem;
-      font-style:italic;
-      z-index:6;
-      box-shadow:0 8px 20px rgba(0,0,0,.12);
-    }
-
     .hero-title{
       margin:16px 0 0;
       font-family:var(--serif);
@@ -171,6 +153,7 @@
       position:relative;
       top:0;
       z-index:7;
+      font-style:normal;
     }
 
     .hero-stage{
@@ -195,7 +178,6 @@
       height:100%;
       object-fit:cover;
       object-position:center top;
-      filter:saturate(.92) contrast(1.02);
     }
 
     .photo-fallback{
@@ -332,24 +314,6 @@
       object-fit:cover;
     }
 
-    .about-mini{
-      position:absolute;
-      right:-42px;
-      top:-24px;
-      width:112px;
-      background:white;
-      padding:7px 7px 18px;
-      box-shadow:var(--shadow);
-      transform:rotate(7deg);
-    }
-
-    .about-mini .mini-pic{
-      aspect-ratio:1;
-      background:
-        linear-gradient(135deg,rgba(255,255,255,.14),transparent 35%),
-        linear-gradient(180deg,#d59ab1,#a6436b);
-    }
-
     .eyebrow{
       font-family:var(--script);
       color:var(--pink-dark);
@@ -358,7 +322,8 @@
     }
 
     .about h2,
-    .projects h2{
+    .projects h2,
+    .values h2{
       margin:0;
       font-family:var(--serif);
       font-size:clamp(2.3rem,5vw,4rem);
@@ -373,7 +338,129 @@
       font-size:.97rem;
     }
 
-    /* ---------- VALUE MARQUEE ---------- */
+    /* ---------- OUTSIDE THE CLASSROOM ---------- */
+
+    .outside{
+      margin-top:58px;
+      padding-top:42px;
+      border-top:1px solid rgba(33,29,28,.12);
+    }
+
+    .outside-heading{
+      display:flex;
+      justify-content:space-between;
+      gap:28px;
+      align-items:end;
+      margin-bottom:22px;
+    }
+
+    .outside-heading h3{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(2rem,4.7vw,3.5rem);
+      line-height:.95;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:-.04em;
+    }
+
+    .outside-heading p{
+      max-width:390px;
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .life-tabs{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+    }
+
+    .life-tab{
+      min-height:112px;
+      padding:16px;
+      border:1px solid var(--line);
+      background:var(--cream);
+      color:var(--ink);
+      text-align:left;
+      cursor:pointer;
+      transition:transform .16s ease, background .16s ease, color .16s ease;
+    }
+
+    .life-tab:hover{
+      transform:translateY(-3px) scale(1.02);
+    }
+
+    .life-tab.active{
+      background:var(--pink-dark);
+      color:white;
+      border-color:var(--pink-dark);
+    }
+
+    .life-tab small{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-size:.64rem;
+      margin-bottom:8px;
+      opacity:.78;
+    }
+
+    .life-tab strong{
+      display:block;
+      font-family:var(--serif);
+      font-size:1.25rem;
+      font-weight:500;
+      text-transform:uppercase;
+    }
+
+    .life-detail{
+      margin-top:10px;
+      min-height:185px;
+      padding:26px;
+      background:
+        radial-gradient(circle,rgba(200,92,134,.18) 0 1.5px,transparent 1.8px) 0 0/18px 18px,
+        var(--cream);
+      border:1px solid var(--line);
+      display:none;
+      grid-template-columns:1fr .42fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .life-detail.show{
+      display:grid;
+    }
+
+    .life-detail h4{
+      margin:0 0 8px;
+      font-family:var(--serif);
+      font-size:1.8rem;
+      font-weight:500;
+      text-transform:uppercase;
+    }
+
+    .life-detail p{
+      margin:0;
+      max-width:600px;
+    }
+
+    .life-detail-photo{
+      min-height:125px;
+      border:1px dashed rgba(33,29,28,.35);
+      background:rgba(255,255,255,.72);
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:16px;
+      color:var(--muted);
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    /* ---------- PROJECT MARQUEE ---------- */
 
     .marquee{
       overflow:hidden;
@@ -404,42 +491,223 @@
       to{transform:translateX(-50%)}
     }
 
-    /* ---------- VALUES ---------- */
+    /* ---------- PROJECTS ---------- */
 
-    .values{
-      position:relative;
-      padding:56px 0 64px;
+    .projects{
+      padding:58px 0 68px;
       background:
         linear-gradient(120deg,rgba(0,0,0,.42),rgba(0,0,0,.22)),
         repeating-linear-gradient(125deg,#57504d 0 14px,#6b625e 14px 28px);
+      position:relative;
       overflow:hidden;
     }
 
-    .values::before{
+    .projects::before{
       content:"";
       position:absolute;
       inset:0;
       background:
         radial-gradient(circle at 20px 20px,rgba(255,255,255,.05) 1px,transparent 1.1px) 0 0/18px 18px;
       opacity:.6;
+      pointer-events:none;
+    }
+
+    .projects .inner{
+      position:relative;
+      z-index:2;
+    }
+
+    .projects-head{
+      display:flex;
+      justify-content:space-between;
+      gap:28px;
+      align-items:end;
+      margin-bottom:24px;
+      padding:22px 24px;
+      background:var(--paper);
+      border:1px solid rgba(33,29,28,.10);
+      box-shadow:0 8px 18px rgba(0,0,0,.10);
+    }
+
+    .projects-head p{
+      margin:0;
+      max-width:390px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .project-bars{
+      display:grid;
+      gap:10px;
+    }
+
+    .project-bar{
+      border:1px solid var(--line);
+      background:var(--cream);
+      overflow:hidden;
+      transition:transform .16s ease,box-shadow .16s ease;
+    }
+
+    .project-bar:hover{
+      transform:translateX(4px);
+      box-shadow:0 9px 20px rgba(0,0,0,.08);
+    }
+
+    .project-bar-button{
+      width:100%;
+      display:grid;
+      grid-template-columns:74px 1fr auto;
+      gap:18px;
+      align-items:center;
+      padding:18px 20px;
+      border:0;
+      background:transparent;
+      color:var(--ink);
+      cursor:pointer;
+      text-align:left;
+    }
+
+    .project-number{
+      font-family:var(--serif);
+      color:var(--pink-dark);
+      font-size:1rem;
+      letter-spacing:.03em;
+    }
+
+    .project-bar h3{
+      margin:0;
+      font-family:var(--serif);
+      font-size:1.45rem;
+      line-height:1;
+      font-weight:500;
+      text-transform:uppercase;
+    }
+
+    .project-bar p{
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .project-arrow{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      display:grid;
+      place-items:center;
+      font-size:1rem;
+      transition:transform .2s ease,background .2s ease,color .2s ease;
+    }
+
+    .project-bar.open .project-arrow{
+      transform:rotate(45deg);
+      background:var(--pink-dark);
+      color:white;
+    }
+
+    .project-expand{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .28s ease,padding .28s ease;
+      padding:0 20px;
+      border-top:0 solid var(--line);
+    }
+
+    .project-bar.open .project-expand{
+      max-height:280px;
+      padding:18px 20px 22px;
+      border-top-width:1px;
+    }
+
+    .project-placeholder{
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    .project-image-placeholder{
+      min-height:120px;
+      border:1px dashed rgba(33,29,28,.35);
+      background:rgba(255,255,255,.7);
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:12px;
+      color:var(--muted);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .placeholder-copy{
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .placeholder-copy strong{
+      display:block;
+      color:var(--ink);
+      margin-bottom:5px;
+    }
+
+    /* ---------- VALUES ---------- */
+
+    .values{
+      padding:64px 0 72px;
+      background:
+        radial-gradient(circle, rgba(200,92,134,.38) 0 1.7px, transparent 2px) 0 0/18px 18px,
+        var(--paper);
+      color:var(--ink);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .values::before{
+      content:none;
+    }
+
+    .values-inner{
+      position:relative;
+      z-index:2;
+    }
+
+    .values-head{
+      margin-bottom:24px;
+      padding:22px 24px;
+      background:var(--paper);
+      border:1px solid rgba(33,29,28,.10);
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+    }
+
+    .values .eyebrow{
+      color:var(--pink-dark);
+    }
+
+    .values h2{
+      color:var(--ink);
+    }
+
+    .values-head p{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width:520px;
     }
 
     .value-grid{
-      position:relative;
-      z-index:2;
-      width:min(720px,calc(100% - 44px));
-      margin:0 auto;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:8px;
     }
 
     .value-card{
-      background:var(--pink-dark);
-      color:white;
+      background:var(--pink-soft);
+      color:var(--ink);
       padding:24px;
       min-height:175px;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(111,40,71,.18);
+      box-shadow:0 8px 18px rgba(111,40,71,.08);
     }
 
     .value-card h3{
@@ -454,189 +722,7 @@
       margin:0;
       font-size:.8rem;
       line-height:1.5;
-      color:rgba(255,255,255,.9);
-    }
-
-    /* ---------- PROJECTS ---------- */
-
-    .projects{
-      padding:68px 0;
-      background:
-        radial-gradient(circle, rgba(200,92,134,.42) 0 2px, transparent 2.4px) 0 0/18px 18px,
-        var(--paper);
-    }
-
-    .projects-head{
-      display:flex;
-      justify-content:space-between;
-      gap:28px;
-      align-items:end;
-      margin-bottom:28px;
-      padding:22px 24px;
-      background:var(--paper);
-      border:1px solid rgba(33,29,28,.10);
-      box-shadow:0 8px 18px rgba(0,0,0,.05);
-    }
-
-    .projects-head p{
-      margin:0;
-      max-width:390px;
-      color:var(--muted);
-      font-size:.94rem;
-    }
-
-    .project-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:18px;
-    }
-
-    .project-card{
-      background:var(--cream);
-      border:1px solid var(--line);
-      overflow:hidden;
-      transition:transform .18s ease,box-shadow .18s ease;
-    }
-
-    .project-card:hover{
-      transform:translateY(-4px);
-      box-shadow:var(--shadow);
-    }
-
-    .project-visual{
-      min-height:250px;
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 18px 18px,rgba(255,255,255,.18) 1px,transparent 1.2px) 0 0/18px 18px,
-        linear-gradient(135deg,var(--pink-soft),var(--pink));
-    }
-
-    .project-visual::before,
-    .project-visual::after{
-      content:"";
-      position:absolute;
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(33,29,28,.12);
-      box-shadow:0 9px 18px rgba(0,0,0,.12);
-    }
-
-    .project-visual::before{
-      width:38%;
-      aspect-ratio:1;
-      left:10%;
-      top:16%;
-      transform:rotate(-7deg);
-    }
-
-    .project-visual::after{
-      width:31%;
-      aspect-ratio:.9;
-      right:13%;
-      bottom:12%;
-      transform:rotate(5deg);
-    }
-
-    .project-card.small .project-visual{
-      min-height:190px;
-      background:
-        linear-gradient(135deg,rgba(255,255,255,.24),transparent 40%),
-        linear-gradient(180deg,#eee5dc,#d6b0bd);
-    }
-
-    .project-copy{
-      padding:22px;
-    }
-
-    .project-copy small{
-      color:var(--pink-dark);
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      font-weight:800;
-      font-size:.7rem;
-    }
-
-    .project-copy h3{
-      margin:6px 0 8px;
-      font-family:var(--serif);
-      font-size:1.7rem;
-      font-weight:500;
-      line-height:1;
-      text-transform:uppercase;
-    }
-
-    .project-copy p{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size:.92rem;
-    }
-
-    .project-stack{
-      display:grid;
-      gap:18px;
-    }
-
-    .project-link{
-      display:inline-flex;
-      font-size:.76rem;
-      font-weight:800;
-      text-decoration:none;
-      border-bottom:1px solid var(--ink);
-      padding-bottom:2px;
-      transition:transform .15s ease;
-    }
-
-    .project-link:hover{
-      transform:scale(1.06);
-    }
-
-    /* ---------- EXPERIENCE ---------- */
-
-    .experience{
-      padding:60px 0 68px;
-      background:var(--cream);
-    }
-
-    .experience-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-      margin-top:26px;
-    }
-
-    .experience-card{
-      padding:22px 18px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.35);
-      min-height:190px;
-    }
-
-    .experience-card:nth-child(2),
-    .experience-card:nth-child(4){
-      background:rgba(200,92,134,.12);
-    }
-
-    .experience-card small{
-      color:var(--pink-dark);
-      font-size:.7rem;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-
-    .experience-card h3{
-      margin:6px 0 8px;
-      font-family:var(--serif);
-      font-size:1.35rem;
-      font-weight:500;
-      text-transform:uppercase;
-      line-height:1;
-    }
-
-    .experience-card p{
-      margin:0;
-      font-size:.86rem;
-      color:var(--muted);
+      color:#5f5258;
     }
 
     /* ---------- CONTACT ---------- */
@@ -690,20 +776,20 @@
     }
 
     @media (max-width:900px){
-      .hero-photo{
-        width:min(420px,62vw);
-      }
-
+      .hero-photo{width:min(420px,62vw)}
       .side-note.left{left:6px}
       .side-note.right{right:4px}
 
-      .about-grid,
-      .project-grid{
+      .about-grid{
         grid-template-columns:1fr;
       }
 
-      .experience-grid{
+      .life-tabs{
         grid-template-columns:1fr 1fr;
+      }
+
+      .life-detail{
+        grid-template-columns:1fr;
       }
     }
 
@@ -722,24 +808,13 @@
         display:none;
       }
 
-      .hero{
-        min-height:auto;
-      }
-
-      .round-mark{
-        width:76px;
-        height:76px;
-        left:-26px;
-        top:95px;
-        font-size:1.35rem;
-      }
+      .hero{min-height:auto}
 
       .hero-title{
         font-size:clamp(3.2rem,15vw,5rem);
       }
 
       .hero-title em{
-        top:25px;
         font-size:.95em;
       }
 
@@ -768,24 +843,38 @@
       }
 
       .scribble{font-size:1.6rem}
+      .tiny-stat{display:none}
+      .about{padding-top:48px}
 
-      .tiny-stat{
-        display:none;
+      .outside-heading,
+      .projects-head{
+        display:block;
       }
 
-      .about{
-        padding-top:48px;
+      .outside-heading p,
+      .projects-head p{
+        margin-top:12px;
       }
 
-      .about-mini{
-        right:-4px;
+      .life-tabs{
+        grid-template-columns:1fr 1fr;
       }
 
-      .value-grid{
+      .project-bar-button{
+        grid-template-columns:48px 1fr auto;
+        gap:10px;
+        padding:16px 14px;
+      }
+
+      .project-bar h3{
+        font-size:1.15rem;
+      }
+
+      .project-placeholder{
         grid-template-columns:1fr;
       }
 
-      .experience-grid{
+      .value-grid{
         grid-template-columns:1fr;
       }
     }
@@ -808,7 +897,7 @@
           <div class="nav-links">
             <a href="#about">about</a>
             <a href="#projects">projects</a>
-            <a href="#experience">experience</a>
+            <a href="#values">values</a>
             <a href="#contact">contact</a>
             <a class="nav-cta" href="#projects">view work</a>
           </div>
@@ -818,7 +907,6 @@
 
     <main id="top">
       <section class="hero">
-
         <div class="inner">
           <h1 class="hero-title">HI, <em>I’m</em> KADIE</h1>
 
@@ -858,80 +946,85 @@
       </section>
 
       <section class="about" id="about">
-        <div class="inner about-grid">
-          <div class="about-photo-wrap">
-            <div class="about-photo">
-              <img id="aboutPortrait" src="kadie-2.jpg" alt="Kadie Keslar" />
+        <div class="inner">
+          <div class="about-grid">
+            <div class="about-photo-wrap">
+              <div class="about-photo">
+                <img src="kadie-2.jpg" alt="Kadie Keslar" />
+              </div>
             </div>
-            <div class="about-mini" aria-hidden="true">
-              <div class="mini-pic"></div>
+
+            <div>
+              <div class="eyebrow">hey, I’m Kadie</div>
+              <h2>CS + HCI student, human-centered developer</h2>
+
+              <p>
+                I’m a Carnegie Mellon student studying Computer Science and Human-Computer
+                Interaction. I’m especially passionate about human behavior and technology,
+                and that interest is what inspired me to move toward the field of
+                human-centered technology.
+              </p>
+
+              <p>
+                I love work that combines creativity, research, design, and technical problem
+                solving. I’m most interested in understanding how people think, what makes an
+                experience feel intuitive, and how technology can be designed around real human needs.
+              </p>
             </div>
           </div>
 
-          <div>
-            <div class="eyebrow">hey, I’m Kadie</div>
-            <h2>CS + HCI student, human-centered developer</h2>
+          <div class="outside">
+            <div class="outside-heading">
+              <div>
+                <div class="eyebrow">outside of the classroom</div>
+                <h3>a few things that make me, me</h3>
+              </div>
 
-            <p>
-              I’m a Carnegie Mellon student studying Computer Science and Human-Computer
-              Interaction. I’m especially passionate about human behavior and technology,
-              and that interest is what inspired me to move toward the field of
-              human-centered technology.
-            </p>
+              <p>
+                Tap each section to see a different part of my life. These are easy to update
+                later with your own photos, stories, and details.
+              </p>
+            </div>
 
-            <p>
-              I love work that combines creativity, research, design, and technical problem
-              solving. I’m most interested in understanding how people think, what makes an
-              experience feel intuitive, and how technology can be designed around real human needs.
-            </p>
+            <div class="life-tabs" role="tablist" aria-label="Outside the classroom">
+              <button class="life-tab" type="button" data-life="family" role="tab" aria-selected="false">
+                <small>01</small>
+                <strong>Family</strong>
+              </button>
 
-            <a class="button light" href="#projects">see my projects</a>
+              <button class="life-tab" type="button" data-life="volunteer" role="tab" aria-selected="false">
+                <small>02</small>
+                <strong>Volunteer</strong>
+              </button>
+
+              <button class="life-tab" type="button" data-life="alpha" role="tab" aria-selected="false">
+                <small>03</small>
+                <strong>Alpha Phi</strong>
+              </button>
+
+              <button class="life-tab" type="button" data-life="experience" role="tab" aria-selected="false">
+                <small>04</small>
+                <strong>Experience</strong>
+              </button>
+            </div>
+
+            <div class="life-detail" id="lifeDetail" role="tabpanel">
+              <div>
+                <h4 id="lifeTitle"></h4>
+                <p id="lifeText"></p>
+              </div>
+              <div class="life-detail-photo" id="lifePhotoLabel"></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <div class="marquee" aria-label="My values">
+      <div class="marquee" aria-label="Projects">
         <div class="marquee-track">
-          <span>MY VALUES</span><span>MY VALUES</span><span>MY VALUES</span>
-          <span>MY VALUES</span><span>MY VALUES</span><span>MY VALUES</span>
+          <span>PROJECTS</span><span>PROJECTS</span><span>PROJECTS</span>
+          <span>PROJECTS</span><span>PROJECTS</span><span>PROJECTS</span>
         </div>
       </div>
-
-      <section class="values">
-        <div class="value-grid">
-          <article class="value-card">
-            <h3>Curiosity</h3>
-            <p>
-              I like asking why people behave the way they do and how technology can respond
-              to those behaviors in a thoughtful way.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <h3>Creativity</h3>
-            <p>
-              I care about making things that are useful, but I also want them to feel intentional,
-              visual, and memorable.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <h3>Empathy</h3>
-            <p>
-              Good design starts with understanding people. I try to keep real users and real
-              experiences at the center of the work.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <h3>Growth mindset</h3>
-            <p>
-              I’m still learning, and I like that. Every project is a chance to build stronger
-              technical skills, better judgment, and more confidence.
-            </p>
-          </article>
-        </div>
-      </section>
 
       <section class="projects" id="projects">
         <div class="inner">
@@ -942,92 +1035,135 @@
             </div>
 
             <p>
-              A growing collection of technical, research, and design work. Each project can
-              be replaced with a real screenshot and code link as the semester goes on.
+              These are placeholders for now. Each horizontal bar can later hold a project
+              title, screenshot, description, and code link.
             </p>
           </div>
 
-
-          <div class="project-grid">
-            <article class="project-card">
-              <div class="project-visual"></div>
-              <div class="project-copy">
-                <small>01 · portfolio</small>
-                <h3>Portfolio Website</h3>
-                <p>
-                  A responsive personal portfolio built for GitHub Pages with an editorial,
-                  fashion-inspired layout and custom pink visual system.
-                </p>
-                <a class="project-link" href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY" target="_blank" rel="noreferrer">view code ↗</a>
+          <div class="project-bars">
+            <article class="project-bar">
+              <button class="project-bar-button" type="button" aria-expanded="false">
+                <span class="project-number">01</span>
+                <span>
+                  <h3>Project Placeholder</h3>
+                  <p>Short project description goes here.</p>
+                </span>
+                <span class="project-arrow">+</span>
+              </button>
+              <div class="project-expand">
+                <div class="project-placeholder">
+                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="placeholder-copy">
+                    <strong>Project details placeholder</strong>
+                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                  </div>
+                </div>
               </div>
             </article>
 
-            <div class="project-stack">
-              <article class="project-card small">
-                <div class="project-visual"></div>
-                <div class="project-copy">
-                  <small>02 · placeholder</small>
-                  <h3>Research / HCI Project</h3>
-                  <p>
-                    Add a research or HCI case study here with a screenshot, description,
-                    your role, and a link when applicable.
-                  </p>
-                  <a class="project-link" href="#">coming soon</a>
+            <article class="project-bar">
+              <button class="project-bar-button" type="button" aria-expanded="false">
+                <span class="project-number">02</span>
+                <span>
+                  <h3>Project Placeholder</h3>
+                  <p>Short project description goes here.</p>
+                </span>
+                <span class="project-arrow">+</span>
+              </button>
+              <div class="project-expand">
+                <div class="project-placeholder">
+                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="placeholder-copy">
+                    <strong>Project details placeholder</strong>
+                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                  </div>
                 </div>
-              </article>
+              </div>
+            </article>
 
-              <article class="project-card small">
-                <div class="project-visual"></div>
-                <div class="project-copy">
-                  <small>03 · placeholder</small>
-                  <h3>Future Project</h3>
-                  <p>
-                    Use this section for another class, design, technical, or personal project.
-                  </p>
-                  <a class="project-link" href="#">coming soon</a>
+            <article class="project-bar">
+              <button class="project-bar-button" type="button" aria-expanded="false">
+                <span class="project-number">03</span>
+                <span>
+                  <h3>Project Placeholder</h3>
+                  <p>Short project description goes here.</p>
+                </span>
+                <span class="project-arrow">+</span>
+              </button>
+              <div class="project-expand">
+                <div class="project-placeholder">
+                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="placeholder-copy">
+                    <strong>Project details placeholder</strong>
+                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                  </div>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
+
+            <article class="project-bar">
+              <button class="project-bar-button" type="button" aria-expanded="false">
+                <span class="project-number">04</span>
+                <span>
+                  <h3>Project Placeholder</h3>
+                  <p>Short project description goes here.</p>
+                </span>
+                <span class="project-arrow">+</span>
+              </button>
+              <div class="project-expand">
+                <div class="project-placeholder">
+                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="placeholder-copy">
+                    <strong>Project details placeholder</strong>
+                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="experience" id="experience">
-        <div class="inner">
-          <div class="eyebrow">a little more</div>
-          <h2 style="margin:0;font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:500;text-transform:uppercase;line-height:.95;">Experience + Involvement</h2>
+      <section class="values" id="values">
+        <div class="inner values-inner">
+          <div class="values-head">
+            <div class="eyebrow">what matters to me</div>
+            <h2>My Values</h2>
+            <p>
+              The ideas I try to bring into the way I learn, design, collaborate, and build.
+            </p>
+          </div>
 
-          <div class="experience-grid">
-            <article class="experience-card">
-              <small>education</small>
-              <h3>Carnegie Mellon</h3>
+          <div class="value-grid">
+            <article class="value-card">
+              <h3>Curiosity</h3>
               <p>
-                Studying Computer Science and Human-Computer Interaction.
+                I like asking why people behave the way they do and how technology can respond
+                to those behaviors in a thoughtful way.
               </p>
             </article>
 
-            <article class="experience-card">
-              <small>leadership</small>
-              <h3>Alpha Phi</h3>
+            <article class="value-card">
+              <h3>Creativity</h3>
               <p>
-                Director of Primary Panhellenic Recruitment with experience in planning,
-                communication, and team leadership.
+                I care about making things that are useful, but I also want them to feel intentional,
+                visual, and memorable.
               </p>
             </article>
 
-            <article class="experience-card">
-              <small>campus</small>
-              <h3>Student Involvement</h3>
+            <article class="value-card">
+              <h3>Empathy</h3>
               <p>
-                Involved with Women in Science and the CMU UX Association.
+                Good design starts with understanding people. I try to keep real users and real
+                experiences at the center of the work.
               </p>
             </article>
 
-            <article class="experience-card">
-              <small>service</small>
-              <h3>Volunteer Work</h3>
+            <article class="value-card">
+              <h3>Growth mindset</h3>
               <p>
-                Experience with Mission Four18 and Hydrate Kids Camp.
+                I’m still learning, and I like that. Every project is a chance to build stronger
+                technical skills, better judgment, and more confidence.
               </p>
             </article>
           </div>
@@ -1062,7 +1198,7 @@
   <script>
     /*
       AI usage note:
-      ChatGPT helped generate the starter structure for this page.
+      ChatGPT helped generate the starter structure and JavaScript interactions.
       I then customized the content, layout, and styling to match my final design.
     */
 
@@ -1078,8 +1214,64 @@
       heroFallback.style.display = "block";
     });
 
-    // Interactive feature: project cards slightly lift and the marquee moves automatically.
-    // The hover interaction is handled with CSS; this keeps the JavaScript simple and explainable.
+    // Outside-the-classroom tabs.
+    const lifeContent = {
+      family: {
+        title: "Family",
+        text: "Add a short paragraph here about your family, why they are important to you, and how they have shaped who you are.",
+        photo: "add a family photo here"
+      },
+      volunteer: {
+        title: "Volunteer Work",
+        text: "I have volunteered with Mission Four18 and Hydrate Kids Camp. Use this space to add the stories, responsibilities, or moments from those experiences that matter most to you.",
+        photo: "add a volunteer photo here"
+      },
+      alpha: {
+        title: "Alpha Phi",
+        text: "I serve as Director of Primary Panhellenic Recruitment. Add more here about the people, leadership, community, and experiences that have made Alpha Phi meaningful to you.",
+        photo: "add an alpha phi photo here"
+      },
+      experience: {
+        title: "Experience",
+        text: "Use this section for research roles, internships, jobs, or other professional experience. You can add a short summary, what you worked on, and what you learned.",
+        photo: "add an experience photo here"
+      }
+    };
+
+    const lifeTabs = document.querySelectorAll(".life-tab");
+    const lifeDetail = document.getElementById("lifeDetail");
+    const lifeTitle = document.getElementById("lifeTitle");
+    const lifeText = document.getElementById("lifeText");
+    const lifePhotoLabel = document.getElementById("lifePhotoLabel");
+
+    lifeTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        lifeTabs.forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-selected", "false");
+        });
+
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+
+        const selected = lifeContent[tab.dataset.life];
+        lifeTitle.textContent = selected.title;
+        lifeText.textContent = selected.text;
+        lifePhotoLabel.textContent = selected.photo;
+        lifeDetail.classList.add("show");
+      });
+    });
+
+    // Stacked project bars expand when tapped/clicked.
+    document.querySelectorAll(".project-bar-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const bar = button.closest(".project-bar");
+        const willOpen = !bar.classList.contains("open");
+
+        bar.classList.toggle("open", willOpen);
+        button.setAttribute("aria-expanded", String(willOpen));
+      });
+    });
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
