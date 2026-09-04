@@ -9,99 +9,79 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>Kadie Keslar | CS + HCI</title>
-
+    <title>Kadie Keslar | Portfolio</title>
 
     <!--
-    ============================================================
+    ==========================================================
     AI USAGE
 
     I used ChatGPT as a brainstorming, coding, and debugging
     assistant while creating this portfolio.
 
     AI helped me:
-    - brainstorm the code-editor portfolio concept
-    - create the initial HTML/CSS/JavaScript
+    - brainstorm visual directions
+    - create starter HTML, CSS, and JavaScript
     - create responsive layouts
-    - create interactive project and personal-life sections
+    - build the interactive Outside the Classroom galleries
     - debug and refine styling
 
-    I reviewed and customized the content, visual direction,
-    structure, colors, wording, and final implementation.
-    ============================================================
+    I reviewed and customized the design, content, wording,
+    colors, layout, and final implementation.
+    ==========================================================
     -->
 
 
     <style>
 
-        /* ========================================================
+        /* ==========================================================
            COLORS
-        ======================================================== */
+        ========================================================== */
 
         :root {
 
-            --background: #f6f0e8;
+            --berry: #a64d72;
+            --berry-dark: #713e55;
+            --berry-soft: #dba7ba;
 
-            --editor: #fffaf4;
+            --pink: #edc9d6;
+            --pale-pink: #f7e5eb;
 
-            --sidebar: #eee3d7;
+            --cream: #f8f1e8;
+            --paper: #fffaf4;
 
-            --tab: #f2e8dc;
+            --tan: #ebddca;
 
-            --border: #d8c8bb;
+            --text: #4c3b41;
+            --muted: #78686e;
 
-            --berry: #96506d;
+            --border: #d9c8bd;
 
-            --berry-dark: #704054;
-
-            --berry-light: #e2c6d1;
-
-            --berry-soft: #f4e5eb;
-
-            --text: #413438;
-
-            --muted: #7b6c6e;
-
-            --green: #63836f;
-
-            --blue: #6f8fac;
-
-            --orange: #be8456;
-
-            --yellow: #c8a34d;
-
-            --white: #ffffff;
+            --green: #718b72;
 
         }
 
 
 
-        /* ========================================================
-           BASIC SETUP
-        ======================================================== */
+        /* ==========================================================
+           BASIC
+        ========================================================== */
 
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
         }
 
 
         html {
-
             scroll-behavior: smooth;
-
         }
 
 
         body {
 
             background:
-                var(--background);
+                var(--cream);
 
             color:
                 var(--text);
@@ -118,420 +98,41 @@
 
 
         img {
-
-            display: block;
-
             width: 100%;
-
+            display: block;
         }
 
 
         a {
-
             color: inherit;
-
             text-decoration: none;
-
         }
 
 
         button {
-
             font: inherit;
-
         }
 
 
 
-        /* ========================================================
-           TOP CODE EDITOR BAR
-        ======================================================== */
+        /* ==========================================================
+           NAVIGATION
+        ========================================================== */
 
-        .topbar {
+        nav {
 
-            position: sticky;
+            position: fixed;
 
             top: 0;
+            left: 0;
 
-            z-index: 1000;
+            width: 100%;
 
-            height: 64px;
-
-            display: flex;
-
-            background:
-                var(--editor);
-
-            border-bottom:
-                1px solid
-                var(--border);
-
-        }
-
-
-        .top-left {
-
-            width: 250px;
-
-            flex-shrink: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 13px;
+            min-height: 70px;
 
             padding:
                 0
-                18px;
-
-            background:
-                var(--sidebar);
-
-            border-right:
-                1px solid
-                var(--border);
-
-            color:
-                var(--berry-dark);
-
-            font-weight: 700;
-
-        }
-
-
-        .window-buttons {
-
-            display: flex;
-
-            gap: 6px;
-
-        }
-
-
-        .window-button {
-
-            width: 10px;
-
-            height: 10px;
-
-            border-radius: 50%;
-
-        }
-
-
-        .red {
-
-            background: #de8585;
-
-        }
-
-
-        .yellow {
-
-            background: #e1bb68;
-
-        }
-
-
-        .green {
-
-            background: #7caf88;
-
-        }
-
-
-        .tabs {
-
-            display: flex;
-
-            flex: 1;
-
-            overflow-x: auto;
-
-        }
-
-
-        .tab {
-
-            min-width: 170px;
-
-            padding:
-                0
-                18px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            background:
-                var(--tab);
-
-            border-right:
-                1px solid
-                var(--border);
-
-            color:
-                var(--muted);
-
-            font-size: 13px;
-
-            white-space: nowrap;
-
-        }
-
-
-        .tab.active {
-
-            background:
-                var(--editor);
-
-            color:
-                var(--berry-dark);
-
-            font-weight: 700;
-
-            border-bottom:
-                3px solid
-                var(--berry);
-
-        }
-
-
-        .file-dot {
-
-            width: 9px;
-
-            height: 9px;
-
-            border-radius: 2px;
-
-            background:
-                var(--berry);
-
-        }
-
-
-
-        /* ========================================================
-           MAIN APP LAYOUT
-        ======================================================== */
-
-        .workspace {
-
-            display: grid;
-
-            grid-template-columns:
-                250px
-                1fr;
-
-            min-height:
-                calc(
-                    100vh - 64px
-                );
-
-        }
-
-
-
-        /* ========================================================
-           FILE EXPLORER
-        ======================================================== */
-
-        .sidebar {
-
-            position: sticky;
-
-            top: 64px;
-
-            height:
-                calc(
-                    100vh - 64px
-                );
-
-            overflow-y: auto;
-
-            padding:
-                25px
-                16px;
-
-            background:
-                var(--sidebar);
-
-            border-right:
-                1px solid
-                var(--border);
-
-        }
-
-
-        .explorer-title {
-
-            margin-bottom: 22px;
-
-            color:
-                var(--muted);
-
-            font-size: 11px;
-
-            font-weight: 700;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-        }
-
-
-        .folder {
-
-            margin-bottom: 22px;
-
-        }
-
-
-        .folder-title {
-
-            margin-bottom: 8px;
-
-            padding:
-                5px
-                8px;
-
-            color:
-                var(--berry-dark);
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-        }
-
-
-        .file-list {
-
-            list-style: none;
-
-            padding-left: 10px;
-
-        }
-
-
-        .file-list a {
-
-            display: block;
-
-            padding:
-                8px
-                10px;
-
-            border-radius: 7px;
-
-            color:
-                var(--text);
-
-            font-size: 13px;
-
-            transition:
-                background .15s ease,
-                transform .15s ease;
-
-        }
-
-
-        .file-list a:hover {
-
-            background:
-                var(--editor);
-
-            transform:
-                translateX(4px);
-
-        }
-
-
-        .mobile-explorer {
-
-            display: none;
-
-            margin-bottom: 18px;
-
-            padding:
-                11px
-                15px;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 9px;
-
-            background:
-                var(--editor);
-
-            color:
-                var(--berry-dark);
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-        }
-
-
-
-        /* ========================================================
-           MAIN CONTENT
-        ======================================================== */
-
-        main {
-
-            padding:
-                30px;
-
-            min-width: 0;
-
-        }
-
-
-        .editor-window {
-
-            margin-bottom: 30px;
-
-            overflow: hidden;
-
-            background:
-                var(--editor);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 15px;
-
-            box-shadow:
-                0
-                14px
-                35px
-                rgba(
-                    65,
-                    52,
-                    56,
-                    .07
-                );
-
-        }
-
-
-        .editor-header {
-
-            min-height: 52px;
-
-            padding:
-                0
-                18px;
+                7%;
 
             display: flex;
 
@@ -539,62 +140,150 @@
 
             justify-content: space-between;
 
-            gap: 15px;
-
             background:
-                var(--tab);
+                rgba(
+                    248,
+                    241,
+                    232,
+                    .94
+                );
+
+            backdrop-filter:
+                blur(10px);
 
             border-bottom:
                 1px solid
                 var(--border);
 
+            z-index: 1000;
+
         }
 
 
-        .editor-file {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
+        .nav-name {
 
             color:
                 var(--berry-dark);
 
-            font-size: 13px;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
 
-            font-weight: 700;
+            font-size:
+                21px;
+
+            font-weight:
+                bold;
 
         }
 
 
-        .editor-status {
+        .nav-links {
+
+            display: flex;
+
+            gap: 28px;
+
+            list-style: none;
+
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
 
             color:
-                var(--muted);
-
-            font-size: 11px;
+                var(--text);
 
         }
 
 
-        .editor-content {
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -6px;
+
+            width: 0;
+
+            height: 3px;
+
+            background:
+                var(--berry);
+
+            transition:
+                width .2s ease;
+
+        }
+
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        .menu-button {
+
+            display: none;
+
+            border: 0;
+
+            background:
+                transparent;
+
+            color:
+                var(--berry-dark);
+
+            font-size:
+                27px;
+
+            cursor:
+                pointer;
+
+        }
+
+
+
+        /* ==========================================================
+           GENERAL SECTIONS
+        ========================================================== */
+
+        section {
+
+            position:
+                relative;
+
+        }
+
+
+        section:not(#home) {
 
             padding:
-                28px;
+                110px
+                8%;
 
         }
 
 
+        .code-label {
 
-        /* ========================================================
-           SECTION HEADERS
-        ======================================================== */
-
-        .section-comment {
-
-            margin-bottom: 10px;
+            margin-bottom:
+                12px;
 
             color:
                 var(--green);
@@ -603,14 +292,19 @@
                 "Courier New",
                 monospace;
 
-            font-size: 13px;
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
 
         }
 
 
-        .section-title {
+        .section-heading {
 
-            margin-bottom: 28px;
+            margin-bottom:
+                38px;
 
             color:
                 var(--berry-dark);
@@ -622,567 +316,367 @@
 
             font-size:
                 clamp(
-                    42px,
-                    6vw,
-                    70px
+                    55px,
+                    8vw,
+                    105px
                 );
 
-            font-weight: normal;
+            line-height:
+                .95;
 
-            line-height: 1;
+            font-weight:
+                normal;
+
+        }
+
+
+        .highlight {
+
+            display:
+                inline;
+
+            padding:
+                0
+                10px;
+
+            color:
+                white;
+
+            background:
+                var(--berry);
 
         }
 
 
 
-        /* ========================================================
-           HOME
-        ======================================================== */
+        /* ==========================================================
+           HERO
+        ========================================================== */
 
-        .hero {
+        #home {
 
-            display: grid;
+            min-height:
+                100vh;
+
+            padding:
+                120px
+                8%
+                75px;
+
+            display:
+                grid;
 
             grid-template-columns:
                 1.1fr
                 .9fr;
 
-            gap: 28px;
+            gap:
+                55px;
 
-            align-items: stretch;
+            align-items:
+                center;
 
-        }
-
-
-        .code-panel {
-
-            padding:
-                24px;
-
-            overflow-x: auto;
-
-            background:
-                #fbf7f1;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 14px;
-
-        }
-
-
-        .code-panel pre {
-
-            white-space: pre-wrap;
-
-            color:
-                var(--text);
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 15px;
-
-            line-height: 1.9;
-
-        }
-
-
-        .code-comment {
-
-            color:
-                var(--green);
-
-        }
-
-
-        .code-keyword {
-
-            color:
-                var(--berry-dark);
-
-            font-weight: 700;
-
-        }
-
-
-        .code-property {
-
-            color:
-                var(--blue);
-
-        }
-
-
-        .code-string {
-
-            color:
-                var(--green);
-
-        }
-
-
-        .code-function {
-
-            color:
-                var(--orange);
-
-        }
-
-
-        .cursor {
-
-            display: inline-block;
-
-            width: 8px;
-
-            height: 18px;
-
-            margin-left: 3px;
-
-            vertical-align: middle;
-
-            background:
+            background-color:
                 var(--berry);
 
-            animation:
-                blink
-                1s
-                steps(2)
-                infinite;
+            color:
+                white;
 
-        }
-
-
-        @keyframes blink {
-
-            50% {
-
-                opacity: 0;
-
-            }
+            overflow:
+                hidden;
 
         }
 
 
 
-        /* ========================================================
-           PROFILE PREVIEW
-        ======================================================== */
+        /* subtle fabric effect */
 
-        .profile-preview {
+        #home::before {
 
-            padding:
-                20px;
+            content: "";
 
-            display: flex;
+            position:
+                absolute;
 
-            flex-direction: column;
+            inset:
+                0;
 
-            gap: 16px;
+            background-image:
 
-            background:
-                linear-gradient(
-                    160deg,
-                    var(--berry-soft),
-                    #fff8fa
+                repeating-linear-gradient(
+
+                    0deg,
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .04
+                    ),
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .04
+                    )
+                    1px,
+
+                    transparent
+                    1px,
+
+                    transparent
+                    6px
+
+                ),
+
+                repeating-linear-gradient(
+
+                    90deg,
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .025
+                    ),
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .025
+                    )
+                    1px,
+
+                    transparent
+                    1px,
+
+                    transparent
+                    8px
+
                 );
 
-            border:
-                1px solid
-                var(--border);
+        }
 
-            border-radius: 14px;
+
+        .hero-text {
+
+            position:
+                relative;
+
+            z-index:
+                3;
 
         }
 
 
-        .preview-label {
+        .hero-code {
 
-            color:
-                var(--muted);
+            margin-bottom:
+                15px;
 
             font-family:
                 "Courier New",
                 monospace;
 
-            font-size: 11px;
+            font-size:
+                12px;
+
+            color:
+                #f8e8ed;
 
         }
 
 
-        .main-photo {
+        .meet {
 
-            width: 100%;
-
-            height: 390px;
-
-            overflow: hidden;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 13px;
-
-        }
-
-
-        .main-photo img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            object-position: center;
-
-        }
-
-
-        .profile-description {
+            display:
+                inline-block;
 
             padding:
+                4px
                 15px;
 
             background:
-                var(--editor);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 11px;
-
-            font-size: 15px;
-
-            line-height: 1.7;
-
-        }
-
-
-
-        /* ========================================================
-           BUTTONS
-        ======================================================== */
-
-        .buttons {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 12px;
-
-        }
-
-
-        .button {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding:
-                12px
-                17px;
-
-            border:
-                1px solid
-                var(--berry);
-
-            border-radius: 9px;
-
-            background:
-                var(--berry);
-
-            color:
-                white;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            box-shadow:
-                0
-                5px
-                0
                 var(--berry-dark);
 
-            transition:
-                transform .15s ease,
-                box-shadow .15s ease;
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    70px
+                );
 
-        }
-
-
-        .button:hover {
+            font-weight:
+                900;
 
             transform:
-                translateY(-4px);
+                rotate(-2deg);
 
             box-shadow:
+                7px
+                7px
                 0
-                9px
-                0
-                var(--berry-dark);
+                var(--pink);
 
         }
 
 
-        .button.secondary {
+        .hero-name {
 
-            background:
-                var(--berry-soft);
-
-            border-color:
-                var(--berry-light);
-
-            color:
-                var(--berry-dark);
-
-            box-shadow:
-                0
-                5px
-                0
-                var(--berry-light);
-
-        }
-
-
-        .button.secondary:hover {
-
-            box-shadow:
-                0
-                9px
-                0
-                var(--berry-light);
-
-        }
-
-
-
-        /* ========================================================
-           ABOUT
-        ======================================================== */
-
-        .about-layout {
-
-            display: grid;
-
-            grid-template-columns:
-                .85fr
-                1.15fr;
-
-            gap: 26px;
-
-            align-items: start;
-
-        }
-
-
-        .photo-card {
-
-            padding:
-                17px;
-
-            background:
-                var(--berry-soft);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 14px;
-
-        }
-
-
-        .about-photo {
-
-            width: 100%;
-
-            height: 440px;
-
-            overflow: hidden;
-
-            background:
-                white;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 12px;
-
-        }
-
-
-        .about-photo img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            object-position: center;
-
-        }
-
-
-        .photo-caption {
-
-            margin-top: 13px;
-
-            padding:
-                13px;
-
-            background:
-                var(--editor);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 9px;
-
-            color:
-                var(--berry-dark);
-
-            font-family:
-                "Courier New",
-                monospace;
-
-            font-size: 13px;
-
-            line-height: 1.6;
-
-        }
-
-
-        .about-text {
-
-            padding:
-                22px;
-
-            background:
-                #fbf7f1;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 14px;
-
-        }
-
-
-        .about-text h3 {
-
-            margin-bottom: 18px;
-
-            color:
-                var(--berry-dark);
+            margin-top:
+                6px;
 
             font-family:
                 Georgia,
                 "Times New Roman",
                 serif;
 
-            font-size: 34px;
+            font-size:
+                clamp(
+                    80px,
+                    13vw,
+                    180px
+                );
+
+            font-weight:
+                normal;
+
+            letter-spacing:
+                -7px;
+
+            line-height:
+                .88;
 
         }
 
 
-        .about-text p {
+        .hero-title {
 
-            margin-bottom: 18px;
+            margin-top:
+                25px;
 
-            font-size: 16px;
-
-            line-height: 1.85;
-
-        }
-
-
-        .inline-code {
-
-            display: inline-block;
-
-            padding:
-                5px
-                9px;
-
-            background:
-                var(--berry-soft);
-
-            border-radius: 6px;
-
-            color:
-                var(--berry-dark);
+            max-width:
+                650px;
 
             font-family:
-                "Courier New",
-                monospace;
+                Georgia,
+                "Times New Roman",
+                serif;
 
-            font-size: 14px;
+            font-size:
+                clamp(
+                    24px,
+                    3vw,
+                    38px
+                );
 
-        }
-
-
-
-        /* ========================================================
-           SKILLS
-        ======================================================== */
-
-        .skill-layout {
-
-            margin-top: 25px;
-
-            display: grid;
-
-            grid-template-columns:
-                1fr
-                1fr;
-
-            gap: 18px;
+            font-weight:
+                normal;
 
         }
 
 
-        .skill-card {
+        .hero-description {
 
-            padding:
+            margin-top:
                 20px;
 
-            background:
-                #fbf7f1;
+            max-width:
+                600px;
 
-            border:
-                1px solid
-                var(--border);
+            font-size:
+                16px;
 
-            border-radius: 13px;
+            line-height:
+                1.75;
 
         }
 
 
-        .skill-card h4 {
+        .code-snippet {
 
-            margin-bottom: 15px;
+            display:
+                inline-block;
+
+            margin-top:
+                22px;
+
+            padding:
+                11px
+                16px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .12
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .45
+                );
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                13px;
+
+        }
+
+
+
+        /* ==========================================================
+           BUTTONS
+        ========================================================== */
+
+        .buttons {
+
+            margin-top:
+                30px;
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                15px;
+
+        }
+
+
+        .button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                13px
+                21px;
+
+            border:
+                2px solid
+                var(--berry-dark);
+
+            background:
+                var(--paper);
 
             color:
                 var(--berry-dark);
@@ -1191,77 +685,17 @@
                 "Courier New",
                 monospace;
 
-            font-size: 16px;
+            font-size:
+                12px;
 
-        }
+            font-weight:
+                bold;
 
-
-        .tags {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 9px;
-
-        }
-
-
-        .tag {
-
-            padding:
-                7px
-                11px;
-
-            background:
-                var(--berry-soft);
-
-            color:
+            box-shadow:
+                6px
+                6px
+                0
                 var(--berry-dark);
-
-            border:
-                1px solid
-                var(--berry-light);
-
-            border-radius: 999px;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-        }
-
-
-
-        /* ========================================================
-           PROJECTS
-        ======================================================== */
-
-        .project-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr
-                1fr;
-
-            gap: 20px;
-
-        }
-
-
-        .project {
-
-            overflow: hidden;
-
-            background:
-                #fbf7f1;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 14px;
 
             transition:
                 transform .16s ease,
@@ -1270,50 +704,429 @@
         }
 
 
-        .project:hover {
+        .button:hover {
 
             transform:
-                translateY(-5px);
+                translate(
+                    -6px,
+                    -6px
+                );
 
             box-shadow:
+                12px
+                12px
                 0
-                14px
-                28px
+                var(--berry-dark);
+
+        }
+
+
+        .button.pink {
+
+            background:
+                var(--pink);
+
+        }
+
+
+
+        /* ==========================================================
+           HERO PHOTO
+        ========================================================== */
+
+        .hero-photo-area {
+
+            position:
+                relative;
+
+            min-height:
+                550px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+        }
+
+
+        .hero-pattern {
+
+            position:
+                absolute;
+
+            right:
+                -15px;
+
+            bottom:
+                20px;
+
+            width:
+                270px;
+
+            height:
+                390px;
+
+            background-color:
+                var(--pink);
+
+            background-image:
+
+                linear-gradient(
+
+                    90deg,
+
+                    rgba(
+                        166,
+                        77,
+                        114,
+                        .14
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                ),
+
+                linear-gradient(
+
+                    rgba(
+                        166,
+                        77,
+                        114,
+                        .14
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                );
+
+            background-size:
+                34px
+                34px;
+
+            transform:
+                rotate(-6deg);
+
+            border:
+                2px solid
+                var(--berry-dark);
+
+        }
+
+
+        .hero-photo {
+
+            position:
+                relative;
+
+            width:
+                min(
+                    390px,
+                    82vw
+                );
+
+            height:
+                500px;
+
+            overflow:
+                hidden;
+
+            background:
+                var(--pink);
+
+            clip-path:
+                polygon(
+                    5% 1%,
+                    96% 3%,
+                    100% 94%,
+                    92% 100%,
+                    1% 96%,
+                    0 8%
+                );
+
+            transform:
+                rotate(3deg);
+
+            box-shadow:
+                15px
+                17px
+                0
                 rgba(
-                    65,
-                    52,
-                    56,
-                    .1
+                    113,
+                    62,
+                    85,
+                    .45
                 );
 
         }
 
 
-        .project-bar {
+        .hero-photo img {
 
-            padding:
-                13px
-                15px;
+            width:
+                100%;
 
-            display: flex;
+            height:
+                100%;
 
-            align-items: center;
+            object-fit:
+                cover;
 
-            justify-content: space-between;
-
-            gap: 10px;
-
-            background:
-                var(--tab);
-
-            border-bottom:
-                1px solid
-                var(--border);
+            object-position:
+                center;
 
         }
 
 
-        .project-file {
+        .hero-photo::before {
+
+            content: "";
+
+            position:
+                absolute;
+
+            top:
+                -4px;
+
+            left:
+                50%;
+
+            width:
+                130px;
+
+            height:
+                35px;
+
+            background:
+                rgba(
+                    235,
+                    218,
+                    184,
+                    .88
+                );
+
+            transform:
+                translateX(-50%)
+                rotate(-4deg);
+
+            z-index:
+                5;
+
+        }
+
+
+
+        /* ==========================================================
+           ABOUT
+        ========================================================== */
+
+        #about {
+
+            background-color:
+                var(--cream);
+
+            background-image:
+
+                radial-gradient(
+
+                    rgba(
+                        113,
+                        62,
+                        85,
+                        .05
+                    )
+                    1px,
+
+                    transparent
+                    1px
+
+                );
+
+            background-size:
+                9px
+                9px;
+
+        }
+
+
+        .about-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                .9fr
+                1.1fr;
+
+            gap:
+                70px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .about-image-area {
+
+            position:
+                relative;
+
+            min-height:
+                510px;
+
+        }
+
+
+        .about-photo {
+
+            width:
+                72%;
+
+            height:
+                430px;
+
+            overflow:
+                hidden;
+
+            background:
+                var(--pink);
+
+            clip-path:
+                polygon(
+                    4% 1%,
+                    96% 3%,
+                    100% 94%,
+                    92% 100%,
+                    1% 96%,
+                    0 7%
+                );
+
+            transform:
+                rotate(-4deg);
+
+            box-shadow:
+                12px
+                13px
+                0
+                var(--berry-soft);
+
+        }
+
+
+        .about-photo img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            object-position:
+                center;
+
+        }
+
+
+        .about-code-note {
+
+            position:
+                absolute;
+
+            right:
+                0;
+
+            bottom:
+                25px;
+
+            width:
+                58%;
+
+            padding:
+                23px;
+
+            background:
+                var(--berry);
+
+            color:
+                white;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.7;
+
+            transform:
+                rotate(3deg);
+
+            box-shadow:
+                7px
+                8px
+                0
+                var(--pink);
+
+        }
+
+
+        .about-text h3 {
+
+            margin-bottom:
+                18px;
+
+            color:
+                var(--berry-dark);
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                34px;
+
+        }
+
+
+        .about-text p {
+
+            margin-bottom:
+                18px;
+
+            line-height:
+                1.85;
+
+            font-size:
+                16px;
+
+        }
+
+
+        .inline-code {
+
+            display:
+                inline-block;
+
+            padding:
+                8px
+                11px;
+
+            background:
+                var(--pale-pink);
 
             color:
                 var(--berry-dark);
@@ -1322,67 +1135,261 @@
                 "Courier New",
                 monospace;
 
-            font-size: 12px;
-
-            font-weight: 700;
-
-        }
-
-
-        .status {
-
-            color:
-                var(--muted);
-
-            font-size: 11px;
+            font-size:
+                13px;
 
         }
 
 
-        .project-content {
+
+        /* ==========================================================
+           SKILLS
+        ========================================================== */
+
+        .skill-grid {
+
+            margin-top:
+                70px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap:
+                30px;
+
+        }
+
+
+        .skill-card {
 
             padding:
-                20px;
+                30px;
+
+            background:
+                var(--paper);
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                8px
+                8px
+                0
+                var(--pink);
 
         }
 
 
-        .project-content h3 {
+        .skill-card h3 {
 
-            margin-bottom: 13px;
+            margin-bottom:
+                20px;
+
+            color:
+                var(--berry-dark);
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                17px;
+
+        }
+
+
+        .tags {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                10px;
+
+        }
+
+
+        .tag {
+
+            padding:
+                8px
+                12px;
+
+            background:
+                var(--pale-pink);
+
+            color:
+                var(--berry-dark);
+
+            border:
+                1px solid
+                var(--berry-soft);
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                11px;
+
+            font-weight:
+                bold;
+
+        }
+
+
+
+        /* ==========================================================
+           PROJECTS
+        ========================================================== */
+
+        #projects {
+
+            background:
+                var(--pale-pink);
+
+        }
+
+
+        .project-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap:
+                30px;
+
+        }
+
+
+        .project-card {
+
+            background:
+                var(--paper);
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                8px
+                9px
+                0
+                var(--berry-soft);
+
+            transition:
+                transform .18s ease,
+                box-shadow .18s ease;
+
+        }
+
+
+        .project-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                12px
+                15px
+                0
+                var(--berry-soft);
+
+        }
+
+
+        .project-header {
+
+            padding:
+                13px
+                17px;
+
+            background:
+                var(--tan);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                12px;
+
+            color:
+                var(--berry-dark);
+
+        }
+
+
+        .project-body {
+
+            padding:
+                28px;
+
+        }
+
+
+        .project-body h3 {
+
+            margin-bottom:
+                15px;
 
             color:
                 var(--berry-dark);
 
             font-family:
                 Georgia,
-                "Times New Roman",
                 serif;
 
-            font-size: 28px;
+            font-size:
+                30px;
 
         }
 
 
-        .project-content p {
+        .project-body p {
 
-            margin-bottom: 17px;
+            margin-bottom:
+                20px;
 
-            font-size: 15px;
-
-            line-height: 1.75;
+            line-height:
+                1.8;
 
         }
 
 
 
-        /* ========================================================
+        /* ==========================================================
            EXPERIENCE
-        ======================================================== */
+        ========================================================== */
+
+        #experience {
+
+            background:
+                var(--cream);
+
+        }
+
 
         .experience-grid {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
@@ -1390,31 +1397,37 @@
                     1fr
                 );
 
-            gap: 18px;
+            gap:
+                25px;
 
         }
 
 
-        .experience {
+        .experience-card {
 
             padding:
-                20px;
+                28px;
 
             background:
-                #fbf7f1;
+                var(--paper);
 
             border:
                 1px solid
                 var(--border);
 
-            border-radius: 13px;
+            box-shadow:
+                6px
+                7px
+                0
+                var(--pink);
 
         }
 
 
-        .experience h3 {
+        .experience-card h3 {
 
-            margin-bottom: 13px;
+            margin-bottom:
+                16px;
 
             color:
                 var(--berry-dark);
@@ -1423,311 +1436,490 @@
                 "Courier New",
                 monospace;
 
-            font-size: 18px;
+        }
+
+
+        .experience-card p {
+
+            line-height:
+                1.8;
 
         }
 
 
-        .experience p {
 
-            font-size: 14px;
+        /* ==========================================================
+           OUTSIDE THE CLASSROOM
+        ========================================================== */
 
-            line-height: 1.75;
+        #life {
+
+            background-color:
+                var(--pale-pink);
+
+            background-image:
+
+                radial-gradient(
+
+                    rgba(
+                        113,
+                        62,
+                        85,
+                        .05
+                    )
+                    1px,
+
+                    transparent
+                    1px
+
+                );
+
+            background-size:
+                9px
+                9px;
 
         }
 
-
-
-        /* ========================================================
-           OUTSIDE CLASSROOM
-        ======================================================== */
 
         .life-intro {
 
-            max-width: 760px;
+            max-width:
+                760px;
 
-            margin-bottom: 25px;
+            margin-bottom:
+                45px;
 
-            font-size: 16px;
+            line-height:
+                1.8;
 
-            line-height: 1.8;
+            font-size:
+                17px;
 
         }
 
 
-        .life-files {
+        .life-grid {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
-                    5,
+                    3,
                     1fr
                 );
 
-            gap: 14px;
+            gap:
+                28px;
 
         }
 
 
-        .life-file {
+        .life-card {
 
-            min-height: 180px;
+            position:
+                relative;
+
+            min-height:
+                280px;
 
             padding:
-                17px;
+                0;
 
-            text-align: left;
-
-            background:
-                #fbf7f1;
+            overflow:
+                hidden;
 
             border:
-                1px solid
-                var(--border);
+                0;
 
-            border-radius: 12px;
+            background:
+                var(--paper);
 
             color:
                 var(--text);
 
-            cursor: pointer;
+            text-align:
+                left;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                8px
+                9px
+                0
+                var(--berry-soft);
 
             transition:
-                transform .16s ease,
-                box-shadow .16s ease,
-                border .16s ease;
+                transform .18s ease,
+                box-shadow .18s ease;
 
         }
 
 
-        .life-file:hover {
+        .life-card:nth-child(2) {
 
             transform:
-                translateY(-5px);
+                rotate(1deg);
 
-            border-color:
-                var(--berry-light);
+        }
+
+
+        .life-card:nth-child(3) {
+
+            transform:
+                rotate(-1deg);
+
+        }
+
+
+        .life-card:hover {
+
+            transform:
+                translate(
+                    -5px,
+                    -7px
+                )
+                rotate(0deg);
 
             box-shadow:
+                14px
+                16px
                 0
-                12px
-                24px
-                rgba(
-                    65,
-                    52,
-                    56,
-                    .09
+                var(--berry-soft);
+
+        }
+
+
+        .life-preview {
+
+            height:
+                170px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            color:
+                var(--berry-dark);
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                25px;
+
+            font-weight:
+                bold;
+
+        }
+
+
+        .mission-preview {
+
+            background-color:
+                var(--pink);
+
+            background-image:
+
+                radial-gradient(
+                    var(--berry)
+                    2px,
+                    transparent
+                    2px
+                );
+
+            background-size:
+                20px
+                20px;
+
+        }
+
+
+        .travel-preview {
+
+            background:
+
+                linear-gradient(
+                    140deg,
+                    #f2d6de,
+                    #ead9c8
                 );
 
         }
 
 
-        .life-type {
+        .people-preview {
 
-            margin-bottom: 13px;
+            background-color:
+                var(--cream);
 
-            color:
-                var(--green);
+            background-image:
 
-            font-family:
-                "Courier New",
-                monospace;
+                repeating-linear-gradient(
 
-            font-size: 10px;
+                    0deg,
 
-            letter-spacing: 1px;
+                    transparent,
 
-        }
+                    transparent
+                    12px,
 
+                    rgba(
+                        166,
+                        77,
+                        114,
+                        .12
+                    )
+                    12px,
 
-        .life-file h3 {
+                    rgba(
+                        166,
+                        77,
+                        114,
+                        .12
+                    )
+                    14px
 
-            margin-bottom: 11px;
-
-            color:
-                var(--berry-dark);
-
-            font-family:
-                "Courier New",
-                monospace;
-
-            font-size: 14px;
-
-            line-height: 1.4;
-
-        }
-
-
-        .life-file p {
-
-            color:
-                var(--muted);
-
-            font-size: 13px;
-
-            line-height: 1.6;
+                );
 
         }
 
 
+        .campus-preview {
 
-        /* ========================================================
-           TERMINAL CONTACT
-        ======================================================== */
+            background-color:
+                var(--pink);
 
-        .terminal {
+            background-image:
 
-            overflow: hidden;
+                linear-gradient(
+
+                    90deg,
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .2
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                ),
+
+                linear-gradient(
+
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .2
+                    )
+                    50%,
+
+                    transparent
+                    50%
+
+                );
+
+            background-size:
+                28px
+                28px;
+
+        }
+
+
+        .favorites-preview {
 
             background:
-                #fbf7f1;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 13px;
+                var(--tan);
 
         }
 
 
-        .terminal-title {
-
-            padding:
-                12px
-                15px;
-
-            background:
-                var(--tab);
-
-            border-bottom:
-                1px solid
-                var(--border);
-
-            color:
-                var(--berry-dark);
-
-            font-family:
-                "Courier New",
-                monospace;
-
-            font-size: 12px;
-
-        }
-
-
-        .terminal-body {
+        .life-content {
 
             padding:
                 20px;
 
+        }
+
+
+        .life-content small {
+
+            color:
+                var(--green);
+
             font-family:
                 "Courier New",
                 monospace;
 
-            font-size: 14px;
-
-            line-height: 1.9;
-
         }
 
 
-        .prompt {
+        .life-content h3 {
+
+            margin:
+                8px
+                0;
 
             color:
                 var(--berry-dark);
 
-            font-weight: bold;
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                25px;
 
         }
 
 
-        .answer {
+        .life-content p {
 
-            color:
-                var(--green);
+            line-height:
+                1.6;
+
+            font-size:
+                14px;
+
+        }
+
+
+
+        /* ==========================================================
+           CONTACT
+        ========================================================== */
+
+        #contact {
+
+            text-align:
+                center;
+
+            background:
+                var(--cream);
+
+        }
+
+
+        .contact-copy {
+
+            max-width:
+                600px;
+
+            margin:
+                0
+                auto
+                35px;
+
+            line-height:
+                1.8;
 
         }
 
 
         .contact-buttons {
 
-            margin-top: 20px;
+            display:
+                flex;
 
-            display: flex;
+            flex-wrap:
+                wrap;
 
-            flex-wrap: wrap;
+            gap:
+                14px;
 
-            gap: 12px;
+            justify-content:
+                center;
 
         }
 
 
 
-        /* ========================================================
+        /* ==========================================================
            FOOTER
-        ======================================================== */
+        ========================================================== */
 
-        .footer {
+        footer {
 
-            margin-top: 25px;
+            padding:
+                35px
+                8%;
 
-            padding-top: 20px;
-
-            border-top:
-                1px solid
-                var(--border);
+            background:
+                var(--berry-dark);
 
             color:
-                var(--muted);
+                white;
 
-            font-size: 11px;
+            font-size:
+                12px;
 
-            line-height: 1.7;
+            line-height:
+                1.7;
 
         }
 
 
 
-        /* ========================================================
+        /* ==========================================================
            MODALS
-        ======================================================== */
+        ========================================================== */
 
         .modal {
 
-            display: none;
+            display:
+                none;
 
-            position: fixed;
+            position:
+                fixed;
 
-            inset: 0;
+            inset:
+                0;
 
-            z-index: 3000;
+            z-index:
+                3000;
 
             padding:
-                25px;
+                30px;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
             background:
                 rgba(
-                    65,
-                    52,
-                    56,
-                    .45
+                    70,
+                    50,
+                    60,
+                    .55
                 );
 
             backdrop-filter:
-                blur(5px);
+                blur(6px);
 
         }
 
 
         .modal.open {
 
-            display: flex;
+            display:
+                flex;
 
         }
 
@@ -1736,54 +1928,55 @@
 
             width:
                 min(
-                    900px,
-                    95vw
+                    1050px,
+                    96vw
                 );
 
             max-height:
-                88vh;
+                90vh;
 
-            overflow-y: auto;
+            overflow-y:
+                auto;
 
             background:
-                var(--editor);
+                var(--cream);
 
             border:
                 1px solid
                 var(--border);
 
-            border-radius: 14px;
-
             box-shadow:
+                12px
+                14px
                 0
-                25px
-                50px
-                rgba(
-                    65,
-                    52,
-                    56,
-                    .2
-                );
+                var(--berry-soft);
 
         }
 
 
-        .modal-bar {
+        .modal-header {
 
-            min-height: 54px;
+            min-height:
+                58px;
 
             padding:
                 0
-                17px;
+                20px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
 
             background:
-                var(--tab);
+                var(--tan);
 
             border-bottom:
                 1px solid
@@ -1792,7 +1985,7 @@
         }
 
 
-        .modal-bar strong {
+        .modal-file {
 
             color:
                 var(--berry-dark);
@@ -1801,7 +1994,8 @@
                 "Courier New",
                 monospace;
 
-            font-size: 13px;
+            font-weight:
+                bold;
 
         }
 
@@ -1810,11 +2004,10 @@
 
             padding:
                 8px
-                12px;
+                13px;
 
-            border: 0;
-
-            border-radius: 7px;
+            border:
+                0;
 
             background:
                 var(--berry);
@@ -1822,7 +2015,11 @@
             color:
                 white;
 
-            cursor: pointer;
+            font-weight:
+                bold;
+
+            cursor:
+                pointer;
 
         }
 
@@ -1830,57 +2027,15 @@
         .modal-content {
 
             padding:
-                25px;
+                35px;
 
         }
 
 
-        .modal-layout {
+        .modal-content h2 {
 
-            display: grid;
-
-            grid-template-columns:
-                .85fr
-                1.15fr;
-
-            gap: 25px;
-
-        }
-
-
-        .modal-photo {
-
-            min-height: 340px;
-
-            padding:
-                20px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                var(--berry-soft);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 11px;
-
-            color:
-                var(--muted);
-
-            text-align: center;
-
-        }
-
-
-        .modal-copy h2 {
-
-            margin-bottom: 17px;
+            margin-bottom:
+                18px;
 
             color:
                 var(--berry-dark);
@@ -1889,42 +2044,211 @@
                 Georgia,
                 serif;
 
-            font-size: 35px;
+            font-size:
+                clamp(
+                    45px,
+                    7vw,
+                    80px
+                );
+
+            font-weight:
+                normal;
 
         }
 
 
-        .modal-copy p {
+        .modal-intro {
 
-            margin-bottom: 16px;
+            max-width:
+                760px;
 
-            line-height: 1.8;
+            margin-bottom:
+                30px;
+
+            line-height:
+                1.8;
 
         }
 
 
 
-        /* ========================================================
-           SCROLL ANIMATION
-        ======================================================== */
+        /* ==========================================================
+           PHOTO GALLERY INSIDE EACH OUTSIDE CLASS MODAL
+        ========================================================== */
+
+        .gallery {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                18px;
+
+            margin:
+                30px
+                0;
+
+        }
+
+
+        .gallery-photo {
+
+            min-height:
+                260px;
+
+            overflow:
+                hidden;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--pink);
+
+            border:
+                8px solid
+                var(--paper);
+
+            box-shadow:
+                5px
+                6px
+                0
+                var(--berry-soft);
+
+            color:
+                var(--berry-dark);
+
+            text-align:
+                center;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .gallery-photo:nth-child(1) {
+            transform:
+                rotate(-2deg);
+        }
+
+
+        .gallery-photo:nth-child(2) {
+            transform:
+                rotate(1deg);
+        }
+
+
+        .gallery-photo:nth-child(3) {
+            transform:
+                rotate(-1deg);
+        }
+
+
+        .gallery-photo img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            min-height:
+                260px;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .modal-story {
+
+            margin-top:
+                30px;
+
+            padding:
+                25px;
+
+            background:
+                var(--paper);
+
+            border:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .modal-story h3 {
+
+            margin-bottom:
+                15px;
+
+            color:
+                var(--berry-dark);
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                29px;
+
+        }
+
+
+        .modal-story p {
+
+            margin-bottom:
+                15px;
+
+            line-height:
+                1.85;
+
+        }
+
+
+
+        /* ==========================================================
+           SCROLL REVEAL
+        ========================================================== */
 
         .reveal {
 
-            opacity: 0;
+            opacity:
+                0;
 
             transform:
-                translateY(20px);
+                translateY(25px);
 
             transition:
-                opacity .65s ease,
-                transform .65s ease;
+                opacity .7s ease,
+                transform .7s ease;
 
         }
 
 
         .reveal.visible {
 
-            opacity: 1;
+            opacity:
+                1;
 
             transform:
                 translateY(0);
@@ -1933,15 +2257,14 @@
 
 
 
-        /* ========================================================
+        /* ==========================================================
            RESPONSIVE
-        ======================================================== */
+        ========================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1000px) {
 
-            .hero,
-            .about-layout,
-            .modal-layout {
+            #home,
+            .about-grid {
 
                 grid-template-columns:
                     1fr;
@@ -1965,76 +2288,19 @@
             }
 
 
-            .life-files {
+            .life-grid {
 
                 grid-template-columns:
-                    repeat(
-                        2,
-                        1fr
-                    );
-
-            }
-
-        }
-
-
-        @media (max-width: 850px) {
-
-            .workspace {
-
-                display: block;
+                    1fr
+                    1fr;
 
             }
 
 
-            .sidebar {
-
-                display: none;
-
-                position: static;
-
-                height: auto;
-
-                border-right: 0;
-
-                border-bottom:
-                    1px solid
-                    var(--border);
-
-            }
-
-
-            .sidebar.open {
-
-                display: block;
-
-            }
-
-
-            .mobile-explorer {
-
-                display: block;
-
-            }
-
-
-            .top-left {
-
-                width: 180px;
-
-            }
-
-
-            main {
-
-                padding: 16px;
-
-            }
-
-
-            .skill-layout {
+            .gallery {
 
                 grid-template-columns:
+                    1fr
                     1fr;
 
             }
@@ -2042,54 +2308,59 @@
         }
 
 
-        @media (max-width: 600px) {
+        @media (max-width: 750px) {
 
-            .topbar {
+            .menu-button {
 
-                height: auto;
-
-                flex-direction: column;
-
-            }
-
-
-            .top-left {
-
-                width: 100%;
-
-                min-height: 55px;
-
-                border-right: 0;
-
-                border-bottom:
-                    1px solid
-                    var(--border);
+                display:
+                    block;
 
             }
 
 
-            .tabs {
+            .nav-links {
 
-                width: 100%;
+                display:
+                    none;
+
+                position:
+                    absolute;
+
+                top:
+                    70px;
+
+                left:
+                    0;
+
+                width:
+                    100%;
+
+                padding:
+                    25px;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    center;
+
+                background:
+                    var(--cream);
 
             }
 
 
-            .tab {
+            .nav-links.open {
 
-                min-width: 150px;
-
-            }
-
-
-            .editor-content {
-
-                padding: 18px;
+                display:
+                    flex;
 
             }
 
 
-            .life-files {
+            .skill-grid,
+            .life-grid,
+            .gallery {
 
                 grid-template-columns:
                     1fr;
@@ -2097,16 +2368,77 @@
             }
 
 
-            .main-photo {
+            .modal-content {
 
-                height: 330px;
+                padding:
+                    25px;
 
             }
 
 
-            .about-photo {
+            .gallery-photo {
 
-                height: 390px;
+                min-height:
+                    300px;
+
+            }
+
+
+            .gallery-photo img {
+
+                min-height:
+                    300px;
+
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            section:not(#home) {
+
+                padding:
+                    85px
+                    6%;
+
+            }
+
+
+            #home {
+
+                padding-left:
+                    6%;
+
+                padding-right:
+                    6%;
+
+            }
+
+
+            .hero-name {
+
+                font-size:
+                    82px;
+
+                letter-spacing:
+                    -4px;
+
+            }
+
+
+            .section-heading {
+
+                font-size:
+                    52px;
+
+            }
+
+
+            .modal {
+
+                padding:
+                    15px;
 
             }
 
@@ -2114,7 +2446,6 @@
 
 
     </style>
-
 
 </head>
 
@@ -2124,1674 +2455,1162 @@
 
 
 
-    <!-- ========================================================
-         TOP BAR
-    ======================================================== -->
+    <!-- ==========================================================
+         NAVIGATION
+    ========================================================== -->
 
-    <header class="topbar">
-
-
-        <div class="top-left">
+    <nav>
 
 
-            <div class="window-buttons">
+        <a
+            href="#home"
+            class="nav-name">
 
-                <span class="window-button red"></span>
+            kadie keslar
 
-                <span class="window-button yellow"></span>
-
-                <span class="window-button green"></span>
-
-            </div>
+        </a>
 
 
-            kadie-portfolio
+        <button
+            class="menu-button"
+            id="menuButton">
+
+            ☰
+
+        </button>
 
 
-        </div>
+        <ul
+            class="nav-links"
+            id="navLinks">
 
 
-
-        <div class="tabs">
-
-
-            <div class="tab active">
-
-                <span class="file-dot"></span>
-
-                home.tsx
-
-            </div>
+            <li>
+                <a href="#about">
+                    // about
+                </a>
+            </li>
 
 
-            <div class="tab">
-
-                <span class="file-dot"></span>
-
-                about-me.ts
-
-            </div>
+            <li>
+                <a href="#projects">
+                    // projects
+                </a>
+            </li>
 
 
-            <div class="tab">
-
-                <span class="file-dot"></span>
-
-                projects.js
-
-            </div>
+            <li>
+                <a href="#experience">
+                    // experience
+                </a>
+            </li>
 
 
-            <div class="tab">
-
-                <span class="file-dot"></span>
-
-                outside-classroom/
-
-            </div>
+            <li>
+                <a href="#life">
+                    // outside class
+                </a>
+            </li>
 
 
-            <div class="tab">
-
-                <span class="file-dot"></span>
-
-                contact.sh
-
-            </div>
+            <li>
+                <a href="#contact">
+                    // contact
+                </a>
+            </li>
 
 
-        </div>
+        </ul>
 
 
-    </header>
+    </nav>
 
 
 
-    <div class="workspace">
+    <!-- ==========================================================
+         HOME
+    ========================================================== -->
+
+    <section id="home">
 
 
-
-        <!-- ========================================================
-             SIDEBAR
-        ======================================================== -->
-
-        <aside
-            class="sidebar"
-            id="sidebar">
+        <div class="hero-text">
 
 
-            <p class="explorer-title">
+            <p class="hero-code">
 
-                EXPLORER
+                // COMPUTER SCIENCE + HCI @ CARNEGIE MELLON
 
             </p>
 
 
+            <div class="meet">
 
-            <div class="folder">
+                MEET
+
+            </div>
 
 
-                <div class="folder-title">
+            <h1 class="hero-name">
 
-                    ▾ kadie-portfolio
+                KADIE
+
+            </h1>
+
+
+            <h2 class="hero-title">
+
+                computer scientist.
+                designer.
+                researcher.
+
+            </h2>
+
+
+            <p class="hero-description">
+
+                I'm a Computer Science and Human-Computer
+                Interaction student interested in the space
+                where technology, people, research, and
+                design meet.
+
+            </p>
+
+
+            <div class="code-snippet">
+
+                const goal =
+                "build technology with people in mind";
+
+            </div>
+
+
+            <div class="buttons">
+
+
+                <a
+                    href="#projects"
+                    class="button">
+
+                    run(projects)
+
+                </a>
+
+
+                <a
+                    href="#life"
+                    class="button pink">
+
+                    open(outside-classroom)
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="hero-photo-area">
+
+
+            <div class="hero-pattern">
+            </div>
+
+
+            <div class="hero-photo">
+
+
+                <img
+                    src="kadie-main.jpg"
+                    alt="Kadie Keslar">
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================================
+         ABOUT
+    ========================================================== -->
+
+    <section id="about">
+
+
+        <p class="code-label">
+
+            // 01 / ABOUT_ME
+
+        </p>
+
+
+        <h2 class="section-heading">
+
+            about
+
+            <span class="highlight">
+
+                me.
+
+            </span>
+
+        </h2>
+
+
+
+        <div class="about-grid">
+
+
+            <div class="about-image-area reveal">
+
+
+                <div class="about-photo">
+
+
+                    <img
+                        src="kadie-about.jpg"
+                        alt="Kadie Keslar">
+
 
                 </div>
 
 
-                <ul class="file-list">
+                <div class="about-code-note">
 
+                    const curiosity = {
+                    <br>
+                    people: true,
+                    <br>
+                    technology: true,
+                    <br>
+                    design: true
+                    <br>
+                    };
 
-                    <li>
-
-                        <a href="#home">
-
-                            home.tsx
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#about">
-
-                            about-me.ts
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#projects">
-
-                            projects.js
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#experience">
-
-                            experience.json
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#life">
-
-                            outside-classroom/
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#contact">
-
-                            contact.sh
-
-                        </a>
-
-                    </li>
-
-
-                </ul>
+                </div>
 
 
             </div>
 
 
 
-            <div class="folder">
+            <div class="about-text reveal">
 
 
-                <div class="folder-title">
+                <h3>
 
-                    ▾ outside-classroom
+                    hello!
 
-                </div>
-
-
-                <ul class="file-list">
+                </h3>
 
 
-                    <li>
+                <p>
 
-                        <a href="#life">
+                    I'm Kadie, a Computer Science and
+                    Human-Computer Interaction student at
+                    Carnegie Mellon University.
 
-                            mission-trips.md
-
-                        </a>
-
-                    </li>
+                </p>
 
 
-                    <li>
+                <p>
 
-                        <a href="#life">
+                    I'm interested in both building technology
+                    and understanding how people actually
+                    experience it. That has led me toward work
+                    involving programming, human-centered
+                    research, artificial intelligence,
+                    product design, and user experience.
 
-                            travel-log.txt
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#life">
-
-                            friends-family.png
-
-                        </a>
-
-                    </li>
+                </p>
 
 
-                    <li>
+                <p>
 
-                        <a href="#life">
+                    I enjoy taking complicated problems and
+                    turning them into something thoughtful,
+                    useful, and approachable.
 
-                            campus-life.jsx
-
-                        </a>
-
-                    </li>
+                </p>
 
 
-                    <li>
+                <p>
 
-                        <a href="#life">
+                    I also value collaboration, communication,
+                    leadership, and learning from people who
+                    approach problems differently than I do.
 
-                            favorites.json
-
-                        </a>
-
-                    </li>
+                </p>
 
 
-                </ul>
+                <span class="inline-code">
+
+                    return "code + people + creativity";
+
+                </span>
 
 
             </div>
 
 
-        </aside>
+        </div>
 
 
 
-        <!-- ========================================================
-             MAIN
-        ======================================================== -->
+        <div class="skill-grid">
 
-        <main>
+
+            <div class="skill-card reveal">
+
+
+                <h3>
+
+                    const interests = [
+
+                </h3>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        Human-Computer Interaction
+                    </span>
+
+                    <span class="tag">
+                        Artificial Intelligence
+                    </span>
+
+                    <span class="tag">
+                        UX Research
+                    </span>
+
+                    <span class="tag">
+                        Product Design
+                    </span>
+
+                    <span class="tag">
+                        Emerging Technology
+                    </span>
+
+                    <span class="tag">
+                        Human-Centered Computing
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+
+                <h3>
+
+                    const skills = [
+
+                </h3>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        Python
+                    </span>
+
+                    <span class="tag">
+                        Java
+                    </span>
+
+                    <span class="tag">
+                        C
+                    </span>
+
+                    <span class="tag">
+                        HTML
+                    </span>
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                    <span class="tag">
+                        User Research
+                    </span>
+
+                    <span class="tag">
+                        AI Product Design
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================================
+         PROJECTS
+    ========================================================== -->
+
+    <section id="projects">
+
+
+        <p class="code-label">
+
+            // 02 / PROJECTS
+
+        </p>
+
+
+        <h2 class="section-heading">
+
+            things i've
+            <br>
+            been building.
+
+        </h2>
+
+
+
+        <div class="project-grid">
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-header">
+
+                    portfolio-site.js
+
+                </div>
+
+
+                <div class="project-body">
+
+
+                    <h3>
+
+                        Personal Portfolio
+
+                    </h3>
+
+
+                    <p>
+
+                        The website you're currently exploring.
+                        I designed and developed it using HTML,
+                        CSS, JavaScript, GitHub, and GitHub Pages.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            HTML
+                        </span>
+
+                        <span class="tag">
+                            CSS
+                        </span>
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+
+                    <div class="buttons">
+
+
+                        <a
+                            href="https://github.com/kadiekeslar/portfolio"
+                            target="_blank"
+                            class="button">
+
+                            viewCode()
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-header">
+
+                    mixed-reality-research.py
+
+                </div>
+
+
+                <div class="project-body">
+
+
+                    <h3>
+
+                        Education + Mixed Reality
+
+                    </h3>
+
+
+                    <p>
+
+                        Research exploring how mixed-reality
+                        technology can support teachers by
+                        presenting useful information while
+                        allowing them to stay engaged with
+                        their classroom.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Research
+                        </span>
+
+                        <span class="tag">
+                            Mixed Reality
+                        </span>
+
+                        <span class="tag">
+                            Data Analysis
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-header">
+
+                    ai-bias-study.jsx
+
+                </div>
+
+
+                <div class="project-body">
+
+
+                    <h3>
+
+                        AI Bias Research
+
+                    </h3>
+
+
+                    <p>
+
+                        A user-centered research project
+                        exploring how people with different
+                        levels of AI literacy recognize and
+                        describe bias in AI-generated images.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            HCI
+                        </span>
+
+                        <span class="tag">
+                            UX Research
+                        </span>
+
+                        <span class="tag">
+                            AI
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-header">
+
+                    future-project.json
+
+                </div>
+
+
+                <div class="project-body">
+
+
+                    <h3>
+
+                        Coming Soon
+
+                    </h3>
+
+
+                    <p>
+
+                        I'll continue adding technical,
+                        research, and design projects throughout
+                        the semester.
+
+                    </p>
+
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================================
+         EXPERIENCE
+    ========================================================== -->
+
+    <section id="experience">
+
+
+        <p class="code-label">
+
+            // 03 / EXPERIENCE
+
+        </p>
+
+
+        <h2 class="section-heading">
+
+            more than
+            <br>
+            my code.
+
+        </h2>
+
+
+
+        <div class="experience-grid">
+
+
+            <div class="experience-card reveal">
+
+
+                <h3>
+
+                    education {}
+
+                </h3>
+
+
+                <p>
+
+                    My studies combine computer science and
+                    Human-Computer Interaction, including
+                    programming, systems, AI product design,
+                    mathematics, and human-centered research.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="experience-card reveal">
+
+
+                <h3>
+
+                    leadership {}
+
+                </h3>
+
+
+                <p>
+
+                    I enjoy organizing, communicating,
+                    collaborating, mentoring, and working with
+                    teams toward shared goals.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="experience-card reveal">
+
+
+                <h3>
+
+                    community {}
+
+                </h3>
+
+
+                <p>
+
+                    I value communities that connect
+                    technology, service, design, leadership,
+                    and people.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================================
+         OUTSIDE THE CLASSROOM
+    ========================================================== -->
+
+    <section id="life">
+
+
+        <p class="code-label">
+
+            // 04 / OUTSIDE_THE_CLASSROOM
+
+        </p>
+
+
+        <h2 class="section-heading">
+
+            me, outside
+            <br>
+            the classroom.
+
+        </h2>
+
+
+        <p class="life-intro">
+
+            There is a lot more to me than what I study.
+            Click on a section below to open it and see
+            photos, stories, and a different side of me.
+
+        </p>
+
+
+
+        <div class="life-grid">
+
+
+
+            <!-- MISSION TRIPS -->
 
 
             <button
-                class="mobile-explorer"
-                id="explorerButton">
+                class="life-card reveal"
+                onclick="openModal('missionModal')">
 
-                ☰ Toggle Explorer
+
+                <div class="life-preview mission-preview">
+
+                    MISSION
+                    <br>
+                    TRIPS
+
+                </div>
+
+
+                <div class="life-content">
+
+
+                    <small>
+
+                        mission-trips.md
+
+                    </small>
+
+
+                    <h3>
+
+                        Service + Mission Trips
+
+                    </h3>
+
+
+                    <p>
+
+                        Open to see photos and stories
+                        from service and mission experiences.
+
+                    </p>
+
+
+                </div>
+
 
             </button>
 
 
 
-            <!-- ====================================================
-                 HOME
-            ==================================================== -->
-
-            <section
-                class="editor-window reveal"
-                id="home">
+            <!-- TRAVEL -->
 
 
-                <div class="editor-header">
+            <button
+                class="life-card reveal"
+                onclick="openModal('travelModal')">
 
 
-                    <div class="editor-file">
+                <div class="life-preview travel-preview">
 
-                        <span class="file-dot"></span>
-
-                        home.tsx
-
-                    </div>
-
-
-                    <span class="editor-status">
-
-                        Ln 1, Col 1
-
-                    </span>
-
+                    TRAVEL
+                    <br>
+                    LOG
 
                 </div>
 
 
+                <div class="life-content">
 
-                <div class="editor-content">
 
+                    <small>
 
-                    <div class="hero">
+                        travel-log.txt
 
+                    </small>
 
-                        <div class="code-panel">
 
+                    <h3>
 
-<pre><span class="code-comment">// hello world — i'm Kadie 👋</span>
+                        Travel + Adventures
 
-<span class="code-keyword">const</span> <span class="code-property">kadie</span> = {
+                    </h3>
 
-  <span class="code-property">name</span>: <span class="code-string">"Kadie Keslar"</span>,
 
-  <span class="code-property">school</span>: <span class="code-string">"Carnegie Mellon University"</span>,
+                    <p>
 
-  <span class="code-property">major</span>: <span class="code-string">"Computer Science + HCI"</span>,
-
-  <span class="code-property">interests</span>: [
-
-    <span class="code-string">"Human-Computer Interaction"</span>,
-
-    <span class="code-string">"Artificial Intelligence"</span>,
-
-    <span class="code-string">"UX Research"</span>,
-
-    <span class="code-string">"Product Design"</span>
-
-  ],
-
-  <span class="code-property">goal</span>:
-    <span class="code-string">"build technology with people in mind"</span>
-
-};
-
-<span class="code-keyword">function</span> <span class="code-function">welcome</span>() {
-
-  <span class="code-keyword">return</span> <span class="code-string">"thanks for stopping by!"</span>;
-
-}<span class="cursor"></span></pre>
-
-
-                        </div>
-
-
-
-                        <div class="profile-preview">
-
-
-                            <p class="preview-label">
-
-                                preview://kadie-profile
-
-                            </p>
-
-
-                            <div class="main-photo">
-
-
-                                <img
-                                    src="kadie-main.jpg"
-                                    alt="Kadie Keslar">
-
-
-                            </div>
-
-
-                            <div class="profile-description">
-
-                                I'm a Computer Science and
-                                Human-Computer Interaction student
-                                interested in where code, people,
-                                research, and design intersect.
-
-                            </div>
-
-
-                            <div class="buttons">
-
-
-                                <a
-                                    href="#projects"
-                                    class="button">
-
-                                    View Projects
-
-                                </a>
-
-
-                                <a
-                                    href="#life"
-                                    class="button secondary">
-
-                                    Outside Class
-
-                                </a>
-
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-
-            <!-- ====================================================
-                 ABOUT
-            ==================================================== -->
-
-            <section
-                class="editor-window reveal"
-                id="about">
-
-
-                <div class="editor-header">
-
-
-                    <div class="editor-file">
-
-                        <span class="file-dot"></span>
-
-                        about-me.ts
-
-                    </div>
-
-
-                    <span class="editor-status">
-
-                        saved
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="editor-content">
-
-
-                    <p class="section-comment">
-
-                        // 01 — getting to know me
+                        Places I've been and memories
+                        I've collected along the way.
 
                     </p>
 
 
-                    <h2 class="section-title">
+                </div>
 
-                        about me
 
-                    </h2>
+            </button>
 
 
 
-                    <div class="about-layout">
+            <!-- FRIENDS FAMILY -->
 
 
-                        <div class="photo-card">
+            <button
+                class="life-card reveal"
+                onclick="openModal('peopleModal')">
 
 
-                            <div class="about-photo">
+                <div class="life-preview people-preview">
 
-
-                                <img
-                                    src="kadie-about.jpg"
-                                    alt="Kadie Keslar">
-
-
-                            </div>
-
-
-                            <div class="photo-caption">
-
-                                const curiosity =
-                                "people + technology + design";
-
-                            </div>
-
-
-                        </div>
-
-
-
-                        <div class="about-text">
-
-
-                            <h3>
-
-                                hello!
-
-                            </h3>
-
-
-                            <p>
-
-                                I'm Kadie, a Computer Science and
-                                Human-Computer Interaction student
-                                at Carnegie Mellon University.
-
-                            </p>
-
-
-                            <p>
-
-                                I'm interested in both building
-                                technology and understanding how
-                                people actually experience it.
-                                That has led me toward work involving
-                                programming, human-centered research,
-                                artificial intelligence, product
-                                design, and user experience.
-
-                            </p>
-
-
-                            <p>
-
-                                I enjoy taking complicated problems
-                                and turning them into something
-                                thoughtful, useful, and approachable.
-
-                            </p>
-
-
-                            <p>
-
-                                I also value collaboration,
-                                communication, and leadership.
-                                Some of my favorite experiences
-                                have come from working with people
-                                who think differently and combining
-                                those ideas to create something
-                                better.
-
-                            </p>
-
-
-                            <span class="inline-code">
-
-                                code + people + creativity
-
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="skill-layout">
-
-
-                        <div class="skill-card">
-
-
-                            <h4>
-
-                                const interests = [ ]
-
-                            </h4>
-
-
-                            <div class="tags">
-
-
-                                <span class="tag">
-                                    Human-Computer Interaction
-                                </span>
-
-
-                                <span class="tag">
-                                    Artificial Intelligence
-                                </span>
-
-
-                                <span class="tag">
-                                    UX Research
-                                </span>
-
-
-                                <span class="tag">
-                                    Product Design
-                                </span>
-
-
-                                <span class="tag">
-                                    Emerging Technology
-                                </span>
-
-
-                                <span class="tag">
-                                    Human-Centered Computing
-                                </span>
-
-
-                            </div>
-
-
-                        </div>
-
-
-
-                        <div class="skill-card">
-
-
-                            <h4>
-
-                                const skills = [ ]
-
-                            </h4>
-
-
-                            <div class="tags">
-
-
-                                <span class="tag">
-                                    Python
-                                </span>
-
-
-                                <span class="tag">
-                                    Java
-                                </span>
-
-
-                                <span class="tag">
-                                    C
-                                </span>
-
-
-                                <span class="tag">
-                                    HTML
-                                </span>
-
-
-                                <span class="tag">
-                                    CSS
-                                </span>
-
-
-                                <span class="tag">
-                                    JavaScript
-                                </span>
-
-
-                                <span class="tag">
-                                    User Research
-                                </span>
-
-
-                                <span class="tag">
-                                    AI Product Design
-                                </span>
-
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
+                    MY
+                    <br>
+                    PEOPLE
 
                 </div>
 
 
-            </section>
+                <div class="life-content">
 
 
+                    <small>
 
-            <!-- ====================================================
-                 PROJECTS
-            ==================================================== -->
+                        friends-family.png
 
-            <section
-                class="editor-window reveal"
-                id="projects">
+                    </small>
 
 
-                <div class="editor-header">
+                    <h3>
+
+                        Friends + Family
+
+                    </h3>
 
 
-                    <div class="editor-file">
+                    <p>
 
-                        <span class="file-dot"></span>
-
-                        projects.js
-
-                    </div>
-
-
-                    <span class="editor-status">
-
-                        4 projects
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="editor-content">
-
-
-                    <p class="section-comment">
-
-                        // 02 — things i've been building
+                        The people who keep me grounded
+                        and make life feel like home.
 
                     </p>
 
 
-                    <h2 class="section-title">
+                </div>
 
-                        projects
 
-                    </h2>
+            </button>
 
 
 
-                    <div class="project-grid">
+            <!-- CAMPUS -->
 
 
+            <button
+                class="life-card reveal"
+                onclick="openModal('campusModal')">
 
-                        <!-- PORTFOLIO -->
 
+                <div class="life-preview campus-preview">
 
-                        <article class="project">
-
-
-                            <div class="project-bar">
-
-
-                                <span class="project-file">
-
-                                    portfolio-site.js
-
-                                </span>
-
-
-                                <span class="status">
-
-                                    ● active
-
-                                </span>
-
-
-                            </div>
-
-
-                            <div class="project-content">
-
-
-                                <h3>
-
-                                    Personal Portfolio
-
-                                </h3>
-
-
-                                <p>
-
-                                    The website you're currently
-                                    exploring. I designed and developed
-                                    this portfolio using HTML, CSS,
-                                    JavaScript, GitHub, and GitHub Pages.
-
-                                </p>
-
-
-                                <div class="tags">
-
-
-                                    <span class="tag">
-                                        HTML
-                                    </span>
-
-
-                                    <span class="tag">
-                                        CSS
-                                    </span>
-
-
-                                    <span class="tag">
-                                        JavaScript
-                                    </span>
-
-
-                                </div>
-
-
-                                <br>
-
-
-                                <a
-                                    href="https://github.com/kadiekeslar/portfolio"
-                                    target="_blank"
-                                    class="button">
-
-                                    View Code
-
-                                </a>
-
-
-                            </div>
-
-
-                        </article>
-
-
-
-                        <!-- MIXED REALITY -->
-
-
-                        <article class="project">
-
-
-                            <div class="project-bar">
-
-
-                                <span class="project-file">
-
-                                    mixed-reality.py
-
-                                </span>
-
-
-                                <span class="status">
-
-                                    research
-
-                                </span>
-
-
-                            </div>
-
-
-                            <div class="project-content">
-
-
-                                <h3>
-
-                                    Education + Mixed Reality
-
-                                </h3>
-
-
-                                <p>
-
-                                    Research exploring how mixed-reality
-                                    technology can support teachers by
-                                    presenting useful classroom information
-                                    while allowing them to remain engaged
-                                    with students.
-
-                                </p>
-
-
-                                <div class="tags">
-
-
-                                    <span class="tag">
-                                        Research
-                                    </span>
-
-
-                                    <span class="tag">
-                                        Data Analysis
-                                    </span>
-
-
-                                    <span class="tag">
-                                        Mixed Reality
-                                    </span>
-
-
-                                    <span class="tag">
-                                        Education
-                                    </span>
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </article>
-
-
-
-                        <!-- AI BIAS -->
-
-
-                        <article class="project">
-
-
-                            <div class="project-bar">
-
-
-                                <span class="project-file">
-
-                                    ai-bias-study.jsx
-
-                                </span>
-
-
-                                <span class="status">
-
-                                    UX research
-
-                                </span>
-
-
-                            </div>
-
-
-                            <div class="project-content">
-
-
-                                <h3>
-
-                                    AI Bias Research
-
-                                </h3>
-
-
-                                <p>
-
-                                    A user-centered research project
-                                    studying how people with different
-                                    levels of AI literacy recognize
-                                    and describe bias in AI-generated
-                                    imagery.
-
-                                </p>
-
-
-                                <div class="tags">
-
-
-                                    <span class="tag">
-                                        HCI
-                                    </span>
-
-
-                                    <span class="tag">
-                                        UX Research
-                                    </span>
-
-
-                                    <span class="tag">
-                                        AI
-                                    </span>
-
-
-                                    <span class="tag">
-                                        User Interviews
-                                    </span>
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </article>
-
-
-
-                        <!-- FUTURE -->
-
-
-                        <article class="project">
-
-
-                            <div class="project-bar">
-
-
-                                <span class="project-file">
-
-                                    future-project.json
-
-                                </span>
-
-
-                                <span class="status">
-
-                                    coming soon
-
-                                </span>
-
-
-                            </div>
-
-
-                            <div class="project-content">
-
-
-                                <h3>
-
-                                    Future Project
-
-                                </h3>
-
-
-                                <p>
-
-                                    More technical, research, and
-                                    design projects will be added
-                                    throughout the semester.
-
-                                </p>
-
-
-                                <div class="tags">
-
-
-                                    <span class="tag">
-
-                                        Coming Soon
-
-                                    </span>
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </article>
-
-
-                    </div>
-
+                    CAMPUS
+                    <br>
+                    LIFE
 
                 </div>
 
 
-            </section>
+                <div class="life-content">
 
 
+                    <small>
 
-            <!-- ====================================================
-                 EXPERIENCE
-            ==================================================== -->
+                        campus-life.jsx
 
-            <section
-                class="editor-window reveal"
-                id="experience">
+                    </small>
 
 
-                <div class="editor-header">
+                    <h3>
+
+                        Life at CMU
+
+                    </h3>
 
 
-                    <div class="editor-file">
+                    <p>
 
-                        <span class="file-dot"></span>
-
-                        experience.json
-
-                    </div>
-
-
-                    <span class="editor-status">
-
-                        3 objects
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="editor-content">
-
-
-                    <p class="section-comment">
-
-                        // 03 — experiences shaping me
+                        Leadership, organizations,
+                        friendships, and campus involvement.
 
                     </p>
 
 
-                    <h2 class="section-title">
-
-                        experience
-
-                    </h2>
+                </div>
 
 
-
-                    <div class="experience-grid">
-
-
-                        <div class="experience">
-
-
-                            <h3>
-
-                                "education"
-
-                            </h3>
-
-
-                            <p>
-
-                                At Carnegie Mellon, my studies
-                                combine computer science and
-                                Human-Computer Interaction.
-                                My coursework includes programming,
-                                systems, AI product design,
-                                mathematics, and human-centered
-                                research.
-
-                            </p>
-
-
-                        </div>
+            </button>
 
 
 
-                        <div class="experience">
+            <!-- FAVORITES -->
 
 
-                            <h3>
-
-                                "leadership"
-
-                            </h3>
+            <button
+                class="life-card reveal"
+                onclick="openModal('favoritesModal')">
 
 
-                            <p>
+                <div class="life-preview favorites-preview">
 
-                                Leadership has been an important
-                                part of my experience. I enjoy
-                                organizing, communicating,
-                                collaborating, and working with
-                                teams toward shared goals.
-
-                            </p>
-
-
-                        </div>
-
-
-
-                        <div class="experience">
-
-
-                            <h3>
-
-                                "community"
-
-                            </h3>
-
-
-                            <p>
-
-                                I value communities that connect
-                                technology, service, design,
-                                leadership, and people.
-
-                            </p>
-
-
-                        </div>
-
-
-                    </div>
-
+                    LITTLE
+                    <br>
+                    THINGS
 
                 </div>
 
 
-            </section>
+                <div class="life-content">
 
 
+                    <small>
 
-            <!-- ====================================================
-                 OUTSIDE CLASSROOM
-            ==================================================== -->
+                        favorites.json
 
-            <section
-                class="editor-window reveal"
-                id="life">
+                    </small>
 
 
-                <div class="editor-header">
+                    <h3>
+
+                        Things I Love
+
+                    </h3>
 
 
-                    <div class="editor-file">
+                    <p>
 
-                        <span class="file-dot"></span>
-
-                        outside-classroom/
-
-                    </div>
-
-
-                    <span class="editor-status">
-
-                        5 files
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="editor-content">
-
-
-                    <p class="section-comment">
-
-                        // 04 — there's more to me than my major
+                        The little things that make
+                        everyday life better.
 
                     </p>
 
 
-                    <h2 class="section-title">
-
-                        outside the classroom
-
-                    </h2>
-
-
-                    <p class="life-intro">
-
-                        There is a lot more to me than what
-                        I study. Open a file below to learn
-                        about the people, places, experiences,
-                        and communities that have shaped me.
-
-                    </p>
-
-
-
-                    <div class="life-files">
-
-
-
-                        <button
-                            class="life-file"
-                            onclick="openModal('missionModal')">
-
-
-                            <p class="life-type">
-
-                                MARKDOWN
-
-                            </p>
-
-
-                            <h3>
-
-                                mission-trips.md
-
-                            </h3>
-
-
-                            <p>
-
-                                Service, community, Jamaica,
-                                and experiences that have
-                                shaped my perspective.
-
-                            </p>
-
-
-                        </button>
-
-
-
-                        <button
-                            class="life-file"
-                            onclick="openModal('travelModal')">
-
-
-                            <p class="life-type">
-
-                                TEXT FILE
-
-                            </p>
-
-
-                            <h3>
-
-                                travel-log.txt
-
-                            </h3>
-
-
-                            <p>
-
-                                Places, adventures, memories,
-                                and moments worth remembering.
-
-                            </p>
-
-
-                        </button>
-
-
-
-                        <button
-                            class="life-file"
-                            onclick="openModal('peopleModal')">
-
-
-                            <p class="life-type">
-
-                                IMAGE
-
-                            </p>
-
-
-                            <h3>
-
-                                friends-family.png
-
-                            </h3>
-
-
-                            <p>
-
-                                The people who make life
-                                meaningful and keep me grounded.
-
-                            </p>
-
-
-                        </button>
-
-
-
-                        <button
-                            class="life-file"
-                            onclick="openModal('campusModal')">
-
-
-                            <p class="life-type">
-
-                                REACT COMPONENT
-
-                            </p>
-
-
-                            <h3>
-
-                                campus-life.jsx
-
-                            </h3>
-
-
-                            <p>
-
-                                Involvement, leadership,
-                                organizations, and campus life.
-
-                            </p>
-
-
-                        </button>
-
-
-
-                        <button
-                            class="life-file"
-                            onclick="openModal('favoritesModal')">
-
-
-                            <p class="life-type">
-
-                                JSON
-
-                            </p>
-
-
-                            <h3>
-
-                                favorites.json
-
-                            </h3>
-
-
-                            <p>
-
-                                Coffee, music, photos,
-                                sunsets, travel, and all
-                                the little things I love.
-
-                            </p>
-
-
-                        </button>
-
-
-                    </div>
-
-
                 </div>
 
 
-            </section>
+            </button>
 
 
+        </div>
 
-            <!-- ====================================================
-                 CONTACT
-            ==================================================== -->
 
-            <section
-                class="editor-window reveal"
-                id="contact">
+    </section>
 
 
-                <div class="editor-header">
 
+    <!-- ==========================================================
+         CONTACT
+    ========================================================== -->
 
-                    <div class="editor-file">
+    <section id="contact">
 
-                        <span class="file-dot"></span>
 
-                        contact.sh
+        <p class="code-label">
 
-                    </div>
+            // 05 / CONTACT
 
+        </p>
 
-                    <span class="editor-status">
 
-                        terminal ready
+        <h2 class="section-heading">
 
-                    </span>
+            let's build
+            <br>
+            something cool.
 
+        </h2>
 
-                </div>
 
+        <p class="contact-copy">
 
+            I'm always interested in meeting new people,
+            hearing about opportunities, collaborating on
+            interesting projects, and learning something new.
 
-                <div class="editor-content">
+        </p>
 
 
-                    <p class="section-comment">
+        <div class="contact-buttons">
 
-                        // 05 — let's connect
 
-                    </p>
+            <a
+                href="mailto:kadie.keslar@gmail.com"
+                class="button">
 
+                sendEmail()
 
-                    <h2 class="section-title">
+            </a>
 
-                        contact
 
-                    </h2>
+            <a
+                href="https://github.com/kadiekeslar"
+                target="_blank"
+                class="button pink">
 
+                openGitHub()
 
+            </a>
 
-                    <div class="terminal">
 
+            <a
+                href="#"
+                target="_blank"
+                class="button">
 
-                        <div class="terminal-title">
+                openLinkedIn()
 
-                            kadie@portfolio ~ %
+            </a>
 
-                        </div>
 
+            <a
+                href="#"
+                class="button pink">
 
-                        <div class="terminal-body">
+                viewResume()
 
+            </a>
 
-                            <div>
 
-                                <span class="prompt">
+        </div>
 
-                                    $ whoami
 
-                                </span>
+    </section>
 
-                            </div>
 
 
-                            <div class="answer">
+    <!-- ==========================================================
+         FOOTER
+    ========================================================== -->
 
-                                Kadie Keslar
+    <footer>
 
-                            </div>
+        © 2026 Kadie Keslar
+        <br>
+        Designed + developed by Kadie Keslar.
 
+        <br><br>
 
+        AI Usage: ChatGPT was used for brainstorming,
+        initial code generation, debugging, and assistance
+        creating interactive features. All final content,
+        organization, design decisions, and implementation
+        were reviewed and customized by me.
 
-                            <br>
+    </footer>
 
 
 
-                            <div>
-
-                                <span class="prompt">
-
-                                    $ current-focus
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="answer">
-
-                                Computer Science + HCI
-
-                            </div>
-
-
-
-                            <br>
-
-
-
-                            <div>
-
-                                <span class="prompt">
-
-                                    $ contact --list
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="answer">
-
-                                email
-                                github
-                                linkedin
-                                resume
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="contact-buttons">
-
-
-                        <a
-                            href="mailto:kadie.keslar@gmail.com"
-                            class="button">
-
-                            Email
-
-                        </a>
-
-
-                        <a
-                            href="https://github.com/kadiekeslar"
-                            target="_blank"
-                            class="button secondary">
-
-                            GitHub
-
-                        </a>
-
-
-                        <!-- CHANGE THIS TO YOUR LINKEDIN -->
-
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="button secondary">
-
-                            LinkedIn
-
-                        </a>
-
-
-                        <!-- LINK RESUME LATER -->
-
-
-                        <a
-                            href="#"
-                            class="button secondary">
-
-                            Resume
-
-                        </a>
-
-
-                    </div>
-
-
-
-                    <div class="footer">
-
-
-                        © 2026 Kadie Keslar
-                        <br>
-                        Designed + developed by Kadie Keslar.
-
-                        <br><br>
-
-                        AI Usage: ChatGPT was used for
-                        brainstorming, initial code generation,
-                        debugging, and assistance creating
-                        interactive features. All final content,
-                        organization, visual decisions, and
-                        implementation were reviewed and
-                        customized by me.
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-        </main>
-
-
-    </div>
-
-
-
-    <!-- ========================================================
-         MISSION TRIPS
-    ======================================================== -->
+    <!-- ==========================================================
+         MISSION TRIPS MODAL
+    ========================================================== -->
 
     <div
         class="modal"
@@ -3801,21 +3620,21 @@
         <div class="modal-window">
 
 
-            <div class="modal-bar">
+            <div class="modal-header">
 
 
-                <strong>
+                <span class="modal-file">
 
                     mission-trips.md
 
-                </strong>
+                </span>
 
 
                 <button
                     class="modal-close"
                     onclick="closeModal('missionModal')">
 
-                    ×
+                    CLOSE
 
                 </button>
 
@@ -3827,59 +3646,121 @@
             <div class="modal-content">
 
 
-                <div class="modal-layout">
+                <p class="code-label">
+
+                    // SERVICE + COMMUNITY
+
+                </p>
 
 
-                    <div class="modal-photo">
+                <h2>
 
-                        mission-trip-photo.jpg
-                        <br><br>
-                        Upload a photo here later!
+                    mission trips.
+
+                </h2>
+
+
+                <p class="modal-intro">
+
+                    Mission work and service have played
+                    an important role in shaping how I think
+                    about people, community, relationships,
+                    and impact.
+
+                </p>
+
+
+
+                <!--
+                ==================================================
+                MISSION PHOTOS
+
+                Upload photos to GitHub with these names:
+
+                mission1.jpg
+                mission2.jpg
+                mission3.jpg
+
+                Then remove the comments from the image lines.
+                ==================================================
+                -->
+
+
+                <div class="gallery">
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="mission1.jpg"
+                            alt="Mission trip">
+                        -->
+
+                        mission1.jpg
 
                     </div>
 
 
-                    <div class="modal-copy">
+                    <div class="gallery-photo">
 
+                        <!--
+                        <img
+                            src="mission2.jpg"
+                            alt="Mission trip">
+                        -->
 
-                        <h2>
-
-                            mission trips
-
-                        </h2>
-
-
-                        <p>
-
-                            One experience that means a lot
-                            to me is serving through mission work.
-
-                        </p>
-
-
-                        <p>
-
-                            I've had the opportunity to volunteer
-                            with Mission Four18 in Rocky Point,
-                            Jamaica. Experiences like these have
-                            shaped the way I think about community,
-                            relationships, service, and the kind
-                            of impact I want to have on others.
-
-                        </p>
-
-
-                        <p>
-
-                            I value opportunities to step outside
-                            my normal routine, learn from other
-                            people, build relationships, and
-                            contribute in meaningful ways.
-
-                        </p>
-
+                        mission2.jpg
 
                     </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="mission3.jpg"
+                            alt="Mission trip">
+                        -->
+
+                        mission3.jpg
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-story">
+
+
+                    <h3>
+
+                        service has shaped me.
+
+                    </h3>
+
+
+                    <p>
+
+                        I've had opportunities to serve
+                        through mission work and build
+                        relationships with people and
+                        communities outside of my everyday
+                        life.
+
+                    </p>
+
+
+                    <p>
+
+                        Experiences like these remind me how
+                        important it is to listen, learn,
+                        show up for people, and use the
+                        opportunities I have to contribute.
+
+                    </p>
 
 
                 </div>
@@ -3895,9 +3776,9 @@
 
 
 
-    <!-- ========================================================
-         TRAVEL
-    ======================================================== -->
+    <!-- ==========================================================
+         TRAVEL MODAL
+    ========================================================== -->
 
     <div
         class="modal"
@@ -3907,21 +3788,21 @@
         <div class="modal-window">
 
 
-            <div class="modal-bar">
+            <div class="modal-header">
 
 
-                <strong>
+                <span class="modal-file">
 
                     travel-log.txt
 
-                </strong>
+                </span>
 
 
                 <button
                     class="modal-close"
                     onclick="closeModal('travelModal')">
 
-                    ×
+                    CLOSE
 
                 </button>
 
@@ -3933,31 +3814,91 @@
             <div class="modal-content">
 
 
-                <div class="modal-copy">
+                <p class="code-label">
+
+                    // PLACES + MEMORIES
+
+                </p>
 
 
-                    <h2>
+                <h2>
 
-                        travel + adventures
+                    travel + adventures.
 
-                    </h2>
+                </h2>
+
+
+                <p class="modal-intro">
+
+                    I love exploring new places,
+                    experiencing new things, and keeping
+                    the photos and memories that come with them.
+
+                </p>
+
+
+
+                <div class="gallery">
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="travel1.jpg"
+                            alt="Travel">
+                        -->
+
+                        travel1.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="travel2.jpg"
+                            alt="Travel">
+                        -->
+
+                        travel2.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="travel3.jpg"
+                            alt="Travel">
+                        -->
+
+                        travel3.jpg
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="modal-story">
+
+
+                    <h3>
+
+                        collecting places + memories.
+
+                    </h3>
 
 
                     <p>
 
-                        I love getting to experience new places,
-                        trying new things, and collecting the
-                        little memories that come with them.
-
-                    </p>
-
-
-                    <p>
-
-                        Eventually this will become a small
-                        visual travel journal with photos,
-                        favorite places, trips, sunsets,
-                        and stories.
+                        This is my little digital travel journal.
+                        I can use this space to share favorite
+                        places, trips, stories, sunsets,
+                        and adventures.
 
                     </p>
 
@@ -3975,9 +3916,9 @@
 
 
 
-    <!-- ========================================================
-         PEOPLE
-    ======================================================== -->
+    <!-- ==========================================================
+         FRIENDS + FAMILY MODAL
+    ========================================================== -->
 
     <div
         class="modal"
@@ -3987,21 +3928,21 @@
         <div class="modal-window">
 
 
-            <div class="modal-bar">
+            <div class="modal-header">
 
 
-                <strong>
+                <span class="modal-file">
 
                     friends-family.png
 
-                </strong>
+                </span>
 
 
                 <button
                     class="modal-close"
                     onclick="closeModal('peopleModal')">
 
-                    ×
+                    CLOSE
 
                 </button>
 
@@ -4013,30 +3954,90 @@
             <div class="modal-content">
 
 
-                <div class="modal-copy">
+                <p class="code-label">
+
+                    // MY FAVORITE PEOPLE
+
+                </p>
 
 
-                    <h2>
+                <h2>
 
-                        friends + family
+                    friends + family.
 
-                    </h2>
+                </h2>
 
 
-                    <p>
+                <p class="modal-intro">
 
-                        I'm a huge people person, and my
-                        relationships are one of the most
-                        important parts of my life.
+                    I'm a huge people person.
+                    My relationships are one of the most
+                    important parts of my life.
 
-                    </p>
+                </p>
+
+
+
+                <div class="gallery">
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="people1.jpg"
+                            alt="Friends and family">
+                        -->
+
+                        people1.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="people2.jpg"
+                            alt="Friends and family">
+                        -->
+
+                        people2.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="people3.jpg"
+                            alt="Friends and family">
+                        -->
+
+                        people3.jpg
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="modal-story">
+
+
+                    <h3>
+
+                        the people make the place.
+
+                    </h3>
 
 
                     <p>
 
                         My family and friends keep me grounded,
                         make life fun, and have shaped so much
-                        of who I am.
+                        of the person I am.
 
                     </p>
 
@@ -4054,9 +4055,9 @@
 
 
 
-    <!-- ========================================================
-         CAMPUS
-    ======================================================== -->
+    <!-- ==========================================================
+         CAMPUS MODAL
+    ========================================================== -->
 
     <div
         class="modal"
@@ -4066,21 +4067,21 @@
         <div class="modal-window">
 
 
-            <div class="modal-bar">
+            <div class="modal-header">
 
 
-                <strong>
+                <span class="modal-file">
 
                     campus-life.jsx
 
-                </strong>
+                </span>
 
 
                 <button
                     class="modal-close"
                     onclick="closeModal('campusModal')">
 
-                    ×
+                    CLOSE
 
                 </button>
 
@@ -4092,27 +4093,87 @@
             <div class="modal-content">
 
 
-                <div class="modal-copy">
+                <p class="code-label">
+
+                    // OUTSIDE THE LECTURE HALL
+
+                </p>
 
 
-                    <h2>
+                <h2>
 
-                        campus life
+                    campus life.
 
-                    </h2>
+                </h2>
+
+
+                <p class="modal-intro">
+
+                    Some of my favorite parts of college
+                    happen outside the classroom.
+
+                </p>
+
+
+
+                <div class="gallery">
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="campus1.jpg"
+                            alt="Campus life">
+                        -->
+
+                        campus1.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="campus2.jpg"
+                            alt="Campus life">
+                        -->
+
+                        campus2.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="campus3.jpg"
+                            alt="Campus life">
+                        -->
+
+                        campus3.jpg
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="modal-story">
+
+
+                    <h3>
+
+                        community matters to me.
+
+                    </h3>
 
 
                     <p>
 
-                        Some of my favorite parts of college
-                        happen outside of class.
-
-                    </p>
-
-
-                    <p>
-
-                        I enjoy being involved in organizations
+                        I enjoy organizations and communities
                         where I can meet people, lead,
                         collaborate, and contribute to
                         something larger than myself.
@@ -4133,9 +4194,9 @@
 
 
 
-    <!-- ========================================================
-         FAVORITES
-    ======================================================== -->
+    <!-- ==========================================================
+         FAVORITES MODAL
+    ========================================================== -->
 
     <div
         class="modal"
@@ -4145,21 +4206,21 @@
         <div class="modal-window">
 
 
-            <div class="modal-bar">
+            <div class="modal-header">
 
 
-                <strong>
+                <span class="modal-file">
 
                     favorites.json
 
-                </strong>
+                </span>
 
 
                 <button
                     class="modal-close"
                     onclick="closeModal('favoritesModal')">
 
-                    ×
+                    CLOSE
 
                 </button>
 
@@ -4171,19 +4232,85 @@
             <div class="modal-content">
 
 
-                <div class="code-panel">
+                <p class="code-label">
+
+                    // THE LITTLE THINGS
+
+                </p>
 
 
-<pre>{
-  <span class="code-property">"coffee"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"good playlists"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"sunsets"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"decorating"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"photos"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"traveling"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"long conversations"</span>: <span class="code-string">true</span>,
-  <span class="code-property">"time with my people"</span>: <span class="code-string">true</span>
-}</pre>
+                <h2>
+
+                    things i love.
+
+                </h2>
+
+
+
+                <div class="gallery">
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="favorite1.jpg"
+                            alt="Favorite things">
+                        -->
+
+                        favorite1.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="favorite2.jpg"
+                            alt="Favorite things">
+                        -->
+
+                        favorite2.jpg
+
+                    </div>
+
+
+                    <div class="gallery-photo">
+
+                        <!--
+                        <img
+                            src="favorite3.jpg"
+                            alt="Favorite things">
+                        -->
+
+                        favorite3.jpg
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-story">
+
+
+                    <h3>
+
+                        favorites.json
+
+                    </h3>
+
+
+                    <p>
+
+                        Coffee, good playlists, sunsets,
+                        decorating, photos, traveling,
+                        long conversations, and time
+                        with my favorite people.
+
+                    </p>
 
 
                 </div>
@@ -4199,40 +4326,35 @@
 
 
 
-    <!-- ========================================================
+    <!-- ==========================================================
          JAVASCRIPT
-
-         AI assisted with the initial JavaScript for navigation,
-         popup interactions, and scroll animations.
-    ======================================================== -->
+    ========================================================== -->
 
     <script>
 
 
-        /* ========================================================
-           MOBILE FILE EXPLORER
-        ======================================================== */
+        /* MOBILE MENU */
 
 
-        const explorerButton =
+        const menuButton =
             document.getElementById(
-                "explorerButton"
+                "menuButton"
             );
 
 
-        const sidebar =
+        const navLinks =
             document.getElementById(
-                "sidebar"
+                "navLinks"
             );
 
 
-        explorerButton.addEventListener(
+        menuButton.addEventListener(
 
             "click",
 
             function () {
 
-                sidebar.classList.toggle(
+                navLinks.classList.toggle(
                     "open"
                 );
 
@@ -4242,23 +4364,47 @@
 
 
 
-        /* ========================================================
-           MODALS
-        ======================================================== */
+        /* close menu when clicked */
+
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach(
+
+                function (link) {
+
+                    link.addEventListener(
+
+                        "click",
+
+                        function () {
+
+                            navLinks.classList.remove(
+                                "open"
+                            );
+
+                        }
+
+                    );
+
+                }
+
+            );
+
+
+
+        /* ==========================================================
+           OUTSIDE CLASSROOM MODALS
+        ========================================================== */
 
 
         function openModal(id) {
 
 
-            const modal =
-                document.getElementById(
-                    id
-                );
-
-
-            modal.classList.add(
-                "open"
-            );
+            document
+                .getElementById(id)
+                .classList
+                .add("open");
 
 
             document.body.style.overflow =
@@ -4272,15 +4418,10 @@
         function closeModal(id) {
 
 
-            const modal =
-                document.getElementById(
-                    id
-                );
-
-
-            modal.classList.remove(
-                "open"
-            );
+            document
+                .getElementById(id)
+                .classList
+                .remove("open");
 
 
             document.body.style.overflow =
@@ -4289,6 +4430,9 @@
 
         }
 
+
+
+        /* click outside to close */
 
 
         document
@@ -4335,6 +4479,9 @@
 
 
 
+        /* ESC closes popup */
+
+
         document.addEventListener(
 
             "keydown",
@@ -4356,11 +4503,9 @@
 
                             function (modal) {
 
-
                                 modal.classList.remove(
                                     "open"
                                 );
-
 
                             }
 
@@ -4380,12 +4525,12 @@
 
 
 
-        /* ========================================================
-           SCROLL ANIMATIONS
-        ======================================================== */
+        /* ==========================================================
+           REVEAL ANIMATION
+        ========================================================== */
 
 
-        const revealItems =
+        const revealElements =
             document.querySelectorAll(
                 ".reveal"
             );
@@ -4407,9 +4552,12 @@
                             ) {
 
 
-                                entry.target.classList.add(
-                                    "visible"
-                                );
+                                entry
+                                    .target
+                                    .classList
+                                    .add(
+                                        "visible"
+                                    );
 
 
                             }
@@ -4424,20 +4572,20 @@
 
                 {
 
-                    threshold: .08
+                    threshold: .1
 
                 }
 
             );
 
 
-        revealItems.forEach(
+        revealElements.forEach(
 
-            function (item) {
+            function (element) {
 
 
                 observer.observe(
-                    item
+                    element
                 );
 
 
