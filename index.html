@@ -156,10 +156,38 @@
       font-style:normal;
     }
 
+    .hero-identity{
+      position:relative;
+      z-index:8;
+      width:max-content;
+      max-width:calc(100% - 32px);
+      margin:14px auto 0;
+      text-align:center;
+      color:var(--ink);
+    }
+
+    .hero-identity strong{
+      display:block;
+      font-family:var(--serif);
+      font-size:clamp(.95rem,2vw,1.22rem);
+      letter-spacing:.035em;
+      font-weight:500;
+      color:var(--pink-deep);
+    }
+
+    .hero-identity span{
+      display:block;
+      margin-top:4px;
+      font-size:.72rem;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
     .hero-stage{
       position:relative;
       min-height:470px;
-      margin-top:-42px;
+      margin-top:-24px;
     }
 
     .hero-photo{
@@ -336,6 +364,61 @@
     .about p{
       color:var(--muted);
       font-size:.97rem;
+    }
+
+    .about-copy{
+      align-self:center;
+    }
+
+    .technical-skills{
+      margin-top:26px;
+      padding-top:22px;
+      border-top:1px solid rgba(33,29,28,.13);
+    }
+
+    .technical-skills h2{
+      margin:0 0 18px;
+      font-family:var(--serif);
+      font-size:clamp(1.9rem,4vw,2.8rem);
+      line-height:1;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:-.03em;
+      color:var(--pink-deep);
+    }
+
+    .skill-group + .skill-group{
+      margin-top:15px;
+    }
+
+    .skill-label{
+      display:block;
+      margin-bottom:8px;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:800;
+      color:var(--pink-dark);
+    }
+
+    .skill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .skill-list span{
+      padding:8px 11px;
+      border:1px solid rgba(33,29,28,.18);
+      background:var(--cream);
+      font-size:.76rem;
+      font-weight:700;
+      box-shadow:3px 3px 0 rgba(150,62,97,.08);
+      transition:transform .15s ease;
+    }
+
+    .skill-list span:hover{
+      transform:translateY(-2px) scale(1.03);
     }
 
     /* ---------- OUTSIDE THE CLASSROOM ---------- */
@@ -827,6 +910,19 @@
         font-size:clamp(3.2rem,15vw,5rem);
       }
 
+      .hero-identity{
+        margin-top:10px;
+        max-width:94%;
+      }
+
+      .hero-identity strong{
+        font-size:.78rem;
+      }
+
+      .hero-identity span{
+        font-size:.6rem;
+      }
+
       .hero-title em{
         font-size:.95em;
       }
@@ -912,7 +1008,6 @@
             <a href="#projects">projects</a>
             <a href="#values">values</a>
             <a href="#contact">contact</a>
-            <a class="nav-cta" href="#projects">view work</a>
           </div>
         </nav>
       </div>
@@ -922,6 +1017,11 @@
       <section class="hero">
         <div class="inner">
           <h1 class="hero-title">HI, <em>I’m</em> KADIE</h1>
+
+          <div class="hero-identity">
+            <strong>CS + HCI STUDENT · HUMAN-CENTERED DEVELOPER</strong>
+            <span>Carnegie Mellon University</span>
+          </div>
 
           <div class="hero-stage">
             <div class="side-note left">
@@ -967,10 +1067,8 @@
               </div>
             </div>
 
-            <div>
-
-              <h2>CS + HCI student, human-centered developer</h2>
-
+            <div class="about-copy">
+              <div class="eyebrow">a little about me</div>
               <p>
                 I’m a Carnegie Mellon student studying Computer Science and Human-Computer
                 Interaction. I’m especially passionate about human behavior and technology,
@@ -983,6 +1081,34 @@
                 solving. I’m most interested in understanding how people think, what makes an
                 experience feel intuitive, and how technology can be designed around real human needs.
               </p>
+
+              <div class="technical-skills">
+                <h2>Technical Skills</h2>
+
+                <div class="skill-group">
+                  <span class="skill-label">Languages</span>
+                  <div class="skill-list">
+                    <span>C</span>
+                    <span>C++</span>
+                    <span>Java</span>
+                    <span>Python</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>SML</span>
+                  </div>
+                </div>
+
+                <div class="skill-group">
+                  <span class="skill-label">Focus Areas</span>
+                  <div class="skill-list">
+                    <span>Human-Computer Interaction</span>
+                    <span>Software Development</span>
+                    <span>AI Product Design</span>
+                    <span>Human-Centered Research</span>
+                    <span>User-Centered Research</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
