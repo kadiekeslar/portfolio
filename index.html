@@ -340,6 +340,19 @@
 
     /* ---------- OUTSIDE THE CLASSROOM ---------- */
 
+    .outside-section{
+      padding:58px 0 68px;
+      background:var(--paper);
+      border-top:1px solid rgba(33,29,28,.08);
+      border-bottom:1px solid rgba(33,29,28,.08);
+    }
+
+    .outside-section .outside{
+      margin-top:0;
+      padding-top:0;
+      border-top:0;
+    }
+
     .outside{
       margin-top:58px;
       padding-top:42px;
@@ -955,7 +968,7 @@
             </div>
 
             <div>
-              <div class="eyebrow">hey, I’m Kadie</div>
+
               <h2>CS + HCI student, human-centered developer</h2>
 
               <p>
@@ -973,50 +986,7 @@
             </div>
           </div>
 
-          <div class="outside">
-            <div class="outside-heading">
-              <div>
-                <div class="eyebrow">outside of the classroom</div>
-                <h3>a few things that make me, me</h3>
-              </div>
-
-              <p>
-                Tap each section to see a different part of my life. These are easy to update
-                later with your own photos, stories, and details.
-              </p>
-            </div>
-
-            <div class="life-tabs" role="tablist" aria-label="Outside the classroom">
-              <button class="life-tab" type="button" data-life="family" role="tab" aria-selected="false">
-                <small>01</small>
-                <strong>Family</strong>
-              </button>
-
-              <button class="life-tab" type="button" data-life="volunteer" role="tab" aria-selected="false">
-                <small>02</small>
-                <strong>Volunteer</strong>
-              </button>
-
-              <button class="life-tab" type="button" data-life="alpha" role="tab" aria-selected="false">
-                <small>03</small>
-                <strong>Alpha Phi</strong>
-              </button>
-
-              <button class="life-tab" type="button" data-life="experience" role="tab" aria-selected="false">
-                <small>04</small>
-                <strong>Experience</strong>
-              </button>
-            </div>
-
-            <div class="life-detail" id="lifeDetail" role="tabpanel">
-              <div>
-                <h4 id="lifeTitle"></h4>
-                <p id="lifeText"></p>
-              </div>
-              <div class="life-detail-photo" id="lifePhotoLabel"></div>
-            </div>
           </div>
-        </div>
       </section>
 
       <div class="marquee" aria-label="Projects">
@@ -1121,6 +1091,56 @@
               </div>
             </article>
           </div>
+        </div>
+      </section>
+
+
+      <section class="outside-section" id="outside">
+        <div class="inner">
+          <div class="outside">
+            <div class="outside-heading">
+              <div>
+                <div class="eyebrow">outside of the classroom</div>
+                <h3>a few things that make me, me</h3>
+              </div>
+
+              <p>
+                Tap each section to see a different part of my life. These are easy to update
+                later with your own photos, stories, and details.
+              </p>
+            </div>
+
+            <div class="life-tabs" role="tablist" aria-label="Outside the classroom">
+              <button class="life-tab" type="button" data-life="family" role="tab" aria-selected="false">
+                <small>01</small>
+                <strong>Family</strong>
+              </button>
+
+              <button class="life-tab" type="button" data-life="volunteer" role="tab" aria-selected="false">
+                <small>02</small>
+                <strong>Volunteer</strong>
+              </button>
+
+              <button class="life-tab" type="button" data-life="alpha" role="tab" aria-selected="false">
+                <small>03</small>
+                <strong>Alpha Phi</strong>
+              </button>
+
+              <button class="life-tab" type="button" data-life="experience" role="tab" aria-selected="false">
+                <small>04</small>
+                <strong>Experience</strong>
+              </button>
+            </div>
+
+            <div class="life-detail" id="lifeDetail" role="tabpanel">
+              <div>
+                <h4 id="lifeTitle"></h4>
+                <p id="lifeText"></p>
+              </div>
+              <div class="life-detail-photo" id="lifePhotoLabel"></div>
+            </div>
+          </div>
+        
         </div>
       </section>
 
