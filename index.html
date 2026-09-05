@@ -757,8 +757,8 @@
       justify-content:space-between;
       gap:28px;
       align-items:end;
-      margin-bottom:24px;
-      padding:22px 24px;
+      margin-bottom:14px;
+      padding:16px 20px;
       background:var(--paper);
       border:1px solid rgba(33,29,28,.10);
       box-shadow:0 8px 18px rgba(0,0,0,.10);
@@ -997,90 +997,39 @@
         linear-gradient(180deg, var(--paper), var(--cream));
     }
 
-    .you-are-here-graphic .map-route{
-      position:absolute;
-      left:16%;
-      top:20%;
-      width:70%;
-      height:56%;
-      border:2px dashed rgba(150,62,97,.4);
-      border-radius:42% 58% 50% 50% / 44% 40% 60% 56%;
-      transform:rotate(-10deg);
-    }
-
-    .you-are-here-graphic .map-route::before,
-    .you-are-here-graphic .map-route::after{
-      content:"";
-      position:absolute;
-      background:rgba(150,62,97,.22);
-      border-radius:999px;
-    }
-
-    .you-are-here-graphic .map-route::before{
-      width:94px;
-      height:12px;
-      left:6%;
-      top:44%;
-      transform:rotate(18deg);
-    }
-
-    .you-are-here-graphic .map-route::after{
-      width:12px;
-      height:90px;
-      right:18%;
-      top:8%;
-      transform:rotate(-14deg);
+    .you-are-here-graphic{
+      display:grid;
+      place-items:center;
+      padding:18px;
+      text-align:center;
     }
 
     .pin-marker{
-      position:absolute;
-      right:18%;
-      top:22%;
-      width:56px;
-      height:56px;
+      position:relative;
+      width:76px;
+      height:76px;
       background:var(--pink-dark);
-      border:4px solid var(--paper);
+      border:5px solid var(--paper);
       border-radius:50% 50% 50% 0;
       transform:rotate(-45deg);
-      box-shadow:
-        0 0 0 4px rgba(200,92,134,.28),
-        0 12px 24px rgba(111,40,71,.38);
-      z-index:4;
+      box-shadow:0 12px 24px rgba(111,40,71,.22);
+      margin-bottom:16px;
     }
 
     .pin-marker::before{
       content:"";
       position:absolute;
-      inset:13px;
+      inset:17px;
       background:var(--paper);
-      border:3px solid var(--pink-soft);
       border-radius:50%;
     }
 
     .you-are-here-label{
-      position:absolute;
-      left:18px;
-      bottom:18px;
-      padding:11px 15px;
-      background:rgba(251,247,241,.98);
-      border:2px solid rgba(150,62,97,.28);
-      box-shadow:0 9px 20px rgba(111,40,71,.14);
-      font-family:var(--serif);
-      font-size:1.05rem;
-      text-transform:uppercase;
-      letter-spacing:.04em;
-      color:var(--pink-deep);
-      z-index:3;
-    }
-
-    .you-are-here-label span{
-      display:block;
-      margin-top:4px;
       font-family:var(--script);
-      font-size:1.4rem;
-      text-transform:none;
-      letter-spacing:0;
+      font-size:1.6rem;
+      line-height:1;
       color:var(--pink-dark);
+      white-space:nowrap;
     }
 
     .coming-soon-graphic{
@@ -1187,7 +1136,7 @@
     /* ---------- VALUES ---------- */
 
     .values{
-      padding:64px 0 72px;
+      padding:42px 0 46px;
       background:
         radial-gradient(circle, rgba(200,92,134,.38) 0 1.7px, transparent 2px) 0 0/18px 18px,
         var(--paper);
@@ -1206,8 +1155,8 @@
     }
 
     .values-head{
-      margin-bottom:24px;
-      padding:22px 24px;
+      margin-bottom:14px;
+      padding:16px 20px;
       background:var(--paper);
       border:1px solid rgba(33,29,28,.10);
       box-shadow:0 8px 18px rgba(0,0,0,.05);
@@ -1219,10 +1168,11 @@
 
     .values h2{
       color:var(--ink);
+      font-size:clamp(2.15rem,4.2vw,3.35rem);
     }
 
     .values-head p{
-      margin:10px 0 0;
+      margin:7px 0 0;
       color:var(--muted);
       max-width:520px;
     }
@@ -1230,20 +1180,20 @@
     .value-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:8px;
+      gap:7px;
     }
 
     .value-card{
       background:var(--pink-soft);
       color:var(--ink);
-      padding:24px;
-      min-height:175px;
+      padding:18px 20px;
+      min-height:128px;
       border:1px solid rgba(111,40,71,.18);
       box-shadow:0 8px 18px rgba(111,40,71,.08);
     }
 
     .value-card h3{
-      margin:0 0 10px;
+      margin:0 0 7px;
       font-family:var(--serif);
       font-size:1rem;
       text-transform:uppercase;
@@ -1252,8 +1202,8 @@
 
     .value-card p{
       margin:0;
-      font-size:.8rem;
-      line-height:1.5;
+      font-size:.78rem;
+      line-height:1.42;
       color:#5f5258;
     }
 
@@ -1595,9 +1545,8 @@
                 <div class="project-placeholder">
                   <div class="project-image">
                     <div class="project-graphic you-are-here-graphic" aria-hidden="true">
-                      <div class="map-route"></div>
                       <div class="pin-marker"></div>
-                      <div class="you-are-here-label">portfolio site<span>you are here</span></div>
+                      <div class="you-are-here-label">you are here</div>
                     </div>
                   </div>
                   <div class="placeholder-copy">
