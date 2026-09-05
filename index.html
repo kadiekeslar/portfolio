@@ -32,6 +32,20 @@
       --script: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
     }
 
+    html[data-theme="dark"]{
+      --cream:#171415;
+      --cream-2:#100e0f;
+      --paper:#211c1f;
+      --ink:#f4ece8;
+      --muted:#c5b8b3;
+      --pink:#d67ca0;
+      --pink-deep:#f0b4cb;
+      --pink-soft:#4b2936;
+      --line:rgba(244,236,232,.24);
+      --shadow:0 16px 35px rgba(0,0,0,.34);
+      color-scheme:dark;
+    }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:86px}
 
@@ -119,6 +133,51 @@
       background:var(--pink-dark);
       color:white!important;
       border:1px solid var(--pink-dark);
+    }
+
+    .theme-toggle{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      min-height:34px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--paper);
+      color:var(--ink);
+      cursor:pointer;
+      font-size:.62rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      transition:transform .16s ease,background .16s ease,color .16s ease;
+    }
+
+    .theme-toggle:hover{
+      transform:scale(1.06);
+      background:var(--pink-dark);
+      color:white;
+      border-color:var(--pink-dark);
+    }
+
+    body, .site, header, .about, .outside-section, .marquee, .projects-head,
+    .project-bar, .values, .values-head, .value-card, .life-tab, .life-detail{
+      transition:background-color .25s ease,color .25s ease,border-color .25s ease;
+    }
+
+    html[data-theme="dark"] header{
+      background:rgba(23,20,21,.93);
+      border-bottom-color:rgba(244,236,232,.10);
+    }
+
+    html[data-theme="dark"] .value-card p{
+      color:var(--muted);
+    }
+
+    html[data-theme="dark"] footer{
+      background:#0d0b0c;
+      color:#e8dfdc;
     }
 
     /* ---------- HERO ---------- */
@@ -512,16 +571,17 @@
     }
 
     .life-detail{
+      position:relative;
       margin-top:10px;
-      min-height:185px;
+      min-height:245px;
       padding:26px;
       background:
         radial-gradient(circle,rgba(200,92,134,.18) 0 1.5px,transparent 1.8px) 0 0/18px 18px,
         var(--cream);
       border:1px solid var(--line);
       display:none;
-      grid-template-columns:1fr .42fr;
-      gap:24px;
+      grid-template-columns:minmax(220px,.78fr) 1.35fr;
+      gap:30px;
       align-items:center;
     }
 
@@ -529,31 +589,110 @@
       display:grid;
     }
 
+    .life-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:34px;
+      height:34px;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:var(--paper);
+      color:var(--ink);
+      display:grid;
+      place-items:center;
+      font-size:1.25rem;
+      line-height:1;
+      cursor:pointer;
+      transition:transform .16s ease,background .16s ease,color .16s ease;
+      z-index:2;
+    }
+
+    .life-close:hover{
+      transform:scale(1.08);
+      background:var(--pink-dark);
+      color:white;
+      border-color:var(--pink-dark);
+    }
+
+    .life-detail-copy{
+      min-width:0;
+    }
+
     .life-detail h4{
-      margin:0 0 8px;
+      margin:0 0 6px;
       font-family:var(--serif);
       font-size:1.8rem;
       font-weight:500;
       text-transform:uppercase;
     }
 
+    .life-meta{
+      margin:0 0 12px;
+      color:var(--pink-dark);
+      font-size:.7rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    html[data-theme="dark"] .life-meta{
+      color:var(--pink-deep);
+    }
+
     .life-detail p{
       margin:0;
-      max-width:600px;
+      max-width:650px;
+      color:var(--muted);
+    }
+
+    .life-link{
+      display:inline-flex;
+      margin-top:14px;
+      color:var(--pink-dark);
+      font-size:.74rem;
+      font-weight:800;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      border-bottom:1px solid currentColor;
+    }
+
+    html[data-theme="dark"] .life-link{
+      color:var(--pink-deep);
     }
 
     .life-detail-photo{
-      min-height:125px;
-      border:1px dashed rgba(33,29,28,.35);
-      background:rgba(255,255,255,.72);
+      position:relative;
+      width:100%;
+      aspect-ratio:4 / 3;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--paper);
+      box-shadow:var(--shadow);
+    }
+
+    .life-detail-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .life-photo-fallback{
+      position:absolute;
+      inset:0;
       display:grid;
       place-items:center;
+      padding:20px;
       text-align:center;
-      padding:16px;
       color:var(--muted);
-      font-size:.75rem;
+      background:
+        radial-gradient(circle,rgba(200,92,134,.17) 0 1.5px,transparent 1.8px) 0 0/18px 18px,
+        var(--paper);
+      font-size:.72rem;
+      font-weight:700;
       text-transform:uppercase;
-      letter-spacing:.05em;
+      letter-spacing:.06em;
     }
 
     /* ---------- PROJECT MARQUEE ---------- */
@@ -711,7 +850,7 @@
     }
 
     .project-bar.open .project-expand{
-      max-height:280px;
+      max-height:520px;
       padding:18px 20px 22px;
       border-top-width:1px;
     }
@@ -746,6 +885,73 @@
       display:block;
       color:var(--ink);
       margin-bottom:5px;
+    }
+
+    .project-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin:10px 0 12px;
+    }
+
+    .project-tag{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 8px;
+      border:1px solid rgba(33,29,28,.18);
+      background:var(--paper);
+      color:var(--pink-deep);
+      font-size:.66rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .project-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .project-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:7px 11px;
+      border:1px solid var(--pink-dark);
+      background:var(--pink-dark);
+      color:white;
+      text-decoration:none;
+      font-size:.69rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      transition:transform .16s ease;
+    }
+
+    .project-link:hover{
+      transform:translateY(-2px);
+    }
+
+    .project-link.light{
+      background:transparent;
+      color:var(--pink-dark);
+    }
+
+    .project-status{
+      display:inline-flex;
+      width:max-content;
+      padding:5px 9px;
+      margin-bottom:8px;
+      border-radius:999px;
+      background:var(--pink-soft);
+      color:var(--pink-deep);
+      font-size:.65rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.06em;
     }
 
     /* ---------- VALUES ---------- */
@@ -887,6 +1093,10 @@
       .life-detail{
         grid-template-columns:1fr;
       }
+
+      .life-detail-photo{
+        max-width:520px;
+      }
     }
 
     @media (max-width:680px){
@@ -902,6 +1112,10 @@
 
       .nav-links a:not(.nav-cta){
         display:none;
+      }
+
+      .theme-toggle{
+        padding:7px 9px;
       }
 
       .hero{min-height:auto}
@@ -1008,6 +1222,7 @@
             <a href="#projects">projects</a>
             <a href="#values">values</a>
             <a href="#contact">contact</a>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">☾ Dark</button>
           </div>
         </nav>
       </div>
@@ -1131,8 +1346,8 @@
             </div>
 
             <p>
-              These are placeholders for now. Each horizontal bar can later hold a project
-              title, screenshot, description, and code link.
+              A mix of software development, human-centered design, and AI-focused work.
+              Tap a project to learn more about what I built and how I approached it.
             </p>
           </div>
 
@@ -1141,17 +1356,27 @@
               <button class="project-bar-button" type="button" aria-expanded="false">
                 <span class="project-number">01</span>
                 <span>
-                  <h3>Project Placeholder</h3>
-                  <p>Short project description goes here.</p>
+                  <h3>Personal Portfolio Website</h3>
+                  <p>Designed, coded, and customized the website you are viewing now.</p>
                 </span>
                 <span class="project-arrow">+</span>
               </button>
               <div class="project-expand">
                 <div class="project-placeholder">
-                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="project-image-placeholder">you’re viewing this project live</div>
                   <div class="placeholder-copy">
-                    <strong>Project details placeholder</strong>
-                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                    <strong>Building a portfolio through iterative design + code</strong>
+                    I built this responsive portfolio with HTML, CSS, and JavaScript, using ChatGPT as a coding and brainstorming partner during the process. I used it to explore layout ideas, draft starter code, improve responsiveness, and troubleshoot interactions, then edited the wording, visual direction, structure, styling, and code to make the final site feel like my own.
+                    <div class="project-meta">
+                      <span class="project-tag">HTML</span>
+                      <span class="project-tag">CSS</span>
+                      <span class="project-tag">JavaScript</span>
+                      <span class="project-tag">Responsive Design</span>
+                      <span class="project-tag">AI-Assisted Development</span>
+                    </div>
+                    <div class="project-links">
+                      <a class="project-link" href="#top">View this site</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1161,17 +1386,27 @@
               <button class="project-bar-button" type="button" aria-expanded="false">
                 <span class="project-number">02</span>
                 <span>
-                  <h3>Project Placeholder</h3>
-                  <p>Short project description goes here.</p>
+                  <h3>Blokus</h3>
+                  <p>Virtual strategy game with multiplayer and selectable AI difficulty.</p>
                 </span>
                 <span class="project-arrow">+</span>
               </button>
               <div class="project-expand">
                 <div class="project-placeholder">
-                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="project-image-placeholder">Blokus game demo</div>
                   <div class="placeholder-copy">
-                    <strong>Project details placeholder</strong>
-                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                    <strong>Interactive Python term project</strong>
+                    I created a virtual version of Blokus as my 15-112 term project. Players can compete against another person or play against an AI agent, with the option to choose an easier or harder opponent. The project required a polished interactive experience along with substantial Python logic for game state, legal piece placement, turn handling, and AI decision-making.
+                    <div class="project-meta">
+                      <span class="project-tag">Python</span>
+                      <span class="project-tag">cmu_graphics</span>
+                      <span class="project-tag">MVC</span>
+                      <span class="project-tag">Game Logic</span>
+                      <span class="project-tag">AI Opponent</span>
+                    </div>
+                    <div class="project-links">
+                      <a class="project-link" href="https://youtu.be/IMqiDdjcxOk?si=TpU_mXIbnDjrbxci" target="_blank" rel="noreferrer">Watch demo</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1181,17 +1416,24 @@
               <button class="project-bar-button" type="button" aria-expanded="false">
                 <span class="project-number">03</span>
                 <span>
-                  <h3>Project Placeholder</h3>
-                  <p>Short project description goes here.</p>
+                  <h3>Go Mobile PGH Redesign</h3>
+                  <p>AI-assisted usability redesign of Pittsburgh’s mobile parking experience.</p>
                 </span>
                 <span class="project-arrow">+</span>
               </button>
               <div class="project-expand">
                 <div class="project-placeholder">
-                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="project-image-placeholder">AI usability redesign prototype</div>
                   <div class="placeholder-copy">
-                    <strong>Project details placeholder</strong>
-                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                    <strong>Reducing friction without adding new features</strong>
+                    For this team project, we analyzed Go Mobile PGH and redesigned its structure to make everyday parking faster and less error-prone using AI. The challenge was to improve usability without inventing new functionality. Our prototype condensed the core parking flow from seven screens to one primary screen by intelligently pre-filling existing information, while still letting users review and edit every detail. We also considered feasibility, transparency, accountability, fairness, and privacy in the proposed AI-assisted experience.
+                    <div class="project-meta">
+                      <span class="project-tag">HCI</span>
+                      <span class="project-tag">AI Product Design</span>
+                      <span class="project-tag">Interaction Design</span>
+                      <span class="project-tag">Usability</span>
+                      <span class="project-tag">FATE Analysis</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1201,17 +1443,18 @@
               <button class="project-bar-button" type="button" aria-expanded="false">
                 <span class="project-number">04</span>
                 <span>
-                  <h3>Project Placeholder</h3>
-                  <p>Short project description goes here.</p>
+                  <h3>More to Come</h3>
+                  <p>New research, development, and design work in progress.</p>
                 </span>
                 <span class="project-arrow">+</span>
               </button>
               <div class="project-expand">
                 <div class="project-placeholder">
-                  <div class="project-image-placeholder">add project screenshot</div>
+                  <div class="project-image-placeholder">work in progress</div>
                   <div class="placeholder-copy">
-                    <strong>Project details placeholder</strong>
-                    Add what you built, your role, tools used, what you learned, and a link to the code when applicable.
+                    <span class="project-status">In progress</span>
+                    <strong>More projects coming soon</strong>
+                    I’m continuing to add work across software development, human-computer interaction, research, and AI-focused design. This space will grow as I finish and document new projects.
                   </div>
                 </div>
               </div>
@@ -1231,13 +1474,13 @@
               </div>
 
               <p>
-                Tap each section to see a different part of my life. These are easy to update
-                later with your own photos, stories, and details.
+                A little more about the people, communities, and experiences that have shaped
+                who I am beyond coursework and projects.
               </p>
             </div>
 
             <div class="life-tabs" role="tablist" aria-label="Outside the classroom">
-              <button class="life-tab" type="button" data-life="family" role="tab" aria-selected="false">
+              <button class="life-tab active" type="button" data-life="family" role="tab" aria-selected="true">
                 <small>01</small>
                 <strong>Family</strong>
               </button>
@@ -1258,12 +1501,18 @@
               </button>
             </div>
 
-            <div class="life-detail" id="lifeDetail" role="tabpanel">
-              <div>
-                <h4 id="lifeTitle"></h4>
-                <p id="lifeText"></p>
+            <div class="life-detail show" id="lifeDetail" role="tabpanel">
+              <button class="life-close" id="lifeClose" type="button" aria-label="Close outside the classroom details">×</button>
+              <div class="life-detail-photo">
+                <img id="lifePhoto" src="family.jpg" alt="Kadie with her family" />
+                <span class="life-photo-fallback" id="lifePhotoFallback">add family.jpg</span>
               </div>
-              <div class="life-detail-photo" id="lifePhotoLabel"></div>
+              <div class="life-detail-copy">
+                <h4 id="lifeTitle">Family</h4>
+                <div class="life-meta" id="lifeMeta">My biggest support system</div>
+                <p id="lifeText">My family has always inspired me to follow my dreams and shown me what hard work, support, and perseverance can make possible. I would not be where I am without the way they have encouraged me, believed in me, and pushed me to keep going. I feel beyond blessed to have a family that supports me so deeply, and so much of who I am and what I hope to become comes from them.</p>
+                <a class="life-link" id="lifeLink" href="#" target="_blank" rel="noreferrer" hidden></a>
+              </div>
             </div>
           </div>
         
@@ -1326,8 +1575,7 @@
 
           <div class="contact-links">
             <a class="button" href="mailto:kadie.keslar@gmail.com">email me</a>
-            <a class="button" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="button" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="button" href="https://www.linkedin.com/in/kadie-keslar-0590153a6" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
       </section>
@@ -1364,47 +1612,102 @@
     const lifeContent = {
       family: {
         title: "Family",
-        text: "Add a short paragraph here about your family, why they are important to you, and how they have shaped who you are.",
-        photo: "add a family photo here"
+        meta: "My biggest support system",
+        text: "My family has always inspired me to follow my dreams and shown me what hard work, support, and perseverance can make possible. I would not be where I am without the way they have encouraged me, believed in me, and pushed me to keep going. I feel beyond blessed to have a family that supports me so deeply, and so much of who I am and what I hope to become comes from them.",
+        photo: "family.jpg",
+        alt: "Kadie with her family",
+        fallback: "add family.jpg"
       },
       volunteer: {
-        title: "Volunteer Work",
-        text: "I have volunteered with Mission Four18 and Hydrate Kids Camp. Use this space to add the stories, responsibilities, or moments from those experiences that matter most to you.",
-        photo: "add a volunteer photo here"
+        title: "Volunteer",
+        meta: "Mission Four18 · Jamaica",
+        text: "I’ve had the opportunity to serve with Mission Four18 in Jamaica, working alongside local communities in Clarendon Parish and helping wherever I can. Their work supports people through areas such as education, construction, healthcare, and other practical community needs. Each time I go, my hope is simple: to show up with care, serve wherever I’m needed, and leave even one person feeling seen, supported, or encouraged. The people I’ve met have impacted me just as much as I could ever hope to impact them, and the experience continually reminds me how meaningful it is to give your time and heart to others.",
+        photo: "mission-four18.jpg",
+        alt: "Kadie volunteering with Mission Four18 in Jamaica",
+        fallback: "add mission-four18.jpg",
+        link: "https://www.missionfour18.org/",
+        linkLabel: "Learn about Mission Four18"
       },
       alpha: {
         title: "Alpha Phi",
-        text: "I serve as Director of Primary Panhellenic Recruitment. Add more here about the people, leadership, community, and experiences that have made Alpha Phi meaningful to you.",
-        photo: "add an alpha phi photo here"
+        meta: "Director of Primary Panhellenic Recruitment",
+        text: "As Director of Primary Panhellenic Recruitment for Alpha Phi, I help plan and shape our chapter’s primary recruitment experience with the goal of making every potential new member feel welcomed, comfortable, and excited to learn who we are. This role has given me a meaningful opportunity to grow as a leader, collaborate closely with the women in my chapter, and help create an experience that represents something incredibly special to all of us.",
+        photo: "alpha-phi.jpg",
+        alt: "Kadie with members of Alpha Phi",
+        fallback: "add alpha-phi.jpg"
       },
       experience: {
-        title: "Experience",
-        text: "Use this section for research roles, internships, jobs, or other professional experience. You can add a short summary, what you worked on, and what you learned.",
-        photo: "add an experience photo here"
+        title: "Research Experience",
+        meta: "Research Assistant · Lumilo Project · Summer 2026 — Present",
+        text: "I’m currently a Research Assistant on the Lumilo Project, where I help design and prototype a recommender system for a project that uses mixed-reality smart glasses to provide teachers with real-time insights and recommendations about student learning. The goal is to help teachers better understand what is happening in the classroom and support students more effectively. This experience has given me the opportunity to combine research, human-computer interaction, prototyping, and AI while learning from Dr. Vincent Aleven and contributing to technology designed around real classroom needs.",
+        photo: "lumilo.jpg",
+        alt: "Kadie working on the Lumilo research project",
+        fallback: "add lumilo.jpg",
+        link: "https://www.hcii.cmu.edu/hcii-impacts/teacher-ai-collaboration",
+        linkLabel: "Learn more about Lumilo"
       }
     };
 
     const lifeTabs = document.querySelectorAll(".life-tab");
     const lifeDetail = document.getElementById("lifeDetail");
     const lifeTitle = document.getElementById("lifeTitle");
+    const lifeMeta = document.getElementById("lifeMeta");
     const lifeText = document.getElementById("lifeText");
-    const lifePhotoLabel = document.getElementById("lifePhotoLabel");
+    const lifePhoto = document.getElementById("lifePhoto");
+    const lifePhotoFallback = document.getElementById("lifePhotoFallback");
+    const lifeLink = document.getElementById("lifeLink");
+    const lifeClose = document.getElementById("lifeClose");
+
+    function showLifeSection(key){
+      const selected = lifeContent[key];
+
+      lifeTabs.forEach((item) => {
+        const active = item.dataset.life === key;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+
+      lifeTitle.textContent = selected.title;
+      lifeMeta.textContent = selected.meta;
+      lifeText.textContent = selected.text;
+
+      lifePhotoFallback.textContent = selected.fallback;
+      lifePhotoFallback.style.display = "grid";
+      lifePhoto.style.display = "block";
+      lifePhoto.alt = selected.alt;
+      lifePhoto.src = selected.photo;
+
+      if(selected.link){
+        lifeLink.href = selected.link;
+        lifeLink.textContent = selected.linkLabel;
+        lifeLink.hidden = false;
+      }else{
+        lifeLink.hidden = true;
+        lifeLink.removeAttribute("href");
+        lifeLink.textContent = "";
+      }
+
+      lifeDetail.classList.add("show");
+    }
+
+    lifePhoto.addEventListener("load", () => {
+      lifePhotoFallback.style.display = "none";
+    });
+
+    lifePhoto.addEventListener("error", () => {
+      lifePhoto.style.display = "none";
+      lifePhotoFallback.style.display = "grid";
+    });
 
     lifeTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        lifeTabs.forEach((item) => {
-          item.classList.remove("active");
-          item.setAttribute("aria-selected", "false");
-        });
+      tab.addEventListener("click", () => showLifeSection(tab.dataset.life));
+    });
 
-        tab.classList.add("active");
-        tab.setAttribute("aria-selected", "true");
-
-        const selected = lifeContent[tab.dataset.life];
-        lifeTitle.textContent = selected.title;
-        lifeText.textContent = selected.text;
-        lifePhotoLabel.textContent = selected.photo;
-        lifeDetail.classList.add("show");
+    lifeClose.addEventListener("click", () => {
+      lifeDetail.classList.remove("show");
+      lifeTabs.forEach((item) => {
+        item.classList.remove("active");
+        item.setAttribute("aria-selected", "false");
       });
     });
 
@@ -1418,6 +1721,30 @@
         button.setAttribute("aria-expanded", String(willOpen));
       });
     });
+
+    // Light / dark theme toggle. The preference is remembered on this device.
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    function applyTheme(theme){
+      document.documentElement.dataset.theme = theme;
+      const dark = theme === "dark";
+      themeToggle.textContent = dark ? "☀ Light" : "☾ Dark";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+
+    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("portfolio-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    // Keep Family open by default.
+    showLifeSection("family");
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
