@@ -6,6 +6,14 @@
   <meta name="description" content="Portfolio of Kadie Keslar — Computer Science + Human-Computer Interaction." />
   <title>Kadie Keslar | Portfolio</title>
 
+  <!-- Preload images used by the clickable Outside the Classroom tabs.
+       These images are inserted with JavaScript, so without preloading the
+       browser would normally wait until the first click to request them. -->
+  <link rel="preload" as="image" href="family.jpg" />
+  <link rel="preload" as="image" href="mission-four18.jpg" />
+  <link rel="preload" as="image" href="alpha-phi.jpg" />
+  <link rel="preload" as="image" href="lumilo.jpg" />
+
   <!--
     AI USAGE DOCUMENTATION
     I used ChatGPT to help brainstorm layout structure, draft starter HTML/CSS,
@@ -1861,6 +1869,23 @@
       }
     };
 
+    // Warm the browser cache for tab images before the user clicks a subsection.
+    const lifeImageCache = {};
+    Object.values(lifeContent).forEach((item) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.src = item.photo;
+      lifeImageCache[item.photo] = image;
+
+      // Ask the browser to decode the image ahead of time when supported.
+      if (image.decode) {
+        image.decode().catch(() => {
+          // A decode failure here is harmless; the normal image error handler
+          // below will still show the fallback if the file itself is missing.
+        });
+      }
+    });
+
     const lifeTabs = document.querySelectorAll(".life-tab");
     const lifeDetail = document.getElementById("lifeDetail");
     const lifeTitle = document.getElementById("lifeTitle");
@@ -1885,10 +1910,12 @@
       lifeText.textContent = selected.text;
 
       lifePhotoFallback.textContent = selected.fallback;
-      lifePhotoFallback.style.display = "grid";
+      lifePhotoFallback.style.display = "none";
       lifePhoto.style.display = "block";
       lifePhoto.alt = selected.alt;
       lifePhoto.style.objectPosition = selected.position || "center center";
+      lifePhoto.loading = "eager";
+      lifePhoto.decoding = "async";
       lifePhoto.src = selected.photo;
 
       if(selected.link){
