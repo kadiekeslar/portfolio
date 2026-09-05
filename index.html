@@ -1034,21 +1034,26 @@
 
     .pin-marker{
       position:absolute;
-      right:22%;
-      top:28%;
-      width:44px;
-      height:44px;
+      right:18%;
+      top:22%;
+      width:56px;
+      height:56px;
       background:var(--pink-dark);
+      border:4px solid var(--paper);
       border-radius:50% 50% 50% 0;
       transform:rotate(-45deg);
-      box-shadow:0 8px 18px rgba(111,40,71,.22);
+      box-shadow:
+        0 0 0 4px rgba(200,92,134,.28),
+        0 12px 24px rgba(111,40,71,.38);
+      z-index:4;
     }
 
     .pin-marker::before{
       content:"";
       position:absolute;
-      inset:11px;
+      inset:13px;
       background:var(--paper);
+      border:3px solid var(--pink-soft);
       border-radius:50%;
     }
 
@@ -1056,15 +1061,16 @@
       position:absolute;
       left:18px;
       bottom:18px;
-      padding:10px 14px;
-      background:rgba(251,247,241,.96);
-      border:1px solid rgba(33,29,28,.16);
-      box-shadow:0 7px 16px rgba(0,0,0,.08);
+      padding:11px 15px;
+      background:rgba(251,247,241,.98);
+      border:2px solid rgba(150,62,97,.28);
+      box-shadow:0 9px 20px rgba(111,40,71,.14);
       font-family:var(--serif);
       font-size:1.05rem;
       text-transform:uppercase;
       letter-spacing:.04em;
       color:var(--pink-deep);
+      z-index:3;
     }
 
     .you-are-here-label span{
@@ -1130,7 +1136,8 @@
     .typing-wrap{
       display:inline-flex;
       align-items:center;
-      max-width:11ch;
+      width:max-content;
+      max-width:100%;
     }
 
     .typing-text{
@@ -1138,7 +1145,7 @@
       overflow:hidden;
       white-space:nowrap;
       width:0;
-      animation:typing 2.8s steps(11, end) infinite alternate;
+      animation:typing 4.6s steps(11, end) infinite;
     }
 
     .typing-caret{
@@ -1168,8 +1175,9 @@
     }
 
     @keyframes typing{
-      from{width:0}
-      to{width:11ch}
+      0%, 8%{width:0}
+      62%, 84%{width:13ch}
+      100%{width:0}
     }
 
     @keyframes blink{
@@ -1890,7 +1898,7 @@
         photo: "alpha-phi.jpg",
         alt: "Kadie with members of Alpha Phi",
         fallback: "add alpha-phi.jpg",
-        position: "center center"
+        position: "center 65%"
       },
       experience: {
         title: "Research Experience",
